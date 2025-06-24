@@ -1,0 +1,67 @@
+{
+  "BALANCE": {
+    "id": null,
+    "name": "Workflow - BALANCE",
+    "type": "BALANCE",
+    "state": "not_created",
+    "executionId": null,
+    "lastCheck": null,
+    "lastExecution": null,
+    "isHealthy": false,
+    "createdAt": null,
+    "errorCount": 0,
+    "lastError": null
+  },
+  "TRANSFER": {
+    "id": null,
+    "name": "Workflow - TRANSFER",
+    "type": "TRANSFER",
+    "state": "not_created",
+    "executionId": null,
+    "lastCheck": null,
+    "lastExecution": null,
+    "isHealthy": false,
+    "createdAt": null,
+    "errorCount": 0,
+    "lastError": null
+  },
+  "PRICE": {
+    "id": null,
+    "name": "Workflow - PRICE",
+    "type": "PRICE",
+    "state": "not_created",
+    "executionId": null,
+    "lastCheck": null,
+    "lastExecution": null,
+    "isHealthy": false,
+    "createdAt": null,
+    "errorCount": 0,
+    "lastError": null
+  },
+  "STAKESTONE": {
+    "id": null,
+    "name": "Workflow - STAKESTONE",
+    "type": "STAKESTONE",
+    "state": "not_created",
+    "executionId": null,
+    "lastCheck": null,
+    "lastExecution": null,
+    "isHealthy": false,
+    "createdAt": null,
+    "errorCount": 0,
+    "lastError": null
+  },
+  "EVERY_PERIOD": {
+    "id": null,
+    "name": "Workflow - EVERY_PERIOD",
+    "type": "EVERY_PERIOD",
+    "state": "not_created",
+    "executionId": null,
+    "lastCheck": null,
+    "lastExecution": null,
+    "isHealthy": false,
+    "createdAt": null,
+    "errorCount": 0,
+    "lastError": null
+  }
+} 
