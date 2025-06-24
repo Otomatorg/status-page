@@ -1,0 +1,72 @@
+{
+  "id": null,
+  "name": "Workflow - Transfer",
+  "state": "inactive",
+  "dateCreated": null,
+  "dateModified": null,
+  "executionId": null,
+  "agentId": null,
+  "nodes": [
+      {
+          "id": null,
+          "ref": "4",
+          "blockId": 1,
+          "type": "trigger",
+          "state": "inactive",
+          "parameters": {
+              "chainId": 34443,
+              "abi": {
+                  "parameters": {
+                      "from": null,
+                      "value": null,
+                      "to": null
+                  }
+              },
+              "contractAddress": "0xDfc7C877a950e49D2610114102175A06C2e3167a"
+          },
+          "frontendHelpers": {
+              "output": {
+                  "value": {
+                      "formatAmount": false,
+                      "erc20Token": {
+                          "contractAddress": "{{parameters.contractAddress}}",
+                          "chainId": "{{parameters.chainId}}"
+                      }
+                  }
+              }
+          },
+          "position": {
+              "x": 400,
+              "y": 120
+          }
+      },
+      {
+          "id": null,
+          "ref": "3",
+          "blockId": 100010,
+          "type": "action",
+          "state": "inactive",
+          "parameters": {
+              "time": "1000"
+          },
+          "frontendHelpers": {},
+          "position": {
+              "x": 400,
+              "y": 240
+          }
+      }
+  ],
+  "edges": [
+      {
+          "id": null,
+          "source": "4",
+          "target": "3"
+      }
+  ],
+  "notes": [],
+  "settings": {
+      "loopingType": "polling",
+      "limit": 1000000,
+      "period": 300000
+  }
+}

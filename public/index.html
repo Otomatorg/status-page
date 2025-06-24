@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otomato Status</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="title">
+                <span class="icon">📊</span>
+                Otomato Status
+            </h1>
+            <div class="status-badge" id="overallStatus">
+                <span class="status-dot"></span>
+                <span class="status-text">Loading...</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <!-- Overall Status Summary -->
+            <section class="summary-section">
+                <div class="summary-grid" id="summaryGrid">
+                    <div class="summary-card">
+                        <div class="summary-number" id="totalServices">-</div>
+                        <div class="summary-label">Total Services</div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="summary-number operational" id="operationalServices">-</div>
+                        <div class="summary-label">Operational</div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="summary-number degraded" id="degradedServices">-</div>
+                        <div class="summary-label">Degraded</div>
+                    </div>
+                    <div class="summary-card">
+                        <div class="summary-number down" id="downServices">-</div>
+                        <div class="summary-label">Down</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Services Status -->
+            <section class="services-section">
+                <h2 class="section-title">Service Status</h2>
+                <div class="services-grid" id="servicesGrid">
+                    <!-- Services will be populated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Recent Incidents -->
+            <section class="incidents-section">
+                <h2 class="section-title">Recent Incidents</h2>
+                <div class="incidents-container" id="incidentsContainer">
+                    <!-- Incidents will be populated by JavaScript -->
+                </div>
+            </section>
+
+            <!-- Status History -->
+            <section class="history-section">
+                <h2 class="section-title">24-Hour Status History</h2>
+                <div class="history-container" id="historyContainer">
+                    <!-- History chart will be populated by JavaScript -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Last updated: <span id="lastUpdated">Loading...</span></p>
+            <p>Refreshes automatically every 30 seconds</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

@@ -1,0 +1,58 @@
+{
+  "id": null,
+  "name": "Workflow - Price",
+  "state": "inactive",
+  "dateCreated": null,
+  "dateModified": null,
+  "executionId": null,
+  "agentId": null,
+  "nodes": [
+      {
+          "id": null,
+          "ref": "1",
+          "blockId": 10,
+          "type": "trigger",
+          "state": "inactive",
+          "parameters": {
+              "chainId": 8453,
+              "comparisonValue": "{{history.0.value}}",
+              "currency": "USD",
+              "condition": "neq",
+              "contractAddress": "0x4200000000000000000000000000000000000006"
+          },
+          "frontendHelpers": {},
+          "position": {
+              "x": 400,
+              "y": 120
+          }
+      },
+      {
+          "id": null,
+          "ref": "3",
+          "blockId": 100010,
+          "type": "action",
+          "state": "inactive",
+          "parameters": {
+              "time": "1000"
+          },
+          "frontendHelpers": {},
+          "position": {
+              "x": 400,
+              "y": 240
+          }
+      }
+  ],
+  "edges": [
+      {
+          "id": null,
+          "source": "1",
+          "target": "3"
+      }
+  ],
+  "notes": [],
+  "settings": {
+      "loopingType": "polling",
+      "limit": 1000000,
+      "period": 300000
+  }
+}
