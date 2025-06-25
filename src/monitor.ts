@@ -86,27 +86,13 @@ class WorkflowMonitor {
   }
 
   private async runWorkflowTest(workflowType: string, workflowState: WorkflowState): Promise<any> {
-    // const startTime = Date.now();
-    // const timestamp = new Date().toISOString();
-
     if (!workflowState.id) {
       throw new Error('Workflow ID is missing');
     }
 
-    if (workflowState.state !== 'active') {
-      console.log(`🚀 ${workflowType}: Starting workflow execution...`);
-      const runResponse = await apiService.runWorkflow(workflowState.id);
-      
-      if (runResponse.success) {
-        workflowState.lastExecution = new Date().toISOString();
-        console.log(`✅ ${workflowType}: Workflow execution started (ID: ${runResponse.data.executionId})`);
-      } else {
-        console.log(`⚠️ ${workflowType}: Failed to start workflow: ${runResponse.error}`);
-      }
-      return [];
-    } else {
-
-      console.log(`📊 ${workflowType}: Fetching all executions...`);
+    // Check if workflow is already started
+    if (workflowState.started) {
+      console.log(`📊 ${workflowType}: Workflow already started, fetching executions...`);
       const executionsResponse = await apiService.getRecentExecutionsByWorkflowId(workflowState.id);
       
       if (!executionsResponse.success) {
@@ -117,7 +103,21 @@ class WorkflowMonitor {
       console.log(`📋 ${workflowType}: Found ${executions.length} executions`);
 
       return executions;
+    } else {
+      // Workflow not started yet, start it
+      console.log(`🚀 ${workflowType}: Starting workflow execution...`);
+      const runResponse = await apiService.runWorkflow(workflowState.id);
+      
+      if (runResponse.success) {
+        workflowState.started = true;
+        workflowState.lastExecution = new Date().toISOString();
+        console.log(`✅ ${workflowType}: Workflow execution started (ID: ${runResponse.data.executionId})`);
+      } else {
+        console.log(`⚠️ ${workflowType}: Failed to start workflow: ${runResponse.error}`);
+      }
+      return null;
     }
+  }
 
 
     // try {
@@ -246,7 +246,7 @@ class WorkflowMonitor {
     //     timeElapsed: Date.now() - startTime
     //   };
     // }
-  }
+  
 
   public async runMonitoring(): Promise<void> {
     console.log('🚀 Starting workflow monitoring...');

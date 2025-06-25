@@ -80,7 +80,7 @@ class ApiService {
   async getRecentExecutionsByWorkflowId(workflowId: string): Promise<ApiResponse<any>> {
     // For now, fetch all executions and filter client-side
     // You can update this if your API supports date filtering with specific parameters
-    return this.makeRequest<any>(`/executions?workflowId=${workflowId}&offset=0&limit=1000`);
+    return this.makeRequest<any>(`/executions?wfId=${workflowId}&offset=0&limit=1000`);
   }
 }
 

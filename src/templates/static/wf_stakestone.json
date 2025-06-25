@@ -52,6 +52,6 @@
   "settings": {
       "loopingType": "polling",
       "limit": 1000000,
-      "period": 300000
+      "period": 0
   }
 }

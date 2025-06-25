@@ -91,6 +91,7 @@ export interface ExecutionAnalysis {
 
 export interface WorkflowState {
   id: string | null;
+  started: boolean;
   name: string;
   type: string;
   state: 'not_created' | 'inactive' | 'active' | 'failed';

@@ -15,7 +15,7 @@
           "state": "inactive",
           "parameters": {
               "chainId": 8453,
-              "comparisonValue": "{{history.0.value}}",
+              "comparisonValue": 0,
               "currency": "USD",
               "condition": "neq",
               "contractAddress": "0x4200000000000000000000000000000000000006"
