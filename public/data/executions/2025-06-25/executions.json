@@ -1534,14 +1534,809 @@
         "nodes": null,
         "state": "active"
       },
-      "state": "active",
+      "state": "completed",
       "count": 45,
       "totalUnseen": 0,
       "notification": null,
       "dateCreated": "2025-06-25T07:46:58.113Z",
       "dateModified": "2025-06-25T07:46:58.121Z",
       "status": "new",
-      "nodeOutputs": []
+      "nodeOutputs": [
+        {
+          "blockId": 5,
+          "output": {
+            "balance": 787.91464
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "79c6c680-1e45-41a1-8294-11bff7704a0a",
+      "workflow": {
+        "id": "a9e90e33-f12d-49be-942d-1c2d50fc8c09",
+        "name": "Workflow - Balance",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 46,
+      "totalUnseen": 0,
+      "notification": null,
+      "dateCreated": "2025-06-25T07:58:22.983Z",
+      "dateModified": "2025-06-25T07:58:22.992Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 5,
+          "output": {
+            "balance": 787.91464
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "98a0a37d-1cbe-4936-8476-5a56f0b8e991",
+      "workflow": {
+        "id": "a9e90e33-f12d-49be-942d-1c2d50fc8c09",
+        "name": "Workflow - Balance",
+        "nodes": [
+          {
+            "blockId": 5,
+            "type": 1
+          }
+        ],
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 47,
+      "totalUnseen": 1,
+      "notification": {
+        "id": "955e2af8-7351-42eb-8ac6-b8225a10cfc5",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T08:03:23.600Z",
+      "dateModified": "2025-06-25T08:03:23.975Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 5,
+          "output": {
+            "balance": 787.91464
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "9f692eaf-18a3-4cb8-aa56-0e200b918e8d",
+      "workflow": {
+        "id": "a9e90e33-f12d-49be-942d-1c2d50fc8c09",
+        "name": "Workflow - Balance",
+        "nodes": [
+          {
+            "blockId": 5,
+            "type": 1
+          }
+        ],
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 53,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "f05894d1-143e-4d08-a8f6-0b781c1e4321",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T08:33:23.571Z",
+      "dateModified": "2025-06-25T08:33:23.968Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 5,
+          "output": {
+            "balance": 787.91464
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "b0a7978a-73e7-4850-840d-6bce8b4a6f1c",
+      "workflow": {
+        "id": "a9e90e33-f12d-49be-942d-1c2d50fc8c09",
+        "name": "Workflow - Balance",
+        "nodes": [
+          {
+            "blockId": 5,
+            "type": 1
+          }
+        ],
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 53,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "06f0caec-a36f-4a9b-b1a2-40171a4b9cd1",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T08:28:23.556Z",
+      "dateModified": "2025-06-25T08:28:23.965Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 5,
+          "output": {
+            "balance": 787.91464
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "4e0b7dee-a566-4b93-8e46-108c62dc10b8",
+      "workflow": {
+        "id": "a9e90e33-f12d-49be-942d-1c2d50fc8c09",
+        "name": "Workflow - Balance",
+        "nodes": [
+          {
+            "blockId": 5,
+            "type": 1
+          }
+        ],
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 53,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "1690c2b2-ea04-4045-b071-643a6c62efa5",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T08:23:23.588Z",
+      "dateModified": "2025-06-25T08:23:23.955Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 5,
+          "output": {
+            "balance": 787.91464
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "10a82219-c710-4b33-a679-d96302709e84",
+      "workflow": {
+        "id": "a9e90e33-f12d-49be-942d-1c2d50fc8c09",
+        "name": "Workflow - Balance",
+        "nodes": [
+          {
+            "blockId": 5,
+            "type": 1
+          }
+        ],
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 53,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "90048253-c581-4f06-b884-a07a452a4bb2",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T08:18:23.561Z",
+      "dateModified": "2025-06-25T08:18:23.962Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 5,
+          "output": {
+            "balance": 787.91464
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "62e677a9-f2b4-4ee2-b62e-81c8a7869fe0",
+      "workflow": {
+        "id": "a9e90e33-f12d-49be-942d-1c2d50fc8c09",
+        "name": "Workflow - Balance",
+        "nodes": [
+          {
+            "blockId": 5,
+            "type": 1
+          }
+        ],
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 53,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "5fa3f167-3538-4a70-9c55-1798df012814",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T08:13:23.603Z",
+      "dateModified": "2025-06-25T08:13:24.018Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 5,
+          "output": {
+            "balance": 787.91464
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "89fd9774-ce08-481c-b4fe-9bb0f7ed83b9",
+      "workflow": {
+        "id": "a9e90e33-f12d-49be-942d-1c2d50fc8c09",
+        "name": "Workflow - Balance",
+        "nodes": [
+          {
+            "blockId": 5,
+            "type": 1
+          }
+        ],
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 53,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "5e5e8435-e412-4572-b532-93c1a438f69e",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T08:08:23.621Z",
+      "dateModified": "2025-06-25T08:08:24.294Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 5,
+          "output": {
+            "balance": 787.91464
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "7673fd61-036a-49b2-a490-a93a8c203815",
+      "workflow": {
+        "id": "a9e90e33-f12d-49be-942d-1c2d50fc8c09",
+        "name": "Workflow - Balance",
+        "nodes": [
+          {
+            "blockId": 5,
+            "type": 1
+          }
+        ],
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 67,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "56ba4b22-dbb8-4ed4-aba1-d76bda4d6030",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T09:43:23.562Z",
+      "dateModified": "2025-06-25T09:43:24.323Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 5,
+          "output": {
+            "balance": 787.91464
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "ffb48e9d-be1e-4840-88f8-db9f8958bbc3",
+      "workflow": {
+        "id": "a9e90e33-f12d-49be-942d-1c2d50fc8c09",
+        "name": "Workflow - Balance",
+        "nodes": [
+          {
+            "blockId": 5,
+            "type": 1
+          }
+        ],
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 67,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "50e82c10-78bf-45d5-b854-09a6a09bae8d",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T09:38:23.551Z",
+      "dateModified": "2025-06-25T09:38:23.938Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 5,
+          "output": {
+            "balance": 787.91464
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "86dc19ab-1acf-4a44-b3ca-3e192680fe1b",
+      "workflow": {
+        "id": "a9e90e33-f12d-49be-942d-1c2d50fc8c09",
+        "name": "Workflow - Balance",
+        "nodes": [
+          {
+            "blockId": 5,
+            "type": 1
+          }
+        ],
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 67,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "0ec318ba-0f4f-4f94-8aa1-63e4d58fd9ee",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T09:33:23.582Z",
+      "dateModified": "2025-06-25T09:33:23.903Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 5,
+          "output": {
+            "balance": 787.91464
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "afcf189e-d6b2-480e-be59-71cedf365939",
+      "workflow": {
+        "id": "a9e90e33-f12d-49be-942d-1c2d50fc8c09",
+        "name": "Workflow - Balance",
+        "nodes": [
+          {
+            "blockId": 5,
+            "type": 1
+          }
+        ],
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 67,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "ec3abcdc-7580-4cb3-a477-e51ac486fda5",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T09:28:23.570Z",
+      "dateModified": "2025-06-25T09:28:23.961Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 5,
+          "output": {
+            "balance": 787.91464
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "5f8dc33c-33d4-48ea-8afa-6e489cf04ad2",
+      "workflow": {
+        "id": "a9e90e33-f12d-49be-942d-1c2d50fc8c09",
+        "name": "Workflow - Balance",
+        "nodes": [
+          {
+            "blockId": 5,
+            "type": 1
+          }
+        ],
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 67,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "b4dcd346-74ac-4f38-b2e7-6dea5342de89",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T09:23:23.586Z",
+      "dateModified": "2025-06-25T09:23:23.945Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 5,
+          "output": {
+            "balance": 787.91464
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "872ec078-e8de-40a3-a0d0-e586affe5e65",
+      "workflow": {
+        "id": "a9e90e33-f12d-49be-942d-1c2d50fc8c09",
+        "name": "Workflow - Balance",
+        "nodes": [
+          {
+            "blockId": 5,
+            "type": 1
+          }
+        ],
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 67,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "563c97c9-8631-4ed2-9a48-78fa8ef2a5f7",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T09:18:23.596Z",
+      "dateModified": "2025-06-25T09:18:23.990Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 5,
+          "output": {
+            "balance": 787.91464
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "be821a90-5a35-4f8b-a310-7d9c5631a8e4",
+      "workflow": {
+        "id": "a9e90e33-f12d-49be-942d-1c2d50fc8c09",
+        "name": "Workflow - Balance",
+        "nodes": [
+          {
+            "blockId": 5,
+            "type": 1
+          }
+        ],
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 67,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "f700884a-e99b-46fb-ba00-28e5602255d8",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T09:13:23.629Z",
+      "dateModified": "2025-06-25T09:13:24.004Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 5,
+          "output": {
+            "balance": 787.91464
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "07efbc45-6fa4-4998-a7c2-69b1485cf4ef",
+      "workflow": {
+        "id": "a9e90e33-f12d-49be-942d-1c2d50fc8c09",
+        "name": "Workflow - Balance",
+        "nodes": [
+          {
+            "blockId": 5,
+            "type": 1
+          }
+        ],
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 67,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "43fa92be-4fa5-4489-b897-590601d779b7",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T09:08:23.577Z",
+      "dateModified": "2025-06-25T09:08:23.919Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 5,
+          "output": {
+            "balance": 787.91464
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "442e4b69-81b6-4623-a24c-d43b88f3d5ba",
+      "workflow": {
+        "id": "a9e90e33-f12d-49be-942d-1c2d50fc8c09",
+        "name": "Workflow - Balance",
+        "nodes": [
+          {
+            "blockId": 5,
+            "type": 1
+          }
+        ],
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 67,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "b211f8c1-27dd-4a35-8df8-96e68101d4d9",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T09:03:23.590Z",
+      "dateModified": "2025-06-25T09:03:23.993Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 5,
+          "output": {
+            "balance": 787.91464
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "aa5fd00c-7d3e-4918-970f-fc5e10f148db",
+      "workflow": {
+        "id": "a9e90e33-f12d-49be-942d-1c2d50fc8c09",
+        "name": "Workflow - Balance",
+        "nodes": [
+          {
+            "blockId": 5,
+            "type": 1
+          }
+        ],
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 67,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "923c3340-edf4-4b63-855b-a5559d2a5de0",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T08:58:23.615Z",
+      "dateModified": "2025-06-25T08:58:24.037Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 5,
+          "output": {
+            "balance": 787.91464
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "2a2d456c-d4c8-4d6d-8a8d-7854cb8f3792",
+      "workflow": {
+        "id": "a9e90e33-f12d-49be-942d-1c2d50fc8c09",
+        "name": "Workflow - Balance",
+        "nodes": [
+          {
+            "blockId": 5,
+            "type": 1
+          }
+        ],
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 67,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "5a039ed1-022e-4f41-acee-f05740f77d2e",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T08:53:23.558Z",
+      "dateModified": "2025-06-25T08:53:23.933Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 5,
+          "output": {
+            "balance": 787.91464
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "d603a88d-ad94-4307-9905-b8bfffad4c32",
+      "workflow": {
+        "id": "a9e90e33-f12d-49be-942d-1c2d50fc8c09",
+        "name": "Workflow - Balance",
+        "nodes": [
+          {
+            "blockId": 5,
+            "type": 1
+          }
+        ],
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 67,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "576128df-28e8-4abb-97e7-0f0b137d0ac6",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T08:48:23.554Z",
+      "dateModified": "2025-06-25T08:48:23.927Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 5,
+          "output": {
+            "balance": 787.91464
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "7765a42b-06dd-43c8-bb59-e798d803eefd",
+      "workflow": {
+        "id": "a9e90e33-f12d-49be-942d-1c2d50fc8c09",
+        "name": "Workflow - Balance",
+        "nodes": [
+          {
+            "blockId": 5,
+            "type": 1
+          }
+        ],
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 67,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "a6819025-d910-4a14-862b-c87817e047a7",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T08:43:23.600Z",
+      "dateModified": "2025-06-25T08:43:23.994Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 5,
+          "output": {
+            "balance": 787.91464
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "5bb3d71a-8be6-4805-a76b-c2b98cb4dc28",
+      "workflow": {
+        "id": "a9e90e33-f12d-49be-942d-1c2d50fc8c09",
+        "name": "Workflow - Balance",
+        "nodes": [
+          {
+            "blockId": 5,
+            "type": 1
+          }
+        ],
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 67,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "d37c8bce-05b2-49f5-aca5-eb9246cc27cb",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T08:38:23.550Z",
+      "dateModified": "2025-06-25T08:38:23.908Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 5,
+          "output": {
+            "balance": 787.91464
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
     }
   ],
   "TRANSFER": [
@@ -1576,6 +2371,23 @@
       "notification": null,
       "dateCreated": "2025-06-25T04:33:27.559Z",
       "dateModified": "2025-06-25T04:33:27.565Z",
+      "status": "new",
+      "nodeOutputs": []
+    },
+    {
+      "id": "9a4c2095-42ad-4ac4-8963-795c020198f9",
+      "workflow": {
+        "id": "66632e31-06ac-4f72-929f-aa354f1bef2f",
+        "name": "Workflow - Transfer",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "active",
+      "count": 1,
+      "totalUnseen": 0,
+      "notification": null,
+      "dateCreated": "2025-06-25T08:07:10.275Z",
+      "dateModified": "2025-06-25T08:07:10.282Z",
       "status": "new",
       "nodeOutputs": []
     }
@@ -2973,14 +3785,727 @@
         "nodes": null,
         "state": "active"
       },
-      "state": "active",
+      "state": "completed",
       "count": 45,
       "totalUnseen": 0,
       "notification": null,
       "dateCreated": "2025-06-25T07:46:58.412Z",
       "dateModified": "2025-06-25T07:46:58.422Z",
       "status": "new",
-      "nodeOutputs": []
+      "nodeOutputs": [
+        {
+          "blockId": 10,
+          "output": {
+            "price": 2454.2091300607153,
+            "currency": "USD"
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "93f39aed-39b0-4fcf-91cf-792d22fbadc3",
+      "workflow": {
+        "id": "4e3547c7-658b-493b-85c4-1d80e2b35869",
+        "name": "Workflow - Price",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 46,
+      "totalUnseen": 0,
+      "notification": null,
+      "dateCreated": "2025-06-25T07:58:23.718Z",
+      "dateModified": "2025-06-25T07:58:23.720Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 10,
+          "output": {
+            "price": 2455.4395301067716,
+            "currency": "USD"
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "f974b089-3231-4797-8ced-832192b5f3ac",
+      "workflow": {
+        "id": "4e3547c7-658b-493b-85c4-1d80e2b35869",
+        "name": "Workflow - Price",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 47,
+      "totalUnseen": 1,
+      "notification": {
+        "id": "91830594-b6d5-4d0e-a997-3c56cf01b974",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T08:03:23.992Z",
+      "dateModified": "2025-06-25T08:03:24.800Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 10,
+          "output": {
+            "price": 2455.049812087888,
+            "currency": "USD"
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "2654de51-3fbc-484c-900d-0d1d916ac5b6",
+      "workflow": {
+        "id": "4e3547c7-658b-493b-85c4-1d80e2b35869",
+        "name": "Workflow - Price",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 53,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "01eba58f-a07b-4082-bdff-5b408889a762",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T08:33:23.941Z",
+      "dateModified": "2025-06-25T08:33:24.813Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 10,
+          "output": {
+            "price": 2445.3985728794005,
+            "currency": "USD"
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "326c7cb3-a142-4098-af60-e91bf5dc3e21",
+      "workflow": {
+        "id": "4e3547c7-658b-493b-85c4-1d80e2b35869",
+        "name": "Workflow - Price",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 53,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "dbc03359-bd93-42b4-a76f-4ed42c709420",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T08:28:23.917Z",
+      "dateModified": "2025-06-25T08:28:24.416Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 10,
+          "output": {
+            "price": 2449.97941579282,
+            "currency": "USD"
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "72cf2d58-c0ce-4e6b-b2c9-0becddd6fcfe",
+      "workflow": {
+        "id": "4e3547c7-658b-493b-85c4-1d80e2b35869",
+        "name": "Workflow - Price",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 53,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "5c2ae87e-7dd7-4f8f-a879-393055875139",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T08:23:23.974Z",
+      "dateModified": "2025-06-25T08:23:24.416Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 10,
+          "output": {
+            "price": 2448.258630151153,
+            "currency": "USD"
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "89ecc6a6-e9b9-41fe-b54a-cb6288ca22db",
+      "workflow": {
+        "id": "4e3547c7-658b-493b-85c4-1d80e2b35869",
+        "name": "Workflow - Price",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 53,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "eda40f93-e6d4-429a-baca-3a86d11518f6",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T08:18:23.906Z",
+      "dateModified": "2025-06-25T08:18:24.326Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 10,
+          "output": {
+            "price": 2452.548171641005,
+            "currency": "USD"
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "b4b035eb-fce5-46a5-af10-0bbfd93690ed",
+      "workflow": {
+        "id": "4e3547c7-658b-493b-85c4-1d80e2b35869",
+        "name": "Workflow - Price",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 53,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "e90def1b-dbe9-4df0-8387-99289a41ce73",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T08:13:23.996Z",
+      "dateModified": "2025-06-25T08:13:24.539Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 10,
+          "output": {
+            "price": 2450.720875837969,
+            "currency": "USD"
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "e77d4849-1572-477b-86ff-b51dab969919",
+      "workflow": {
+        "id": "4e3547c7-658b-493b-85c4-1d80e2b35869",
+        "name": "Workflow - Price",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 53,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "d4b270f1-5edd-41b0-8055-5af2e232dbfe",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T08:08:23.902Z",
+      "dateModified": "2025-06-25T08:08:24.381Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 10,
+          "output": {
+            "price": 2451.1534512183857,
+            "currency": "USD"
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "7ff80b0a-c909-4255-b39e-38bf2bc97fbd",
+      "workflow": {
+        "id": "4e3547c7-658b-493b-85c4-1d80e2b35869",
+        "name": "Workflow - Price",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 67,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "d88be391-a4c9-44fc-8409-19e53b02d492",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T09:43:23.944Z",
+      "dateModified": "2025-06-25T09:43:24.492Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 10,
+          "output": {
+            "price": 2432.241390117625,
+            "currency": "USD"
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "dde47079-333d-4d80-ad33-b521f207fade",
+      "workflow": {
+        "id": "4e3547c7-658b-493b-85c4-1d80e2b35869",
+        "name": "Workflow - Price",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 67,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "c9501e1e-d2c3-449e-87c1-ac7f8065cac0",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T09:38:23.948Z",
+      "dateModified": "2025-06-25T09:38:24.392Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 10,
+          "output": {
+            "price": 2439.451769066046,
+            "currency": "USD"
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "fc195be0-cc3e-4df8-8580-044409318000",
+      "workflow": {
+        "id": "4e3547c7-658b-493b-85c4-1d80e2b35869",
+        "name": "Workflow - Price",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 67,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "eebbcce5-8799-4b8e-8d37-ae763c01df46",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T09:33:23.933Z",
+      "dateModified": "2025-06-25T09:33:24.359Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 10,
+          "output": {
+            "price": 2450.035491993902,
+            "currency": "USD"
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "4765e53f-f061-4bbb-902c-5fbf2ae2dca2",
+      "workflow": {
+        "id": "4e3547c7-658b-493b-85c4-1d80e2b35869",
+        "name": "Workflow - Price",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 67,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "fd701a30-d1e4-4966-9871-87b670bb5f7e",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T09:28:23.981Z",
+      "dateModified": "2025-06-25T09:28:24.807Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 10,
+          "output": {
+            "price": 2451.3911107662825,
+            "currency": "USD"
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "d140b720-b281-40b9-a041-4b60b974607d",
+      "workflow": {
+        "id": "4e3547c7-658b-493b-85c4-1d80e2b35869",
+        "name": "Workflow - Price",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 67,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "893a63d4-64f6-4fda-9cdd-da5cebba7ccd",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T09:23:23.964Z",
+      "dateModified": "2025-06-25T09:23:24.355Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 10,
+          "output": {
+            "price": 2451.7217569153077,
+            "currency": "USD"
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "3657e9e6-c853-4c00-83f3-823a2ba93c52",
+      "workflow": {
+        "id": "4e3547c7-658b-493b-85c4-1d80e2b35869",
+        "name": "Workflow - Price",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 67,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "ef65c06a-83e9-47d2-8267-636765f1c8fb",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T09:18:24.006Z",
+      "dateModified": "2025-06-25T09:18:24.444Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 10,
+          "output": {
+            "price": 2451.016084676681,
+            "currency": "USD"
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "28a8b367-cdaa-489b-b5e6-ac4d3360f6ca",
+      "workflow": {
+        "id": "4e3547c7-658b-493b-85c4-1d80e2b35869",
+        "name": "Workflow - Price",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 67,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "b903c452-2725-4d4e-bca4-1d76b74ce15d",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T09:13:23.902Z",
+      "dateModified": "2025-06-25T09:13:24.838Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 10,
+          "output": {
+            "price": 2452.8692657252473,
+            "currency": "USD"
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "3244ad4b-cbaf-4100-a907-d2c49fd320ec",
+      "workflow": {
+        "id": "4e3547c7-658b-493b-85c4-1d80e2b35869",
+        "name": "Workflow - Price",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 67,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "219157ae-95e7-45e4-8855-57f0400465ee",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T09:08:23.956Z",
+      "dateModified": "2025-06-25T09:08:24.812Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 10,
+          "output": {
+            "price": 2453.23562653355,
+            "currency": "USD"
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "1bf4b29c-aa12-42de-94c1-4568ef83bb94",
+      "workflow": {
+        "id": "4e3547c7-658b-493b-85c4-1d80e2b35869",
+        "name": "Workflow - Price",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 67,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "6d999e1c-871e-4783-a967-47887643fe08",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T09:03:24.015Z",
+      "dateModified": "2025-06-25T09:03:24.494Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 10,
+          "output": {
+            "price": 2450.7232793272156,
+            "currency": "USD"
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "bf64feed-7560-4f4e-9b3f-c35b87f6f321",
+      "workflow": {
+        "id": "4e3547c7-658b-493b-85c4-1d80e2b35869",
+        "name": "Workflow - Price",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 67,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "7a3d8f21-557c-403c-9f95-8dc9bdd6df98",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T08:58:23.982Z",
+      "dateModified": "2025-06-25T08:58:24.453Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 10,
+          "output": {
+            "price": 2443.712031823888,
+            "currency": "USD"
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "124341c4-47d1-4186-a2bd-c24dd382667d",
+      "workflow": {
+        "id": "4e3547c7-658b-493b-85c4-1d80e2b35869",
+        "name": "Workflow - Price",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 67,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "7c392b0c-a685-41e4-993f-21187c017067",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T08:53:23.948Z",
+      "dateModified": "2025-06-25T08:53:24.413Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 10,
+          "output": {
+            "price": 2440.643911721587,
+            "currency": "USD"
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "9b489a57-cc92-48d4-a414-003a48d05559",
+      "workflow": {
+        "id": "4e3547c7-658b-493b-85c4-1d80e2b35869",
+        "name": "Workflow - Price",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 67,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "6c4866a0-db82-4fcf-bd70-9d36accc6f82",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T08:48:23.936Z",
+      "dateModified": "2025-06-25T08:48:24.773Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 10,
+          "output": {
+            "price": 2442.237899884458,
+            "currency": "USD"
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "b674fb52-6b28-4be5-b38b-ca61a41d0c29",
+      "workflow": {
+        "id": "4e3547c7-658b-493b-85c4-1d80e2b35869",
+        "name": "Workflow - Price",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 67,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "768da6cf-17fa-428e-811a-4b8768f98cc6",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T08:43:23.992Z",
+      "dateModified": "2025-06-25T08:43:24.492Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 10,
+          "output": {
+            "price": 2442.5608283981405,
+            "currency": "USD"
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "2474e6bc-41ae-4514-ae93-f0eb028ebedb",
+      "workflow": {
+        "id": "4e3547c7-658b-493b-85c4-1d80e2b35869",
+        "name": "Workflow - Price",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 67,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "3c812e6d-8cdd-498f-983b-29a6797db6d0",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T08:38:23.928Z",
+      "dateModified": "2025-06-25T08:38:24.338Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 10,
+          "output": {
+            "price": 2444.526518764225,
+            "currency": "USD"
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
     }
   ],
   "STAKESTONE": [
@@ -3498,6 +5023,325 @@
       },
       "dateCreated": "2025-06-25T07:43:54.542Z",
       "dateModified": "2025-06-25T07:43:54.565Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 18,
+          "output": null
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "f87b909f-3dd5-4664-ac95-fd32fc108d7c",
+      "workflow": {
+        "id": "2f88d23f-17c0-4f76-81fe-2a5bdb2d4cb4",
+        "name": "Workflow - Every Period",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 18,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "6309a570-3e3a-43f0-9f7d-ad1657c98e49",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T07:53:54.609Z",
+      "dateModified": "2025-06-25T07:53:54.681Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 18,
+          "output": null
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "e783d7d2-c859-4d37-954c-9c68a002544b",
+      "workflow": {
+        "id": "2f88d23f-17c0-4f76-81fe-2a5bdb2d4cb4",
+        "name": "Workflow - Every Period",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 19,
+      "totalUnseen": 1,
+      "notification": {
+        "id": "7b434931-53eb-4c9c-ab26-52856aa0b15d",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T08:03:54.650Z",
+      "dateModified": "2025-06-25T08:03:54.678Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 18,
+          "output": null
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "c9adcb08-94e6-4f13-9b36-53c6fbf69903",
+      "workflow": {
+        "id": "2f88d23f-17c0-4f76-81fe-2a5bdb2d4cb4",
+        "name": "Workflow - Every Period",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 22,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "38ef49b2-155f-4619-a740-e3c57c3c471d",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T08:33:54.779Z",
+      "dateModified": "2025-06-25T08:33:56.561Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 18,
+          "output": null
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "edf602b6-47fc-4253-b9a5-9d94d3767c1f",
+      "workflow": {
+        "id": "2f88d23f-17c0-4f76-81fe-2a5bdb2d4cb4",
+        "name": "Workflow - Every Period",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 22,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "daf6cde1-38be-4447-8182-c7539fbee212",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T08:23:54.595Z",
+      "dateModified": "2025-06-25T08:23:54.633Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 18,
+          "output": null
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "5b05d1bb-95cc-40ee-8269-d4bcaa0bb93b",
+      "workflow": {
+        "id": "2f88d23f-17c0-4f76-81fe-2a5bdb2d4cb4",
+        "name": "Workflow - Every Period",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 22,
+      "totalUnseen": 1,
+      "notification": {
+        "id": "aa47a1ea-25b6-43b2-9eeb-e74bf0d5cae6",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T08:13:54.655Z",
+      "dateModified": "2025-06-25T08:13:54.672Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 18,
+          "output": null
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "0e15ace5-fe08-459a-8c95-c04e57153a1f",
+      "workflow": {
+        "id": "2f88d23f-17c0-4f76-81fe-2a5bdb2d4cb4",
+        "name": "Workflow - Every Period",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 28,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "0c683fa7-3ce1-4199-9d06-0ef25796bf6f",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T09:33:54.664Z",
+      "dateModified": "2025-06-25T09:33:54.693Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 18,
+          "output": null
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "7b1446e1-58c3-439d-abd9-38a36cde6cd5",
+      "workflow": {
+        "id": "2f88d23f-17c0-4f76-81fe-2a5bdb2d4cb4",
+        "name": "Workflow - Every Period",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 28,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "2e9146c5-838f-4851-a66f-35185d1ae212",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T09:23:54.585Z",
+      "dateModified": "2025-06-25T09:23:54.607Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 18,
+          "output": null
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "c9c032e3-cbc2-4dae-af4e-26e49ae79912",
+      "workflow": {
+        "id": "2f88d23f-17c0-4f76-81fe-2a5bdb2d4cb4",
+        "name": "Workflow - Every Period",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 28,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "caab1291-17ba-48a0-a5d2-096b94124811",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T09:13:54.554Z",
+      "dateModified": "2025-06-25T09:13:54.595Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 18,
+          "output": null
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "f392adc2-8e8a-4e04-bc00-1014e63cb6e4",
+      "workflow": {
+        "id": "2f88d23f-17c0-4f76-81fe-2a5bdb2d4cb4",
+        "name": "Workflow - Every Period",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 28,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "b874ece6-e1ae-40df-afa1-fba5dcc33f19",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T09:03:54.613Z",
+      "dateModified": "2025-06-25T09:03:54.633Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 18,
+          "output": null
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "0dd075fe-7ce6-4b8d-91c4-ffb77febc7aa",
+      "workflow": {
+        "id": "2f88d23f-17c0-4f76-81fe-2a5bdb2d4cb4",
+        "name": "Workflow - Every Period",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 28,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "6e66bc4d-97d6-407b-a3d9-58d97d82ed94",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T08:53:54.555Z",
+      "dateModified": "2025-06-25T08:53:54.577Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 18,
+          "output": null
+        },
+        {
+          "blockId": 100010,
+          "output": null
+        }
+      ]
+    },
+    {
+      "id": "4c18a40d-83b4-404b-a0c0-ceb11a872f0f",
+      "workflow": {
+        "id": "2f88d23f-17c0-4f76-81fe-2a5bdb2d4cb4",
+        "name": "Workflow - Every Period",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 28,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "3ec5f088-fd9a-4715-9740-eea47461082a",
+        "isSeen": false
+      },
+      "dateCreated": "2025-06-25T08:43:54.709Z",
+      "dateModified": "2025-06-25T08:43:54.777Z",
       "status": "new",
       "nodeOutputs": [
         {

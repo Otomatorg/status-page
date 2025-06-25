@@ -122,7 +122,7 @@ class WorkflowMonitor {
         console.log(`\n🔍 Processing ${workflowType}...`);
         
         const workflowState = workflowsState[workflowType];
-        
+
         try {
           // Ensure workflow exists and get status in one call when possible
           // Compare src json vs server data

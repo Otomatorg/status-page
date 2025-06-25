@@ -1,6 +1,8 @@
 import { VerificationResult, Workflow, ExecutionAnalysis } from '../types/workflow.js';
 import { WORKFLOW_TYPES } from '../constants/workflowTypes.js';
 
+import { ethers } from 'ethers';
+
 /**
  * Workflow verification functions
  * Each function should test if the workflow is working correctly
