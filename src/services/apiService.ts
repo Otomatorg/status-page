@@ -1,8 +1,11 @@
 import fetch, { RequestInit } from 'node-fetch';
 import { CreateWorkflowPayload, Workflow, ExecutionResponse } from '../types/workflow.js';
 
+import dotenv from 'dotenv';
+dotenv.config();
+
 // Configuration
-const API_BASE_URL = process.env.API_BASE_URL || 'http://localhost:3000/api';
+const API_ENDPOINT = process.env.API_ENDPOINT || 'http://localhost:3000/api';
 const API_TOKEN = process.env.API_TOKEN || '';
 
 interface ApiResponse<T> {
@@ -17,11 +20,11 @@ class ApiService {
     options: RequestInit = {}
   ): Promise<ApiResponse<T>> {
     try {
-      const url = `${API_BASE_URL}${endpoint}`;
+      const url = `${API_ENDPOINT}${endpoint}`;
       const response = await fetch(url, {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${API_TOKEN}`,
+          'Authorization': `${API_TOKEN}`,
           ...options.headers,
         },
         ...options,
@@ -33,7 +36,7 @@ class ApiService {
 
       const data = await response.json() as T;
       return { data, success: true };
-    } catch (error) {
+    } catch (error: any) {
       console.error(`API Error for ${endpoint}:`, error);
       return {
         data: {} as T,
@@ -68,6 +71,10 @@ class ApiService {
 
   async getExecution(executionId: string): Promise<ApiResponse<any>> {
     return this.makeRequest<any>(`/executions/${executionId}`);
+  }
+
+  async getExecutionsByWorkflowId(workflowId: string): Promise<ApiResponse<any>> {
+    return this.makeRequest<any>(`/executions?workflowId=${workflowId}&offset=0&limit=1000`);
   }
 }
 

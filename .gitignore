@@ -30,5 +30,5 @@ logs/
 *.log
 
 # Keep data directory structure but ignore content during development
-public/data/*.json
+# public/data/*.json
 !public/data/.gitkeep 

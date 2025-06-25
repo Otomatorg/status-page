@@ -168,45 +168,45 @@ class WorkflowMonitor {
           // Ensure workflow exists
           await this.ensureWorkflowExists(workflowType, workflowState);
           
-          // Check current status
-          await this.checkWorkflowStatus(workflowType, workflowState);
+          // // Check current status
+          // await this.checkWorkflowStatus(workflowType, workflowState);
           
-          // Run verification test
-          const result = await this.runWorkflowTest(workflowType, workflowState);
+          // // Run verification test
+          // const result = await this.runWorkflowTest(workflowType, workflowState);
           
-          // Save execution result
-          await dataService.saveExecutionResult(currentDate, workflowType, result);
+          // // Save execution result
+          // await dataService.saveExecutionResult(currentDate, workflowType, result);
           
-          if (!result.success) {
-            await dataService.saveError(
-              currentDate,
-              workflowType,
-              result.error || 'Unknown error',
-              result.timestamp
-            );
-          }
+          // if (!result.success) {
+          //   await dataService.saveError(
+          //     currentDate,
+          //     workflowType,
+          //     result.error || 'Unknown error',
+          //     result.timestamp
+          //   );
+          // }
 
         } catch (error) {
-          const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-          console.error(`❌ ${workflowType}: Critical error - ${errorMessage}`);
+          // const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+          // console.error(`❌ ${workflowType}: Critical error - ${errorMessage}`);
           
-          workflowState.errorCount++;
-          workflowState.lastError = errorMessage;
-          workflowState.isHealthy = false;
+          // workflowState.errorCount++;
+          // workflowState.lastError = errorMessage;
+          // workflowState.isHealthy = false;
           
-          await dataService.saveError(currentDate, workflowType, errorMessage, new Date().toISOString());
+          // await dataService.saveError(currentDate, workflowType, errorMessage, new Date().toISOString());
         }
       }
 
-      // Save updated states
+      // // Save updated states
       await dataService.saveWorkflowsState(workflowsState);
       console.log('\n💾 Workflow states saved');
 
-      // Generate monitoring report
-      await dataService.generateMonitoringReport(workflowsState);
-      console.log('📊 Monitoring report generated');
+      // // Generate monitoring report
+      // await dataService.generateMonitoringReport(workflowsState);
+      // console.log('📊 Monitoring report generated');
 
-      console.log('\n✅ Monitoring completed successfully');
+      // console.log('\n✅ Monitoring completed successfully');
 
     } catch (error) {
       console.error('💥 Monitoring failed:', error);

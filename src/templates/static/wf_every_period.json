@@ -14,7 +14,7 @@
           "type": "trigger",
           "state": "inactive",
           "parameters": {
-              "period": 300000,
+              "period": 600000,
               "timeout": null,
               "limit": 1000000
           },
