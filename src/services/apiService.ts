@@ -37,7 +37,7 @@ class ApiService {
       const data = await response.json() as T;
       return { data, success: true };
     } catch (error: any) {
-      console.error(`API Error for ${endpoint}:`, error);
+      // console.error(`API Error for ${endpoint}:`, error);
       return {
         data: {} as T,
         success: false,
@@ -73,7 +73,13 @@ class ApiService {
     return this.makeRequest<any>(`/executions/${executionId}`);
   }
 
-  async getExecutionsByWorkflowId(workflowId: string): Promise<ApiResponse<any>> {
+  async getExecutionsByWorkflowId(workflowId: string, limit: number = 1000): Promise<ApiResponse<any>> {
+    return this.makeRequest<any>(`/executions?workflowId=${workflowId}&offset=0&limit=${limit}`);
+  }
+
+  async getRecentExecutionsByWorkflowId(workflowId: string): Promise<ApiResponse<any>> {
+    // For now, fetch all executions and filter client-side
+    // You can update this if your API supports date filtering with specific parameters
     return this.makeRequest<any>(`/executions?workflowId=${workflowId}&offset=0&limit=1000`);
   }
 }

@@ -66,12 +66,12 @@ class DataService {
     );
   }
 
-  async saveExecutionResult(date: string, workflowType: string, result: MonitoringResult): Promise<void> {
+  async saveExecutionResult(date: string, workflowType: string, result: any): Promise<void> {
     await this.ensureExecutionsDirectory(date);
     
     const executionsFile = path.join(this.dataDir, 'executions', date, 'executions.json');
     
-    let executions: Record<string, MonitoringResult[]> = {};
+    let executions: Record<string, any[]> = {};
     
     try {
       const data = await fs.readFile(executionsFile, 'utf-8');

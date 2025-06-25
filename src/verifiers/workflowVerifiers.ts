@@ -1,4 +1,4 @@
-import { VerificationResult, Workflow } from '../types/workflow.js';
+import { VerificationResult, Workflow, ExecutionAnalysis } from '../types/workflow.js';
 import { WORKFLOW_TYPES } from '../constants/workflowTypes.js';
 
 /**
@@ -9,13 +9,33 @@ import { WORKFLOW_TYPES } from '../constants/workflowTypes.js';
 
 export async function verifyBalanceWorkflow(
   workflow: Workflow,
-  executionId: string | null
+  executionId: string | null,
+  executionAnalysis?: ExecutionAnalysis
 ): Promise<VerificationResult> {
   // TODO: Implement balance workflow verification
   // Example checks:
   // - Verify balance was read correctly
   // - Check if balance change was detected
   // - Validate trigger conditions
+  // - Analysis of recent executions
+  
+  const executionChecks = [];
+  if (executionAnalysis) {
+    const { failedExecutions, completedExecutions, recentExecutions } = executionAnalysis;
+    executionChecks.push({
+      name: 'Recent Executions',
+      passed: recentExecutions.length > 0,
+      message: `Found ${recentExecutions.length} recent executions`
+    });
+    
+    if (failedExecutions.length > 0) {
+      executionChecks.push({
+        name: 'Failed Executions',
+        passed: false,
+        message: `${failedExecutions.length} failed executions detected`
+      });
+    }
+  }
   
   return {
     passed: true, // Change this based on actual verification
@@ -30,20 +50,41 @@ export async function verifyBalanceWorkflow(
         name: 'Trigger Logic',
         passed: true,
         message: 'Not implemented - assuming pass'
-      }
+      },
+      ...executionChecks
     ]
   };
 }
 
 export async function verifyTransferWorkflow(
   workflow: Workflow,
-  executionId: string | null
+  executionId: string | null,
+  executionAnalysis?: ExecutionAnalysis
 ): Promise<VerificationResult> {
   // TODO: Implement transfer workflow verification
   // Example checks:
   // - Verify transfer events are detected
   // - Check event parsing accuracy
   // - Validate transfer amounts and addresses
+  // - Analysis of recent executions
+  
+  const executionChecks = [];
+  if (executionAnalysis) {
+    const { failedExecutions, completedExecutions, recentExecutions } = executionAnalysis;
+    executionChecks.push({
+      name: 'Recent Executions',
+      passed: recentExecutions.length > 0,
+      message: `Found ${recentExecutions.length} recent executions`
+    });
+    
+    if (failedExecutions.length > 0) {
+      executionChecks.push({
+        name: 'Failed Executions',
+        passed: false,
+        message: `${failedExecutions.length} failed executions detected`
+      });
+    }
+  }
   
   return {
     passed: true, // Change this based on actual verification
@@ -58,20 +99,41 @@ export async function verifyTransferWorkflow(
         name: 'Event Parsing',
         passed: true,
         message: 'Not implemented - assuming pass'
-      }
+      },
+      ...executionChecks
     ]
   };
 }
 
 export async function verifyPriceWorkflow(
   workflow: Workflow,
-  executionId: string | null
+  executionId: string | null,
+  executionAnalysis?: ExecutionAnalysis
 ): Promise<VerificationResult> {
   // TODO: Implement price workflow verification
   // Example checks:
   // - Verify price data accuracy
   // - Check price source reliability
   // - Validate price change thresholds
+  // - Analysis of recent executions
+  
+  const executionChecks = [];
+  if (executionAnalysis) {
+    const { failedExecutions, completedExecutions, recentExecutions } = executionAnalysis;
+    executionChecks.push({
+      name: 'Recent Executions',
+      passed: recentExecutions.length > 0,
+      message: `Found ${recentExecutions.length} recent executions`
+    });
+    
+    if (failedExecutions.length > 0) {
+      executionChecks.push({
+        name: 'Failed Executions',
+        passed: false,
+        message: `${failedExecutions.length} failed executions detected`
+      });
+    }
+  }
   
   return {
     passed: true, // Change this based on actual verification
@@ -86,20 +148,41 @@ export async function verifyPriceWorkflow(
         name: 'Threshold Logic',
         passed: true,
         message: 'Not implemented - assuming pass'
-      }
+      },
+      ...executionChecks
     ]
   };
 }
 
 export async function verifyStakeStoneWorkflow(
   workflow: Workflow,
-  executionId: string | null
+  executionId: string | null,
+  executionAnalysis?: ExecutionAnalysis
 ): Promise<VerificationResult> {
   // TODO: Implement StakeStone workflow verification
   // Example checks:
   // - Verify StakeStone protocol data
   // - Check APY calculations
   // - Validate reward tracking
+  // - Analysis of recent executions
+  
+  const executionChecks = [];
+  if (executionAnalysis) {
+    const { failedExecutions, completedExecutions, recentExecutions } = executionAnalysis;
+    executionChecks.push({
+      name: 'Recent Executions',
+      passed: recentExecutions.length > 0,
+      message: `Found ${recentExecutions.length} recent executions`
+    });
+    
+    if (failedExecutions.length > 0) {
+      executionChecks.push({
+        name: 'Failed Executions',
+        passed: false,
+        message: `${failedExecutions.length} failed executions detected`
+      });
+    }
+  }
   
   return {
     passed: true, // Change this based on actual verification
@@ -114,20 +197,41 @@ export async function verifyStakeStoneWorkflow(
         name: 'APY Calculation',
         passed: true,
         message: 'Not implemented - assuming pass'
-      }
+      },
+      ...executionChecks
     ]
   };
 }
 
 export async function verifyEveryPeriodWorkflow(
   workflow: Workflow,
-  executionId: string | null
+  executionId: string | null,
+  executionAnalysis?: ExecutionAnalysis
 ): Promise<VerificationResult> {
   // TODO: Implement periodic workflow verification
   // Example checks:
   // - Verify periodic execution timing
   // - Check scheduled task completion
   // - Validate recurring operations
+  // - Analysis of recent executions
+  
+  const executionChecks = [];
+  if (executionAnalysis) {
+    const { failedExecutions, completedExecutions, recentExecutions } = executionAnalysis;
+    executionChecks.push({
+      name: 'Recent Executions',
+      passed: recentExecutions.length > 0,
+      message: `Found ${recentExecutions.length} recent executions`
+    });
+    
+    if (failedExecutions.length > 0) {
+      executionChecks.push({
+        name: 'Failed Executions',
+        passed: false,
+        message: `${failedExecutions.length} failed executions detected`
+      });
+    }
+  }
   
   return {
     passed: true, // Change this based on actual verification
@@ -142,7 +246,8 @@ export async function verifyEveryPeriodWorkflow(
         name: 'Task Completion',
         passed: true,
         message: 'Not implemented - assuming pass'
-      }
+      },
+      ...executionChecks
     ]
   };
 }
@@ -154,23 +259,24 @@ export async function verifyEveryPeriodWorkflow(
 export async function verifyWorkflow(
   workflowType: string,
   workflow: Workflow,
-  executionId: string | null
+  executionId: string | null,
+  executionAnalysis?: ExecutionAnalysis
 ): Promise<VerificationResult> {
   switch (workflowType) {
     case WORKFLOW_TYPES.BALANCE:
-      return verifyBalanceWorkflow(workflow, executionId);
+      return verifyBalanceWorkflow(workflow, executionId, executionAnalysis);
     
     case WORKFLOW_TYPES.TRANSFER:
-      return verifyTransferWorkflow(workflow, executionId);
+      return verifyTransferWorkflow(workflow, executionId, executionAnalysis);
     
     case WORKFLOW_TYPES.PRICE:
-      return verifyPriceWorkflow(workflow, executionId);
+      return verifyPriceWorkflow(workflow, executionId, executionAnalysis);
     
     case WORKFLOW_TYPES.STAKESTONE:
-      return verifyStakeStoneWorkflow(workflow, executionId);
+      return verifyStakeStoneWorkflow(workflow, executionId, executionAnalysis);
     
     case WORKFLOW_TYPES.EVERY_PERIOD:
-      return verifyEveryPeriodWorkflow(workflow, executionId);
+      return verifyEveryPeriodWorkflow(workflow, executionId, executionAnalysis);
     
     default:
       return {

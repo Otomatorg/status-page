@@ -55,6 +55,40 @@ export interface ExecutionResponse {
   executionId: string;
 }
 
+export interface ExecutionNotification {
+  id: string;
+  isSeen: boolean;
+}
+
+export interface ExecutionWorkflow {
+  id: string;
+  name: string;
+  nodes: any[] | null;
+  state: string;
+}
+
+export interface Execution {
+  id: string;
+  workflow: ExecutionWorkflow;
+  state: 'completed' | 'failed' | 'running' | 'pending';
+  count: number;
+  totalUnseen: number;
+  notification: ExecutionNotification;
+  dateCreated: string;
+  dateModified: string;
+}
+
+export interface ExecutionsResponse {
+  data: Execution[];
+}
+
+export interface ExecutionAnalysis {
+  recentExecutions: Execution[];
+  failedExecutions: Execution[];
+  completedExecutions: Execution[];
+  runningExecutions: Execution[];
+}
+
 export interface WorkflowState {
   id: string | null;
   name: string;
