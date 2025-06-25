@@ -53,56 +53,27 @@ class WorkflowMonitor {
     workflowState.name = createResponse.data.name;
     workflowState.state = createResponse.data.state as 'inactive' | 'active' | 'failed';
     workflowState.createdAt = createResponse.data.dateCreated;
+    workflowState.started = false;
     
     console.log(`✅ ${workflowType}: Workflow created successfully (ID: ${workflowState.id})`);
     return false; // Return false to indicate status check is still needed
   }
 
-  private async checkWorkflowStatus(workflowType: string, workflowState: WorkflowState): Promise<void> {
-    if (!workflowState.id) {
-      throw new Error(`Workflow ${workflowType} has no ID`);
-    }
-
-    const currentDate = new Date().toISOString();
-    let getResponse: any;
-
-    try {
-      getResponse = await apiService.getWorkflow(workflowState.id);
-      if (!getResponse.success) {
-        throw new Error(`Failed to get workflow status for ${workflowType}: ${getResponse.error}`);
-      }
-    } catch (error) {
-      console.error(`Failed to get workflow status for ${workflowType}: ${error}`);
-      workflowState.state = 'not_created';
-      workflowState.lastCheck = currentDate;
-      return; // Continue monitoring other workflows instead of throwing
-    }
-
-    const workflow = getResponse.data;
-    workflowState.state = workflow.state as 'inactive' | 'active' | 'failed';
-    workflowState.lastCheck = currentDate;
-
-    console.log(`📊 ${workflowType}: Status = ${workflowState.state}`);
-  }
-
-  private async runWorkflowTest(workflowType: string, workflowState: WorkflowState): Promise<any> {
+  private async ensureWorkflowRunning(workflowType: string, workflowState: WorkflowState): Promise<boolean> {
     if (!workflowState.id) {
       throw new Error('Workflow ID is missing');
     }
 
+    // Fetch current workflow status from server
+    const getResponse = await apiService.getWorkflow(workflowState.id);
+    if (!getResponse.success) {
+      throw new Error(`Failed to fetch workflow from server: ${getResponse.error}`);
+    }
+
     // Check if workflow is already started
-    if (workflowState.started) {
-      console.log(`📊 ${workflowType}: Workflow already started, fetching executions...`);
-      const executionsResponse = await apiService.getRecentExecutionsByWorkflowId(workflowState.id);
-      
-      if (!executionsResponse.success) {
-        throw new Error(`Failed to fetch executions: ${executionsResponse.error}`);
-      }
-
-      const executions = executionsResponse.data.data || [];
-      console.log(`📋 ${workflowType}: Found ${executions.length} executions`);
-
-      return executions;
+    if (workflowState.started && workflowState.state === 'active') {
+      console.log(`📊 ${workflowType}: Workflow already started`);
+      return true;
     } else {
       // Workflow not started yet, start it
       console.log(`🚀 ${workflowType}: Starting workflow execution...`);
@@ -115,138 +86,27 @@ class WorkflowMonitor {
       } else {
         console.log(`⚠️ ${workflowType}: Failed to start workflow: ${runResponse.error}`);
       }
-      return null;
+      return false;
     }
   }
 
+  private async fetchWorkflowExecutions(workflowType: string, workflowState: WorkflowState): Promise<any[]> {
+    if (!workflowState.id) {
+      throw new Error('Workflow ID is missing');
+    }
 
-    // try {
-    //   if (!workflowState.id) {
-    //     throw new Error('Workflow ID is missing');
-    //   }
+    console.log(`📊 ${workflowType}: Fetching executions...`);
+    const executionsResponse = await apiService.getRecentExecutionsByWorkflowId(workflowState.id);
+    
+    if (!executionsResponse.success) {
+      throw new Error(`Failed to fetch executions: ${executionsResponse.error}`);
+    }
 
-    //   // Check if workflow is currently running
-    //   if (workflowState.state === 'active') {
-    //     console.log(`⏸️  ${workflowType}: Workflow is currently running, will analyze recent executions`);
-    //   } else {
-    //     // Workflow is not running, trigger a new execution
-    //     console.log(`🚀 ${workflowType}: Starting workflow execution...`);
-    //     const runResponse = await apiService.runWorkflow(workflowState.id);
-        
-    //     if (runResponse.success) {
-    //       workflowState.executionId = runResponse.data.executionId;
-    //       workflowState.lastExecution = timestamp;
-    //       console.log(`✅ ${workflowType}: Workflow execution started (ID: ${runResponse.data.executionId})`);
-    //     } else {
-    //       console.log(`⚠️ ${workflowType}: Failed to start workflow: ${runResponse.error}`);
-    //     }
-        
-    //     // Wait a moment for the execution to potentially start
-    //     await new Promise(resolve => setTimeout(resolve, 2000));
-    //   }
+    const executions = executionsResponse.data.data || [];
+    console.log(`📋 ${workflowType}: Found ${executions.length} executions`);
 
-    //   // Fetch executions from the last 30 minutes
-    //   console.log(`📊 ${workflowType}: Fetching executions from last 30 minutes...`);
-    //   const executionsResponse = await apiService.getRecentExecutionsByWorkflowId(workflowState.id, 30);
-      
-    //   if (!executionsResponse.success) {
-    //     throw new Error(`Failed to fetch recent executions: ${executionsResponse.error}`);
-    //   }
-
-    //   const executions = executionsResponse.data.data || [];
-    //   console.log(`📋 ${workflowType}: Found ${executions.length} executions in last 30 minutes`);
-
-    //   // Filter executions from last 30 minutes (client-side filter as backup)
-    //   const thirtyMinutesAgo = new Date(Date.now() - 30 * 60 * 1000);
-    //   const recentExecutions = executions.filter((execution: any) => {
-    //     const executionDate = new Date(execution.dateCreated);
-    //     return executionDate >= thirtyMinutesAgo;
-    //   });
-
-    //   // Analyze executions
-    //   const failedExecutions = recentExecutions.filter((exec: any) => exec.state === 'failed');
-    //   const completedExecutions = recentExecutions.filter((exec: any) => exec.state === 'completed');
-    //   const runningExecutions = recentExecutions.filter((exec: any) => exec.state === 'running');
-
-    //   console.log(`📈 ${workflowType}: Analysis - ${completedExecutions.length} completed, ${failedExecutions.length} failed, ${runningExecutions.length} running`);
-
-    //   // Get workflow details for verification
-    //   const workflowResponse = await apiService.getWorkflow(workflowState.id);
-    //   if (!workflowResponse.success) {
-    //     throw new Error(`Failed to get workflow: ${workflowResponse.error}`);
-    //   }
-
-    //   // Run verification with execution data
-    //   const verificationResult = await verifyWorkflow(
-    //     workflowType,
-    //     workflowResponse.data,
-    //     workflowState.executionId,
-    //     {
-    //       recentExecutions,
-    //       failedExecutions,
-    //       completedExecutions,
-    //       runningExecutions
-    //     }
-    //   );
-
-    //   // Determine overall success based on verifications and execution states
-    //   const hasRecentFailures = failedExecutions.length > 0;
-    //   const hasRecentSuccesses = completedExecutions.length > 0;
-    //   const success = verificationResult.passed && !hasRecentFailures;
-
-    //   workflowState.isHealthy = success;
-      
-    //   if (success) {
-    //     workflowState.errorCount = 0;
-    //     workflowState.lastError = null;
-    //     console.log(`✅ ${workflowType}: Monitoring passed - ${completedExecutions.length} successful executions, no failures`);
-    //   } else {
-    //     workflowState.errorCount++;
-    //     const errorDetails = hasRecentFailures 
-    //       ? `${failedExecutions.length} failed executions in last 30 minutes`
-    //       : verificationResult.details;
-    //     workflowState.lastError = errorDetails;
-    //     console.log(`❌ ${workflowType}: Monitoring failed - ${errorDetails}`);
-    //   }
-
-    //   return {
-    //     workflowType,
-    //     success,
-    //     timestamp,
-    //     executionId: workflowState.executionId,
-    //     verificationResult: {
-    //       ...verificationResult,
-    //       details: success ? verificationResult.details : (hasRecentFailures 
-    //         ? `${failedExecutions.length} failed executions found`
-    //         : verificationResult.details)
-    //     },
-    //     error: success ? null : workflowState.lastError,
-    //     timeElapsed: Date.now() - startTime
-    //   };
-
-    // } catch (error) {
-    //   const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-    //   workflowState.errorCount++;
-    //   workflowState.lastError = errorMessage;
-    //   workflowState.isHealthy = false;
-
-    //   console.error(`❌ ${workflowType}: Test failed - ${errorMessage}`);
-
-    //   return {
-    //     workflowType,
-    //     success: false,
-    //     timestamp,
-    //     executionId: workflowState.executionId,
-    //     verificationResult: {
-    //       passed: false,
-    //       details: errorMessage,
-    //       checks: []
-    //     },
-    //     error: errorMessage,
-    //     timeElapsed: Date.now() - startTime
-    //   };
-    // }
-  
+    return executions;
+  }
 
   public async runMonitoring(): Promise<void> {
     console.log('🚀 Starting workflow monitoring...');
@@ -265,49 +125,30 @@ class WorkflowMonitor {
         
         try {
           // Ensure workflow exists and get status in one call when possible
-          const statusAlreadyChecked = await this.ensureWorkflowExists(workflowType, workflowState);
+          // Compare src json vs server data
+          // if not exist -> create new wf
+          // if exist -> update status from server response
+          await this.ensureWorkflowExists(workflowType, workflowState);
+          
+          await this.ensureWorkflowRunning(workflowType, workflowState);
 
-          // Only check status if it wasn't already updated in ensureWorkflowExists
-          if (!statusAlreadyChecked) {
-            await this.checkWorkflowStatus(workflowType, workflowState);
-          }
+          const executions = await this.fetchWorkflowExecutions(workflowType, workflowState);
           
-          // Run verification test
-          const result = await this.runWorkflowTest(workflowType, workflowState);
-          
-          // // Save execution result
-          await dataService.saveExecutionResult(currentDate, workflowType, result);
-          
-          // if (!result.success) {
-          //   await dataService.saveError(
-          //     currentDate,
-          //     workflowType,
-          //     result.error || 'Unknown error',
-          //     result.timestamp
-          //   );
-          // }
+          // Save execution result
+          await dataService.saveExecutionResult(currentDate, workflowType, executions);
 
         } catch (error) {
-          // const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-          // console.error(`❌ ${workflowType}: Critical error - ${errorMessage}`);
-          
-          // workflowState.errorCount++;
-          // workflowState.lastError = errorMessage;
-          // workflowState.isHealthy = false;
-          
-          // await dataService.saveError(currentDate, workflowType, errorMessage, new Date().toISOString());
+          console.error(`❌ ${workflowType}: Critical error - ${error}`);
         }
       }
 
-      // // Save updated states
+      // Save updated states
       await dataService.saveWorkflowsState(workflowsState);
       console.log('\n💾 Workflow states saved');
 
       // // Generate monitoring report
       // await dataService.generateMonitoringReport(workflowsState);
       // console.log('📊 Monitoring report generated');
-
-      // console.log('\n✅ Monitoring completed successfully');
 
     } catch (error) {
       console.error('💥 Monitoring failed:', error);

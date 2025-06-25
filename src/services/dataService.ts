@@ -3,6 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { WorkflowState, MonitoringResult, MonitoringReport } from '../types/workflow.js';
 import { WORKFLOW_TYPES } from '../constants/workflowTypes.js';
+import { apiService } from './apiService.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -41,6 +42,7 @@ class DataService {
       Object.values(WORKFLOW_TYPES).forEach(type => {
         defaultState[type] = {
           id: null,
+          started: false,
           name: `Workflow - ${type}`,
           type,
           state: 'not_created',
@@ -83,8 +85,49 @@ class DataService {
     if (!executions[workflowType]) {
       executions[workflowType] = [];
     }
+
+    // Check for existing execution IDs to avoid duplicates
+    const existingExecutionIds = new Set(
+      executions[workflowType].map(execution => {
+        return execution.id;
+      }).filter(Boolean)
+    );
     
-    executions[workflowType].push(result);
+    // Filter out results that already exist based on executionId
+    const newResults = result.filter((execution: any) => 
+      !execution.id || !existingExecutionIds.has(execution.id)
+    ).map((execution: any) => {
+      return {
+        ...execution,
+        status: 'new'
+      }
+    });
+
+    console.log(executions[workflowType].length);
+
+    executions[workflowType].push(...newResults);
+
+    console.log(executions[workflowType].length);
+
+    for (const execution of executions[workflowType]) {
+      if (execution.nodeOutputs === undefined || execution.nodeOutputs?.length === 0) {
+        // Fetch execution details for each execution
+        const executionDetailResponse = await apiService.getExecution(execution.id);
+        if (executionDetailResponse.success) {
+          const executionDetail = executionDetailResponse.data;
+          
+          // Extract node outputs from the execution detail
+          const nodeOutputs = executionDetail.workflow?.nodes?.map((node: any) => ({
+            blockId: node.blockId,
+            output: node.output
+          })) || [];
+          
+          // Add node outputs to the execution object
+          execution.nodeOutputs = nodeOutputs;
+          execution.state = executionDetail.state;
+        }
+      }
+    }
     
     await fs.writeFile(executionsFile, JSON.stringify(executions, null, 2));
   }
