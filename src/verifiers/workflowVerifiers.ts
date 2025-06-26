@@ -1,257 +1,137 @@
-import { VerificationResult, Workflow, ExecutionAnalysis } from '../types/workflow.js';
-import { WORKFLOW_TYPES } from '../constants/workflowTypes.js';
+import { VerificationResult, Workflow, ExecutionAnalysis, Execution } from '../types/workflow.js';
+import { CHAINS, WORKFLOW_TYPES } from '../constants/workflowTypes.js';
 
 import { ethers } from 'ethers';
+import dotenv from "dotenv";
+import { externalApiService } from '../services/externalApiService.js';
+import { WORKFLOW_TEMPLATES } from '../templates/workflowTemplates.js';
+dotenv.config();
 
-/**
- * Workflow verification functions
- * Each function should test if the workflow is working correctly
- * Implement these functions based on your specific requirements
- */
+
+function getProvider(chainId: number) {
+  const chainName = chainId === 1 ? 'INFURA' : Object.keys(CHAINS).find(key => CHAINS[key as keyof typeof CHAINS] === chainId);
+  if (!chainName) {
+    throw new Error(`Unsupported chain ID: ${chainId}`);
+  }
+
+  const providerUrl = process.env[`${chainName}_HTTPS_PROVIDER`];
+
+  if (!providerUrl) throw new Error("No provider url found")
+
+  const provider = new ethers.JsonRpcProvider(providerUrl);
+
+  return provider;
+}
 
 export async function verifyBalanceWorkflow(
-  workflow: Workflow,
-  executionId: string | null,
-  executionAnalysis?: ExecutionAnalysis
-): Promise<VerificationResult> {
-  // TODO: Implement balance workflow verification
-  // Example checks:
-  // - Verify balance was read correctly
-  // - Check if balance change was detected
-  // - Validate trigger conditions
-  // - Analysis of recent executions
-  
-  const executionChecks = [];
-  if (executionAnalysis) {
-    const { failedExecutions, completedExecutions, recentExecutions } = executionAnalysis;
-    executionChecks.push({
-      name: 'Recent Executions',
-      passed: recentExecutions.length > 0,
-      message: `Found ${recentExecutions.length} recent executions`
-    });
-    
-    if (failedExecutions.length > 0) {
-      executionChecks.push({
-        name: 'Failed Executions',
-        passed: false,
-        message: `${failedExecutions.length} failed executions detected`
-      });
-    }
-  }
-  
-  return {
-    passed: true, // Change this based on actual verification
-    details: 'Balance workflow verification not yet implemented',
-    checks: [
-      {
-        name: 'Balance Reading',
-        passed: true,
-        message: 'Not implemented - assuming pass'
-      },
-      {
-        name: 'Trigger Logic',
-        passed: true,
-        message: 'Not implemented - assuming pass'
-      },
-      ...executionChecks
-    ]
-  };
+  parameters: any
+): Promise<VerificationResult| any> {
+
+  const provider = getProvider(parameters.chainId);
+
+  const contractAddress = parameters.contractAddress;
+
+  const ABI = ["function balanceOf(address account) view returns ((uint256 balance))"];
+
+  const data = new ethers.Contract(contractAddress, ABI, provider);
+
+  const balance = await data.balanceOf(parameters.abi.parameters.account);
+
+  return [{
+    balance: balance[0],
+    account: parameters.abi.parameters.account,
+    contractAddress: contractAddress,
+    chainId: parameters.chainId
+  }];
 }
 
 export async function verifyTransferWorkflow(
-  workflow: Workflow,
-  executionId: string | null,
-  executionAnalysis?: ExecutionAnalysis
-): Promise<VerificationResult> {
-  // TODO: Implement transfer workflow verification
-  // Example checks:
-  // - Verify transfer events are detected
-  // - Check event parsing accuracy
-  // - Validate transfer amounts and addresses
-  // - Analysis of recent executions
+  parameters: any
+): Promise<VerificationResult | any> {
   
-  const executionChecks = [];
-  if (executionAnalysis) {
-    const { failedExecutions, completedExecutions, recentExecutions } = executionAnalysis;
-    executionChecks.push({
-      name: 'Recent Executions',
-      passed: recentExecutions.length > 0,
-      message: `Found ${recentExecutions.length} recent executions`
-    });
-    
-    if (failedExecutions.length > 0) {
-      executionChecks.push({
-        name: 'Failed Executions',
-        passed: false,
-        message: `${failedExecutions.length} failed executions detected`
-      });
+  const provider = getProvider(parameters.chainId);
+
+  const contractAddress = parameters.contractAddress;
+
+  const ABI = ["event Transfer(address indexed from, address indexed to, uint256 value)"];
+
+  const data = new ethers.Contract(contractAddress, ABI, provider);
+
+  // Get current block number
+  const currentBlock = await provider.getBlockNumber();
+  
+  // Calculate blocks for 5 minutes (2 seconds per block = 30 blocks per minute)
+  const blocksPerMinute = 30;
+  const blocksFor5Minutes = blocksPerMinute * 5;
+  const fromBlock = currentBlock - blocksFor5Minutes;
+
+  // Fetch Transfer events from the last 5 minutes
+  const transferEvents = await data.queryFilter(
+    data.filters.Transfer(),
+    fromBlock,
+    currentBlock
+  );
+
+  console.log(`Found ${transferEvents.length} Transfer events in the last 5 minutes`);
+  
+  const events = [];
+  // Process each event
+  for (const event of transferEvents) {
+    if ('args' in event) {
+      const eventData = {
+        from: event.args?.from,
+        to: event.args?.to,
+        value: event.args?.value?.toString(),
+        blockNumber: event.blockNumber,
+        transactionHash: event.transactionHash
+      };
+      events.push(eventData);
     }
   }
-  
-  return {
-    passed: true, // Change this based on actual verification
-    details: 'Transfer workflow verification not yet implemented',
-    checks: [
-      {
-        name: 'Transfer Detection',
-        passed: true,
-        message: 'Not implemented - assuming pass'
-      },
-      {
-        name: 'Event Parsing',
-        passed: true,
-        message: 'Not implemented - assuming pass'
-      },
-      ...executionChecks
-    ]
-  };
+
+  return events;
 }
 
 export async function verifyPriceWorkflow(
-  workflow: Workflow,
-  executionId: string | null,
-  executionAnalysis?: ExecutionAnalysis
-): Promise<VerificationResult> {
-  // TODO: Implement price workflow verification
-  // Example checks:
-  // - Verify price data accuracy
-  // - Check price source reliability
-  // - Validate price change thresholds
-  // - Analysis of recent executions
-  
-  const executionChecks = [];
-  if (executionAnalysis) {
-    const { failedExecutions, completedExecutions, recentExecutions } = executionAnalysis;
-    executionChecks.push({
-      name: 'Recent Executions',
-      passed: recentExecutions.length > 0,
-      message: `Found ${recentExecutions.length} recent executions`
-    });
-    
-    if (failedExecutions.length > 0) {
-      executionChecks.push({
-        name: 'Failed Executions',
-        passed: false,
-        message: `${failedExecutions.length} failed executions detected`
-      });
-    }
-  }
-  
-  return {
-    passed: true, // Change this based on actual verification
-    details: 'Price workflow verification not yet implemented',
-    checks: [
-      {
-        name: 'Price Data Accuracy',
-        passed: true,
-        message: 'Not implemented - assuming pass'
-      },
-      {
-        name: 'Threshold Logic',
-        passed: true,
-        message: 'Not implemented - assuming pass'
-      },
-      ...executionChecks
-    ]
-  };
+  parameters: any
+): Promise<VerificationResult | any> {
+  const price = await externalApiService.getTokenPrice(parameters.chainId, parameters.contractAddress);
+
+  return [{
+    price: price,
+    contractAddress: parameters.contractAddress,
+    chainId: parameters.chainId
+  }];
 }
 
 export async function verifyStakeStoneWorkflow(
-  workflow: Workflow,
-  executionId: string | null,
-  executionAnalysis?: ExecutionAnalysis
-): Promise<VerificationResult> {
-  // TODO: Implement StakeStone workflow verification
-  // Example checks:
-  // - Verify StakeStone protocol data
-  // - Check APY calculations
-  // - Validate reward tracking
-  // - Analysis of recent executions
-  
-  const executionChecks = [];
-  if (executionAnalysis) {
-    const { failedExecutions, completedExecutions, recentExecutions } = executionAnalysis;
-    executionChecks.push({
-      name: 'Recent Executions',
-      passed: recentExecutions.length > 0,
-      message: `Found ${recentExecutions.length} recent executions`
-    });
-    
-    if (failedExecutions.length > 0) {
-      executionChecks.push({
-        name: 'Failed Executions',
-        passed: false,
-        message: `${failedExecutions.length} failed executions detected`
-      });
-    }
-  }
-  
-  return {
-    passed: true, // Change this based on actual verification
-    details: 'StakeStone workflow verification not yet implemented',
-    checks: [
-      {
-        name: 'Protocol Data',
-        passed: true,
-        message: 'Not implemented - assuming pass'
-      },
-      {
-        name: 'APY Calculation',
-        passed: true,
-        message: 'Not implemented - assuming pass'
-      },
-      ...executionChecks
-    ]
-  };
+  parameters: any
+): Promise<VerificationResult | any> {
+  const provider = getProvider(parameters.chainId);
+
+  const contractAddress = parameters.contractAddress;
+
+  const ABI = ["function latestRoundID() view returns (uint256 roundID)"];
+
+  const data = new ethers.Contract(contractAddress, ABI, provider);
+
+  const latestRoundID = await data.latestRoundID();
+
+  return [{
+    latestRoundID: latestRoundID,
+    contractAddress: contractAddress,
+    chainId: parameters.chainId
+  }];
 }
 
 export async function verifyEveryPeriodWorkflow(
-  workflow: Workflow,
-  executionId: string | null,
-  executionAnalysis?: ExecutionAnalysis
-): Promise<VerificationResult> {
-  // TODO: Implement periodic workflow verification
-  // Example checks:
-  // - Verify periodic execution timing
-  // - Check scheduled task completion
-  // - Validate recurring operations
-  // - Analysis of recent executions
-  
-  const executionChecks = [];
-  if (executionAnalysis) {
-    const { failedExecutions, completedExecutions, recentExecutions } = executionAnalysis;
-    executionChecks.push({
-      name: 'Recent Executions',
-      passed: recentExecutions.length > 0,
-      message: `Found ${recentExecutions.length} recent executions`
-    });
-    
-    if (failedExecutions.length > 0) {
-      executionChecks.push({
-        name: 'Failed Executions',
-        passed: false,
-        message: `${failedExecutions.length} failed executions detected`
-      });
-    }
-  }
-  
-  return {
-    passed: true, // Change this based on actual verification
-    details: 'Every Period workflow verification not yet implemented',
-    checks: [
-      {
-        name: 'Periodic Timing',
-        passed: true,
-        message: 'Not implemented - assuming pass'
-      },
-      {
-        name: 'Task Completion',
-        passed: true,
-        message: 'Not implemented - assuming pass'
-      },
-      ...executionChecks
-    ]
-  };
+  parameters: any
+): Promise<VerificationResult | any> {
+  return [{
+    timestamp: new Date().toISOString(),
+    period: parameters.period,
+    limit: parameters.limit
+  }];
 }
 
 /**
@@ -260,25 +140,23 @@ export async function verifyEveryPeriodWorkflow(
  */
 export async function verifyWorkflow(
   workflowType: string,
-  workflow: Workflow,
-  executionId: string | null,
-  executionAnalysis?: ExecutionAnalysis
-): Promise<VerificationResult> {
+  parameters: any
+): Promise<VerificationResult | any> {
   switch (workflowType) {
     case WORKFLOW_TYPES.BALANCE:
-      return verifyBalanceWorkflow(workflow, executionId, executionAnalysis);
+      return verifyBalanceWorkflow(parameters);
     
     case WORKFLOW_TYPES.TRANSFER:
-      return verifyTransferWorkflow(workflow, executionId, executionAnalysis);
+      return verifyTransferWorkflow(parameters);
     
     case WORKFLOW_TYPES.PRICE:
-      return verifyPriceWorkflow(workflow, executionId, executionAnalysis);
+      return verifyPriceWorkflow(parameters);
     
     case WORKFLOW_TYPES.STAKESTONE:
-      return verifyStakeStoneWorkflow(workflow, executionId, executionAnalysis);
+      return verifyStakeStoneWorkflow(parameters);
     
-    case WORKFLOW_TYPES.EVERY_PERIOD:
-      return verifyEveryPeriodWorkflow(workflow, executionId, executionAnalysis);
+    // case WORKFLOW_TYPES.EVERY_PERIOD:
+    //   return verifyEveryPeriodWorkflow(execution);
     
     default:
       return {
@@ -294,3 +172,19 @@ export async function verifyWorkflow(
       };
   }
 } 
+
+// const templateBalance = WORKFLOW_TEMPLATES[WORKFLOW_TYPES.BALANCE];
+// const parametersBalance = templateBalance.nodes[0].parameters;
+// verifyWorkflow(WORKFLOW_TYPES.BALANCE, parametersBalance);
+
+// const templatePrice = WORKFLOW_TEMPLATES[WORKFLOW_TYPES.PRICE];
+// const parametersPrice = templatePrice.nodes[0].parameters;
+// verifyWorkflow(WORKFLOW_TYPES.PRICE, parametersPrice);
+
+// const templateStakeStone = WORKFLOW_TEMPLATES[WORKFLOW_TYPES.STAKESTONE];
+// const parametersStakeStone = templateStakeStone.nodes[0].parameters;
+// verifyWorkflow(WORKFLOW_TYPES.STAKESTONE, parametersStakeStone);
+
+// const templateTransfer = WORKFLOW_TEMPLATES[WORKFLOW_TYPES.TRANSFER];
+// const parametersTransfer = templateTransfer.nodes[0].parameters;
+// verifyWorkflow(WORKFLOW_TYPES.TRANSFER, parametersTransfer);

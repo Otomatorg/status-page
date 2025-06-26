@@ -15,7 +15,7 @@
           "state": "inactive",
           "parameters": {
               "chainId": 8453,
-              "comparisonValue": 0,
+              "comparisonValue": "{{history.0.value}}",
               "currency": "USD",
               "condition": "neq",
               "contractAddress": "0x4200000000000000000000000000000000000006"
@@ -53,6 +53,6 @@
   "settings": {
       "loopingType": "polling",
       "limit": 1000000,
-      "period": 300000
+      "period": 600000
   }
 }

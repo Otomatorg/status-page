@@ -4,6 +4,7 @@ import { fileURLToPath } from 'url';
 import { WorkflowState, MonitoringResult, MonitoringReport } from '../types/workflow.js';
 import { WORKFLOW_TYPES } from '../constants/workflowTypes.js';
 import { apiService } from './apiService.js';
+import { convertBigIntToString } from '../utils/utils.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -103,11 +104,7 @@ class DataService {
       }
     });
 
-    console.log(executions[workflowType].length);
-
     executions[workflowType].push(...newResults);
-
-    console.log(executions[workflowType].length);
 
     for (const execution of executions[workflowType]) {
       if (execution.nodeOutputs === undefined || execution.nodeOutputs?.length === 0) {
@@ -119,7 +116,8 @@ class DataService {
           // Extract node outputs from the execution detail
           const nodeOutputs = executionDetail.workflow?.nodes?.map((node: any) => ({
             blockId: node.blockId,
-            output: node.output
+            output: node.output,
+            param: node.parameters,
           })) || [];
           
           // Add node outputs to the execution object
@@ -130,6 +128,66 @@ class DataService {
     }
     
     await fs.writeFile(executionsFile, JSON.stringify(executions, null, 2));
+  }
+
+  async saveComparisonData(date: string, workflowType: string, result: any): Promise<void> {
+    await this.ensureExecutionsDirectory(date);
+
+    const comparisonDataFile = path.join(this.dataDir, 'executions', date, 'comparisonData.json');
+
+    let comparisonData: Record<string, any[]> = {};
+
+    try {
+      const data = await fs.readFile(comparisonDataFile, 'utf-8');
+      comparisonData = JSON.parse(data);
+    } catch {
+      // File doesn't exist, start with empty object
+    }
+
+    if (!comparisonData[workflowType]) {
+      comparisonData[workflowType] = [];
+    }
+
+    let newResults = [];
+
+    // Special case for TRANSFER: deduplicate by txHash in output
+    if (workflowType === 'TRANSFER') {
+      // Collect all txHashes already present in the comparison data
+      // Deduplicate by full value of output (deep equality)
+      const existingOutputs = new Set(
+        comparisonData[workflowType].map((entry: any) => JSON.stringify(entry))
+      );
+
+      newResults = result.filter((item: any) => {
+        const outputString = JSON.stringify(item);
+        return !existingOutputs.has(outputString);
+      });
+
+    } else if (workflowType !== 'EVERY_PERIOD') {
+      // For other workflow types, deduplicate by dateCreated+output
+      const existingSignatures = new Set<string>(
+        comparisonData[workflowType].map((item: any) =>
+          `${item.dateCreated || ''}|${convertBigIntToString(item.output)}`
+        )
+      );
+
+      newResults = result.filter((item: any) => {
+        const signature = `${item.dateCreated || ''}|${convertBigIntToString(item.output)}`;
+        return !existingSignatures.has(signature);
+      });
+
+    }
+
+    // Add a timestamp to each new result
+    newResults = newResults.map((item: any) => ({
+      ...item,
+      dateCreated: new Date().toISOString()
+    }));
+
+    comparisonData[workflowType].push(...newResults);
+
+
+    await fs.writeFile(comparisonDataFile, JSON.stringify(convertBigIntToString(comparisonData), null, 2));
   }
 
   async saveError(date: string, workflowType: string, error: string, timestamp: string): Promise<void> {
@@ -201,6 +259,16 @@ class DataService {
 
   getCurrentDateString(): string {
     return new Date().toISOString().split('T')[0];
+  }
+
+  async loadExecutions(date: string): Promise<Record<string, any[]> | null> {
+    try {
+      const executionsFile = path.join(this.dataDir, 'executions', date, 'executions.json');
+      const data = await fs.readFile(executionsFile, 'utf-8');
+      return JSON.parse(data);
+    } catch {
+      return null;
+    }
   }
 }
 

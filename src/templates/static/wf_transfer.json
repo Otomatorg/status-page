@@ -1,72 +1,72 @@
 {
-  "id": null,
+  "id": "d9e517cd-19b9-43af-823a-6cf9248a51d6",
   "name": "Workflow - Transfer",
-  "state": "inactive",
-  "dateCreated": null,
-  "dateModified": null,
-  "executionId": null,
+  "executionId": "196c0298-d33a-4118-bd22-767573f0a575",
   "agentId": null,
+  "state": "inactive",
+  "settings": {
+      "loopingType": "subscription",
+      "limit": 100000,
+      "timeout": 0
+  },
+  "dateCreated": "2025-06-26T07:23:51.829Z",
+  "dateModified": "2025-06-26T07:51:57.689Z",
   "nodes": [
       {
-          "id": null,
-          "ref": "4",
+          "id": "3ff6e9b9-808e-4ee7-b0f4-3a75013308fe",
+          "ref": "2",
           "blockId": 1,
+          "executionId": null,
           "type": "trigger",
           "state": "inactive",
-          "parameters": {
-              "chainId": 34443,
-              "abi": {
-                  "parameters": {
-                      "from": null,
-                      "value": null,
-                      "to": null
-                  }
-              },
-              "contractAddress": "0xDfc7C877a950e49D2610114102175A06C2e3167a"
-          },
-          "frontendHelpers": {
-              "output": {
-                  "value": {
-                      "formatAmount": false,
-                      "erc20Token": {
-                          "contractAddress": "{{parameters.contractAddress}}",
-                          "chainId": "{{parameters.chainId}}"
-                      }
-                  }
-              }
-          },
           "position": {
               "x": 400,
               "y": 120
-          }
+          },
+          "parameters": {
+              "abi": {
+                  "parameters": {
+                      "to": null,
+                      "from": null,
+                      "value": null
+                  }
+              },
+              "chainId": 34443,
+              "contractAddress": "0xDfc7C877a950e49D2610114102175A06C2e3167a"
+          },
+          "handler": null,
+          "handlerKey": null,
+          "dateCreated": "2025-06-26T07:51:57.688743+00:00",
+          "dateModified": "2025-06-26T07:51:57.688743+00:00"
       },
       {
-          "id": null,
+          "id": "2a600ab5-c074-4b9b-98a6-db37afa5ec5c",
           "ref": "3",
           "blockId": 100010,
+          "executionId": null,
           "type": "action",
           "state": "inactive",
-          "parameters": {
-              "time": "1000"
-          },
-          "frontendHelpers": {},
           "position": {
               "x": 400,
               "y": 240
-          }
+          },
+          "parameters": {
+              "time": "1000"
+          },
+          "handler": null,
+          "handlerKey": null,
+          "dateCreated": "2025-06-26T07:51:57.688743+00:00",
+          "dateModified": "2025-06-26T07:51:57.688743+00:00"
       }
   ],
   "edges": [
       {
-          "id": null,
-          "source": "4",
-          "target": "3"
+          "id": "d20d13f8-bb0c-4283-9adc-f0d6b12f28cf",
+          "source": "2",
+          "target": "3",
+          "value": null,
+          "label": null
       }
   ],
-  "notes": [],
-  "settings": {
-      "loopingType": "polling",
-      "limit": 1000000,
-      "period": 0
-  }
+  "notes": []
 }

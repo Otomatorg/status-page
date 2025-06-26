@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { WorkflowState, MonitoringResult } from './types/workflow.js';
+import { WorkflowState } from './types/workflow.js';
 import { WORKFLOW_TYPES } from './constants/workflowTypes.js';
 import { WORKFLOW_TEMPLATES } from './templates/workflowTemplates.js';
 import { apiService } from './services/apiService.js';
@@ -11,7 +11,7 @@ class WorkflowMonitor {
   private async ensureWorkflowExists(workflowType: string, workflowState: WorkflowState): Promise<boolean> {
 
     // If workflow already exists, verify and update status in one call
-    if (workflowState.id) {
+    if (workflowState.id && workflowState.createdAt && new Date(workflowState.createdAt).toDateString() === new Date().toDateString()) {
       console.log(`✅ ${workflowType}: Workflow exists (ID: ${workflowState.id})`);
 
       // Fetch current workflow data to ensure it still exists on server AND update status
@@ -34,6 +34,22 @@ class WorkflowMonitor {
         console.log(`⚠️ ${workflowType}: Failed to verify workflow on server, will recreate`);
         workflowState.id = null;
       }
+    }
+
+    if (workflowState.id && workflowState.createdAt && new Date(workflowState.createdAt).toDateString() !== new Date().toDateString()) {
+
+      console.log(`🛑 ${workflowType}: Stopping workflow...`);
+      const stopResponse = await apiService.stopWorkflow(workflowState.id);
+      
+      if (stopResponse.success) {
+        workflowState.started = false;
+        workflowState.state = 'inactive';
+        console.log(`✅ ${workflowType}: Workflow stopped successfully`);
+      } else {
+        console.log(`⚠️ ${workflowType}: Failed to stop workflow: ${stopResponse.error}`);
+      }
+
+      workflowState.id = null;
     }
 
     console.log(`🔨 ${workflowType}: Creating workflow...`);
@@ -108,6 +124,17 @@ class WorkflowMonitor {
     return executions;
   }
 
+  private async fetchComparisonData(workflowType: string): Promise<any[]> {
+
+    const template = WORKFLOW_TEMPLATES[workflowType];
+
+    const parameters = template.nodes[0].parameters;
+
+    const verificationResult = await verifyWorkflow(workflowType, parameters);
+
+    return verificationResult;
+  }
+
   public async runMonitoring(): Promise<void> {
     console.log('🚀 Starting workflow monitoring...');
     const currentDate = dataService.getCurrentDateString();
@@ -137,6 +164,10 @@ class WorkflowMonitor {
           // Save execution result
           await dataService.saveExecutionResult(currentDate, workflowType, executions);
 
+
+          const comparisonData = await this.fetchComparisonData(workflowType);
+          await dataService.saveComparisonData(currentDate, workflowType, comparisonData);
+
         } catch (error) {
           console.error(`❌ ${workflowType}: Critical error - ${error}`);
         }
@@ -145,10 +176,6 @@ class WorkflowMonitor {
       // Save updated states
       await dataService.saveWorkflowsState(workflowsState);
       console.log('\n💾 Workflow states saved');
-
-      // // Generate monitoring report
-      // await dataService.generateMonitoringReport(workflowsState);
-      // console.log('📊 Monitoring report generated');
 
     } catch (error) {
       console.error('💥 Monitoring failed:', error);

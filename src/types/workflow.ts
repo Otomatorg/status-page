@@ -70,12 +70,18 @@ export interface ExecutionWorkflow {
 export interface Execution {
   id: string;
   workflow: ExecutionWorkflow;
-  state: 'completed' | 'failed' | 'running' | 'pending';
+  state: string;
   count: number;
   totalUnseen: number;
-  notification: ExecutionNotification;
+  notification: ExecutionNotification | null;
   dateCreated: string;
   dateModified: string;
+  status: string;
+  nodeOutputs: {
+    blockId: number;
+    output: any;
+    param?: any;
+  }[];
 }
 
 export interface ExecutionsResponse {

@@ -22,7 +22,7 @@
               },
               "contractAddress": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
               "condition": "neq",
-              "comparisonValue": 0
+              "comparisonValue": "{{history.0.value}}"
           },
           "frontendHelpers": {
               "output": {
@@ -67,6 +67,6 @@
   "settings": {
       "loopingType": "polling",
       "limit": 1000000,
-      "period": 300000
+      "period": 600000
   }
 }
