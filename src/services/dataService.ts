@@ -12,7 +12,7 @@ const __dirname = path.dirname(__filename);
 class DataService {
   private readonly dataDir = path.resolve(__dirname, '../../public/data');
   private readonly workflowsStateFile = path.join(this.dataDir, 'workflows.json');
-  private readonly reportFile = path.join(this.dataDir, 'monitoring-report.json');
+  private readonly reportFile = path.join(this.dataDir, 'monitoring-report.json');  
 
   private async ensureDataDirectory(): Promise<void> {
     try {
@@ -107,7 +107,7 @@ class DataService {
     executions[workflowType].push(...newResults);
 
     for (const execution of executions[workflowType]) {
-      if (execution.nodeOutputs === undefined || execution.nodeOutputs?.length === 0) {
+      if (execution.nodeOutputs === undefined || execution.nodeOutputs?.length === 0 || execution.nodeOutputs[0].output === null) {
         // Fetch execution details for each execution
         const executionDetailResponse = await apiService.getExecution(execution.id);
         if (executionDetailResponse.success) {
@@ -213,49 +213,49 @@ class DataService {
     await fs.writeFile(errorsFile, JSON.stringify(errors, null, 2));
   }
 
-  async generateMonitoringReport(workflowsState: Record<string, WorkflowState>): Promise<void> {
-    const totalWorkflows = Object.keys(workflowsState).length;
-    const healthyWorkflows = Object.values(workflowsState).filter(w => w.isHealthy).length;
-    const failedWorkflows = Object.values(workflowsState).filter(w => w.state === 'failed').length;
-    const notCreatedWorkflows = Object.values(workflowsState).filter(w => w.state === 'not_created').length;
+  // async generateMonitoringReport(workflowsState: Record<string, WorkflowState>): Promise<void> {
+  //   const totalWorkflows = Object.keys(workflowsState).length;
+  //   const healthyWorkflows = Object.values(workflowsState).filter(w => w.isHealthy).length;
+  //   const failedWorkflows = Object.values(workflowsState).filter(w => w.state === 'failed').length;
+  //   const notCreatedWorkflows = Object.values(workflowsState).filter(w => w.state === 'not_created').length;
 
-    const issues: string[] = [];
+  //   const issues: string[] = [];
     
-    Object.entries(workflowsState).forEach(([type, state]) => {
-      if (state.state === 'failed') {
-        issues.push(`${type}: Workflow failed - ${state.lastError}`);
-      }
-      if (state.state === 'not_created') {
-        issues.push(`${type}: Workflow not created yet`);
-      }
-      if (state.errorCount > 5) {
-        issues.push(`${type}: High error count (${state.errorCount})`);
-      }
-    });
+  //   Object.entries(workflowsState).forEach(([type, state]) => {
+  //     if (state.state === 'failed') {
+  //       issues.push(`${type}: Workflow failed - ${state.lastError}`);
+  //     }
+  //     if (state.state === 'not_created') {
+  //       issues.push(`${type}: Workflow not created yet`);
+  //     }
+  //     if (state.errorCount > 5) {
+  //       issues.push(`${type}: High error count (${state.errorCount})`);
+  //     }
+  //   });
 
-    let overall: 'healthy' | 'degraded' | 'critical' = 'healthy';
-    if (failedWorkflows > 0 || notCreatedWorkflows > totalWorkflows / 2) {
-      overall = 'critical';
-    } else if (healthyWorkflows < totalWorkflows * 0.8) {
-      overall = 'degraded';
-    }
+  //   let overall: 'healthy' | 'degraded' | 'critical' = 'healthy';
+  //   if (failedWorkflows > 0 || notCreatedWorkflows > totalWorkflows / 2) {
+  //     overall = 'critical';
+  //   } else if (healthyWorkflows < totalWorkflows * 0.8) {
+  //     overall = 'degraded';
+  //   }
 
-    const report: MonitoringReport = {
-      generatedAt: new Date().toISOString(),
-      totalWorkflows,
-      healthyWorkflows,
-      failedWorkflows,
-      notCreatedWorkflows,
-      executions: [], // This would be populated from recent execution results
-      summary: {
-        overall,
-        issues
-      }
-    };
+  //   const report: MonitoringReport = {
+  //     generatedAt: new Date().toISOString(),
+  //     totalWorkflows,
+  //     healthyWorkflows,
+  //     failedWorkflows,
+  //     notCreatedWorkflows,
+  //     executions: [], // This would be populated from recent execution results
+  //     summary: {
+  //       overall,
+  //       issues
+  //     }
+  //   };
 
-    await this.ensureDataDirectory();
-    await fs.writeFile(this.reportFile, JSON.stringify(report, null, 2));
-  }
+  //   await this.ensureDataDirectory();
+  //   await fs.writeFile(this.reportFile, JSON.stringify(report, null, 2));
+  // }
 
   getCurrentDateString(): string {
     return new Date().toISOString().split('T')[0];

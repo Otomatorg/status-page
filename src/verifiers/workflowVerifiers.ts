@@ -60,9 +60,9 @@ export async function verifyTransferWorkflow(
   // Get current block number
   const currentBlock = await provider.getBlockNumber();
   
-  // Calculate blocks for 5 minutes (2 seconds per block = 30 blocks per minute)
+  // Calculate blocks for 10 minutes (2 seconds per block = 30 blocks per minute)
   const blocksPerMinute = 30;
-  const blocksFor5Minutes = blocksPerMinute * 5;
+  const blocksFor5Minutes = blocksPerMinute * 10;
   const fromBlock = currentBlock - blocksFor5Minutes;
 
   // Fetch Transfer events from the last 5 minutes
@@ -72,7 +72,7 @@ export async function verifyTransferWorkflow(
     currentBlock
   );
 
-  console.log(`Found ${transferEvents.length} Transfer events in the last 5 minutes`);
+  console.log(`Found ${transferEvents.length} Transfer events in the last 10 minutes`);
   
   const events = [];
   // Process each event
