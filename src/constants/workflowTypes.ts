@@ -31,3 +31,11 @@ export const CHAINS = {
   SOMNIA: 50312,
   HYPER_EVM: 999,
 };
+
+export const INTERVALS = {
+  EVERY_PERIOD: 10,
+  STAKESTONE: 10,
+  PRICE: 10,
+  BALANCE: 10,
+  TRANSFER: 10,
+};

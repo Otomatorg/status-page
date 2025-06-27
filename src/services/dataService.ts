@@ -154,28 +154,45 @@ class DataService {
     if (workflowType === 'TRANSFER') {
       // Collect all txHashes already present in the comparison data
       // Deduplicate by full value of output (deep equality)
-      const existingOutputs = new Set(
-        comparisonData[workflowType].map((entry: any) => JSON.stringify(entry))
-      );
+      // const existingOutputs = new Set(
+      //   comparisonData[workflowType].map((entry: any) => JSON.stringify(entry))
+      // );
 
-      newResults = result.filter((item: any) => {
-        const outputString = JSON.stringify(item);
-        return !existingOutputs.has(outputString);
-      });
+      // newResults = result.filter((item: any) => {
+      //   const outputString = JSON.stringify(item);
+      //   return !existingOutputs.has(outputString);
+      // });
 
+      // just override the entire array
+      console.log('result.length', result.length);
+      newResults = result;
     } else if (workflowType !== 'EVERY_PERIOD') {
       // For other workflow types, deduplicate by dateCreated+output
+
       const existingSignatures = new Set<string>(
-        comparisonData[workflowType].map((item: any) =>
-          `${item.dateCreated || ''}|${convertBigIntToString(item.output)}`
-        )
+        comparisonData[workflowType].map((item: any) => {
+          if (workflowType === 'BALANCE') {
+            return `${item.balance}`;
+          } else if (workflowType === 'STAKESTONE') {
+            return `${item.latestRoundID}`;
+          } else if (workflowType === 'PRICE') {
+            return `${item.price}`;
+          }
+          return '';
+        })
       );
 
       newResults = result.filter((item: any) => {
-        const signature = `${item.dateCreated || ''}|${convertBigIntToString(item.output)}`;
+        let signature = '';
+        if (workflowType === 'BALANCE') {
+          signature = `${item.balance}`;
+        } else if (workflowType === 'STAKESTONE') {
+          signature = `${item.latestRoundID}`;
+        } else if (workflowType === 'PRICE') {
+          signature = `${item.price}`;
+        }
         return !existingSignatures.has(signature);
       });
-
     }
 
     // Add a timestamp to each new result
@@ -184,7 +201,11 @@ class DataService {
       dateCreated: new Date().toISOString()
     }));
 
-    comparisonData[workflowType].push(...newResults);
+    if (workflowType === 'TRANSFER') {
+      comparisonData[workflowType] = newResults;
+    } else {
+      comparisonData[workflowType].push(...newResults);
+    }
 
 
     await fs.writeFile(comparisonDataFile, JSON.stringify(convertBigIntToString(comparisonData), null, 2));
@@ -269,6 +290,53 @@ class DataService {
     } catch {
       return null;
     }
+  }
+
+  async loadErrorLog(date: string): Promise<Record<string, any[]> | null> {
+    try {
+      const errorLogFile = path.join(this.dataDir, 'executions', date, 'errorLog.json');
+      const data = await fs.readFile(errorLogFile, 'utf-8');
+      return JSON.parse(data);
+    } catch {
+      return null;
+    }
+  }
+
+  async saveErrorLog(date: string, workflowType: string, error: any): Promise<void> {
+    await this.ensureDataDirectory();
+    const errorLogFile = path.join(this.dataDir, 'executions', date, 'errorLog.json');
+    
+    // Load existing error log or create new one
+    let errorLog: Record<string, any[]>;
+    try {
+      const existingData = await fs.readFile(errorLogFile, 'utf-8');
+      errorLog = JSON.parse(existingData);
+    } catch {
+      errorLog = {
+        BALANCE: [],
+        STAKESTONE: [],
+        PRICE: [],
+        TRANSFER: [],
+        EVERY_PERIOD: []
+      };
+    }
+
+    // Add new error to the appropriate workflow type
+    if (!errorLog[workflowType]) {
+      errorLog[workflowType] = [];
+    }
+    errorLog[workflowType].push({
+      ...error,
+      timestamp: new Date().toISOString()
+    });
+
+    await fs.writeFile(errorLogFile, JSON.stringify(errorLog, null, 2));
+  }
+
+  async overrideErrorLog(date: string, errorLog: Record<string, any[]>): Promise<void> {
+    await this.ensureDataDirectory();
+    const errorLogFile = path.join(this.dataDir, 'executions', date, 'errorLog.json');
+    await fs.writeFile(errorLogFile, JSON.stringify(errorLog, null, 2));
   }
 }
 

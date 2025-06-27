@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { fileURLToPath } from 'url';
+import { INTERVALS } from './constants/workflowTypes';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -112,40 +113,42 @@ function main() {
     }
 
     // 2. For STAKESTONE, PRICE, BALANCE: for each new column in comparisonData, between the time of 2 items, there should be an execution on server
-    // function verifyColumnBased(type: 'STAKESTONE' | 'PRICE' | 'BALANCE') {
-    //     const compArr = comparisonData[type] || [];
-    //     if (compArr.length < 2) {
-    //         console.log(`${type}: Not enough comparison data to check.`);
-    //         return;
-    //     }
-    //     // Get executions for this type, sorted by dateCreated
-    //     const execs = executionsData[type]
-    //         .map((e: any) => ({
-    //             date: toMs(e.dateCreated),
-    //             obj: e,
-    //         }))
-    //         .sort((a: any, b: any) => a.date - b.date);
+    function verifyColumnBased(type: 'STAKESTONE' | 'PRICE' | 'BALANCE') {
+        const compArr = comparisonData[type] || [];
+        if (compArr.length < 2) {
+            console.log(`${type}: Not enough comparison data to check.`);
+            return;
+        }
+        
+        // Get the interval for this workflow type from INTERVALS
+        const intervalMs = INTERVALS[type] * 60 * 1000; // Convert minutes to milliseconds
 
-    //     let allOk = true;
-    //     for (let i = 1; i < compArr.length; ++i) {
-    //         const prev = compArr[i - 1];
-    //         const curr = compArr[i];
-    //         const t0 = toMs(prev.dateCreated);
-    //         const t1 = toMs(curr.dateCreated);
+        const now = new Date().getTime();
+        const tenMinutesAgo = now - intervalMs
 
-    //         // Find an execution between t0 and t1 (+/- 1 min)
-    //         const found = execs.find((e: any) => e.date >= t0 - ALLOWED_ERROR_MS && e.date <= t1 + ALLOWED_ERROR_MS);
-    //         if (!found) {
-    //             console.log(
-    //                 `${type}: No execution found between comparisonData[${i - 1}] (${prev.dateCreated}) and [${i}] (${curr.dateCreated})`
-    //             );
-    //             allOk = false;
-    //         }
-    //     }
-    //     if (allOk) {
-    //         console.log(`${type}: All intervals have corresponding executions.`);
-    //     }
-    // }
+
+        // Find all executions between tenMinutesAgo and now
+        const execsInTimeRange = executionsData[type]?.filter((exec: any) => {
+            const execTime = new Date(exec.dateCreated).getTime();
+            return execTime >= tenMinutesAgo && execTime <= now;
+        }) || [];
+
+        // Find all comparison data entries between tenMinutesAgo and now
+        const compInTimeRange = compArr.filter((comp: any) => {
+            const compTime = new Date(comp.dateCreated).getTime();
+            return compTime >= tenMinutesAgo && compTime <= now;
+        });
+
+        console.log(`${type}: Found ${execsInTimeRange.length} executions and ${compInTimeRange.length} comparison entries in the last ${INTERVALS[type]} minutes`);
+
+        // // Check if we have executions for each comparison data entry
+        // if (compInTimeRange.length > 0 && execsInTimeRange.length === 0) {
+        //     console.log(`${type}: Missing executions - found ${compInTimeRange.length} comparison entries but no executions`);
+        // } else if (compInTimeRange.length > 0 && execsInTimeRange.length > 0) {
+        //     console.log(`${type}: Found ${execsInTimeRange.length} executions for ${compInTimeRange.length} comparison entries`);
+        // }
+        
+    }
 
     // 3. TRANSFER: for each comparisonData entry, check if any execution is missing
     function verifyTransfer() {
@@ -170,24 +173,29 @@ function main() {
         }
 
         let allOk = true;
+        let missingHashes = new Set<string>();
         for (let i = 0; i < compArr.length; ++i) {
             const txHash = compArr[i].transactionHash;
             if (!txHash) continue;
             if (!execHashes.has(txHash.toLowerCase())) {
-                console.log(`TRANSFER: Missing execution for transactionHash ${txHash} (comparisonData[${i}])`);
+                // console.log(`TRANSFER: Missing execution for transactionHash ${txHash} (comparisonData[${i}])`);
                 allOk = false;
+                missingHashes.add(txHash);
             }
         }
         if (allOk) {
             console.log('TRANSFER: All comparisonData entries have corresponding executions.');
+        } else {
+            console.log(`TRANSFER: Missing executions for ${missingHashes.size} transaction hashes`);
+            console.log(Array.from(missingHashes));
         }
     }
 
     // Run all verifications
     verifyEveryPeriod();
-    // verifyColumnBased('STAKESTONE');
-    // verifyColumnBased('PRICE');
-    // verifyColumnBased('BALANCE');
+    verifyColumnBased('STAKESTONE');
+    verifyColumnBased('PRICE');
+    verifyColumnBased('BALANCE');
     verifyTransfer();
 }
 

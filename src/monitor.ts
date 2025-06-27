@@ -151,6 +151,7 @@ class WorkflowMonitor {
         const workflowState = workflowsState[workflowType];
 
         try {
+
           // Ensure workflow exists and get status in one call when possible
           // Compare src json vs server data
           // if not exist -> create new wf
@@ -159,14 +160,14 @@ class WorkflowMonitor {
           
           await this.ensureWorkflowRunning(workflowType, workflowState);
 
-          const executions = await this.fetchWorkflowExecutions(workflowType, workflowState);
+          // Fetch comparison data
+          const [comparisonData, executions] = await Promise.all([
+            this.fetchComparisonData(workflowType),
+            this.fetchWorkflowExecutions(workflowType, workflowState)
+          ]);
           
-          // Save execution result
-          await dataService.saveExecutionResult(currentDate, workflowType, executions);
-
-
-          const comparisonData = await this.fetchComparisonData(workflowType);
           await dataService.saveComparisonData(currentDate, workflowType, comparisonData);
+          await dataService.saveExecutionResult(currentDate, workflowType, executions);
 
         } catch (error) {
           console.error(`❌ ${workflowType}: Critical error - ${error}`);
