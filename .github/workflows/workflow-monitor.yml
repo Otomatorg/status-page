@@ -3,7 +3,7 @@ name: Workflow Monitor
 on:
   schedule:
     - cron: '*/10 * * * *'  # Run every 10 minutes
-  # workflow_dispatch:  # Allow manual trigger
+  workflow_dispatch:  # Allow manual trigger
 
 jobs:
   monitor:
