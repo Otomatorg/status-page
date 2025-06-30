@@ -1,6 +1,6 @@
 {
   "BALANCE": {
-    "id": "64cfc328-7f77-45fe-9f52-12b4bd7435a9",
+    "id": "e959338e-f7f1-4c0d-ad8b-a1e84e5ea7e3",
     "started": true,
     "name": "Workflow - Balance",
     "type": "BALANCE",
@@ -14,7 +14,7 @@
     "lastError": null
   },
   "TRANSFER": {
-    "id": "cd5a8208-6cbd-4b96-a28c-5b115900e9be",
+    "id": "f020fb71-9f57-4e4d-9d17-28cf39c30f7b",
     "started": true,
     "name": "Workflow - Transfer",
     "type": "TRANSFER",
@@ -28,7 +28,7 @@
     "lastError": null
   },
   "PRICE": {
-    "id": "d86c82a8-55a6-4103-8153-b4bdcbb3ec2b",
+    "id": "cc526635-1dd5-46c9-82cb-aaa9a17d98aa",
     "started": true,
     "name": "Workflow - Price",
     "type": "PRICE",
@@ -42,7 +42,7 @@
     "lastError": null
   },
   "STAKESTONE": {
-    "id": "1054649c-6135-4636-9652-44432ea6f867",
+    "id": "3b1fe143-6dfb-4970-8bf9-06e2da0e5309",
     "started": true,
     "name": "Workflow - StakeStone",
     "type": "STAKESTONE",
