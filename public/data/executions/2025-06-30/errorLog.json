@@ -1,0 +1,231 @@
+{
+  "BALANCE": [],
+  "STAKESTONE": [],
+  "PRICE": [],
+  "TRANSFER": [
+    {
+      "message": "TRANSFER: Missing executions for 21 transaction hashes",
+      "timestamp": "2025-06-30T07:50:18.325Z",
+      "data": {
+        "missingHashes": [
+          "0x2b4666dae8af9f456de0d7748e7cd754cbfc1eaa979c8c21500c3e64c858a953",
+          "0xa0c0a46ced32419ae3a195c17eebac7bcfa345282395d333e0aed9be08816016",
+          "0x08b4cfc7454c0425451bdf70b17ef7dd0953f4103f7adbc9d665cceff4459c3a",
+          "0x35ff59300ab138167c08508053ce0a39cc692b781ae127267d27594ba14219c0",
+          "0x8dd1c1d595bc0a4decbbc637c01141b9b9112485d5d1b35deda1e1e3d254dfbc",
+          "0xdad73bbb5ee7ac79f00c4b7e837369d2532bab3ceacc21445230e7972650d6c9",
+          "0x657fdbe2d148a4df465ab06768904f8469e42e78ab63d3fddcb784724b9a3f6f",
+          "0xbd96147e3bf89ef2e815976e54f89b76a1aa5b167720cd877fa8866ed3ce8fb0",
+          "0xc39a5986f6f8023b2a535879732a760c9146f142bde1e168ea29f6c953b05bdb",
+          "0x1c63121f1077df34ecf8a597117b5fd41e2c8847a6aa4c9928308771a8d4039b",
+          "0x48f650c1122a11813420119ff46627ebd315dafead62570836d25e8bccfaf99f",
+          "0xb16756d23a8147ad7cb9f25fd7c56318c9fb80f0ef96c97a439f06a4633588c5",
+          "0xbcb9c5d11494ba4f301f86b143636f236ad7a473e38f9933ddcad965578e418b",
+          "0x5e70c416007688c58657284989c31ceb7f26fb55b0c8aff8be7b990ee00acd75",
+          "0xed61e858f32fa91408f21fbbdd96b9e30931f05f5ce7ab27896b3297a188b92c",
+          "0xb867b076bd114bfe8afd9f68eaf6fd31e143d0f3afd269f7f8e755941176c50f",
+          "0x6d49bf4c3426fba1c4db94a22717f667fe0ec1ebc6033ee47431b32cf0ad7561",
+          "0x437331695b05f930fa8af344b7942ce85f8f4be4cf29649db115e19192d6e712",
+          "0x934c070328281b5ff3cce4ef3290e3cee89994f83f8577bae58631aa1cd282da",
+          "0xd38fef8e8eabd2d273efd39e9355f62801710b01339a13bd2d97aec8e000ad9c",
+          "0x93eca436a6067f43c18bb8425c93b29a66ffa8c7cbf7e123bb89f78c0467c409"
+        ],
+        "totalComparisonEntries": 92,
+        "totalExecutions": 2
+      }
+    }
+  ],
+  "EVERY_PERIOD": [
+    {
+      "message": "EVERY_PERIOD: Interval between execution 1adb1280-57eb-4e87-85b6-03754f821d45 and 20e9b5e1-bc22-4c3d-b8dd-4c391713c85e is 258 min, expected 10 min (+/- 1 min)",
+      "timestamp": "2025-06-30T07:50:18.324Z",
+      "data": {
+        "executionIndex": "20e9b5e1-bc22-4c3d-b8dd-4c391713c85e",
+        "actualInterval": 15480518,
+        "expectedInterval": 600000
+      }
+    }
+  ],
+  "SERVER": [
+    {
+      "message": "API Error for /workflows/b1d36a3c-d709-401a-9824-7ee13019e7a9/run: HTTP 500: Internal Server Error",
+      "timestamp": "2025-06-30T04:31:34.815Z",
+      "data": {
+        "endpoint": "/workflows/b1d36a3c-d709-401a-9824-7ee13019e7a9/run",
+        "error": "HTTP 500: Internal Server Error",
+        "stack": "Error: HTTP 500: Internal Server Error\n    at ApiService.makeRequest (/Users/thuanvo/Documents/Work/otomato/status-page/src/services/apiService.ts:34:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async WorkflowMonitor.ensureWorkflowRunning (/Users/thuanvo/Documents/Work/otomato/status-page/src/monitor.ts:96:27)\n    at async WorkflowMonitor.runMonitoring (/Users/thuanvo/Documents/Work/otomato/status-page/src/monitor.ts:160:11)"
+      }
+    },
+    {
+      "message": "API Error for /workflows/a66ab47c-8ce5-4e55-8325-38ebff2d9c64/run: HTTP 500: Internal Server Error",
+      "timestamp": "2025-06-30T04:31:35.322Z",
+      "data": {
+        "endpoint": "/workflows/a66ab47c-8ce5-4e55-8325-38ebff2d9c64/run",
+        "error": "HTTP 500: Internal Server Error",
+        "stack": "Error: HTTP 500: Internal Server Error\n    at ApiService.makeRequest (/Users/thuanvo/Documents/Work/otomato/status-page/src/services/apiService.ts:34:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async WorkflowMonitor.ensureWorkflowRunning (/Users/thuanvo/Documents/Work/otomato/status-page/src/monitor.ts:96:27)\n    at async WorkflowMonitor.runMonitoring (/Users/thuanvo/Documents/Work/otomato/status-page/src/monitor.ts:160:11)"
+      }
+    },
+    {
+      "message": "API Error for /workflows/77ffa454-7a9c-44af-a417-13f8c27f2ba1/run: HTTP 500: Internal Server Error",
+      "timestamp": "2025-06-30T04:31:36.566Z",
+      "data": {
+        "endpoint": "/workflows/77ffa454-7a9c-44af-a417-13f8c27f2ba1/run",
+        "error": "HTTP 500: Internal Server Error",
+        "stack": "Error: HTTP 500: Internal Server Error\n    at ApiService.makeRequest (/Users/thuanvo/Documents/Work/otomato/status-page/src/services/apiService.ts:34:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async WorkflowMonitor.ensureWorkflowRunning (/Users/thuanvo/Documents/Work/otomato/status-page/src/monitor.ts:96:27)\n    at async WorkflowMonitor.runMonitoring (/Users/thuanvo/Documents/Work/otomato/status-page/src/monitor.ts:160:11)"
+      }
+    },
+    {
+      "message": "API Error for /workflows/ffd6f3c9-37d5-47e1-8b2f-c05a96c0b00b/run: HTTP 500: Internal Server Error",
+      "timestamp": "2025-06-30T04:31:37.099Z",
+      "data": {
+        "endpoint": "/workflows/ffd6f3c9-37d5-47e1-8b2f-c05a96c0b00b/run",
+        "error": "HTTP 500: Internal Server Error",
+        "stack": "Error: HTTP 500: Internal Server Error\n    at ApiService.makeRequest (/Users/thuanvo/Documents/Work/otomato/status-page/src/services/apiService.ts:34:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async WorkflowMonitor.ensureWorkflowRunning (/Users/thuanvo/Documents/Work/otomato/status-page/src/monitor.ts:96:27)\n    at async WorkflowMonitor.runMonitoring (/Users/thuanvo/Documents/Work/otomato/status-page/src/monitor.ts:160:11)"
+      }
+    },
+    {
+      "message": "API Error for /workflows/c8c25da7-f88a-441e-a792-3a8423625a4d/run: HTTP 500: Internal Server Error",
+      "timestamp": "2025-06-30T04:31:37.467Z",
+      "data": {
+        "endpoint": "/workflows/c8c25da7-f88a-441e-a792-3a8423625a4d/run",
+        "error": "HTTP 500: Internal Server Error",
+        "stack": "Error: HTTP 500: Internal Server Error\n    at ApiService.makeRequest (/Users/thuanvo/Documents/Work/otomato/status-page/src/services/apiService.ts:34:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async WorkflowMonitor.ensureWorkflowRunning (/Users/thuanvo/Documents/Work/otomato/status-page/src/monitor.ts:96:27)\n    at async WorkflowMonitor.runMonitoring (/Users/thuanvo/Documents/Work/otomato/status-page/src/monitor.ts:160:11)"
+      }
+    },
+    {
+      "message": "API Error for /workflows/b1d36a3c-d709-401a-9824-7ee13019e7a9/run: HTTP 500: Internal Server Error",
+      "timestamp": "2025-06-30T07:47:48.328Z",
+      "data": {
+        "endpoint": "/workflows/b1d36a3c-d709-401a-9824-7ee13019e7a9/run",
+        "error": "HTTP 500: Internal Server Error",
+        "stack": "Error: HTTP 500: Internal Server Error\n    at ApiService.makeRequest (/Users/thuanvo/Documents/Work/otomato/status-page/src/services/apiService.ts:34:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async WorkflowMonitor.ensureWorkflowRunning (/Users/thuanvo/Documents/Work/otomato/status-page/src/monitor.ts:96:27)\n    at async WorkflowMonitor.runMonitoring (/Users/thuanvo/Documents/Work/otomato/status-page/src/monitor.ts:160:11)"
+      }
+    },
+    {
+      "message": "API Error for /workflows/a66ab47c-8ce5-4e55-8325-38ebff2d9c64/run: HTTP 500: Internal Server Error",
+      "timestamp": "2025-06-30T07:47:48.837Z",
+      "data": {
+        "endpoint": "/workflows/a66ab47c-8ce5-4e55-8325-38ebff2d9c64/run",
+        "error": "HTTP 500: Internal Server Error",
+        "stack": "Error: HTTP 500: Internal Server Error\n    at ApiService.makeRequest (/Users/thuanvo/Documents/Work/otomato/status-page/src/services/apiService.ts:34:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async WorkflowMonitor.ensureWorkflowRunning (/Users/thuanvo/Documents/Work/otomato/status-page/src/monitor.ts:96:27)\n    at async WorkflowMonitor.runMonitoring (/Users/thuanvo/Documents/Work/otomato/status-page/src/monitor.ts:160:11)"
+      }
+    },
+    {
+      "message": "API Error for /workflows/77ffa454-7a9c-44af-a417-13f8c27f2ba1/run: HTTP 500: Internal Server Error",
+      "timestamp": "2025-06-30T07:47:49.891Z",
+      "data": {
+        "endpoint": "/workflows/77ffa454-7a9c-44af-a417-13f8c27f2ba1/run",
+        "error": "HTTP 500: Internal Server Error",
+        "stack": "Error: HTTP 500: Internal Server Error\n    at ApiService.makeRequest (/Users/thuanvo/Documents/Work/otomato/status-page/src/services/apiService.ts:34:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async WorkflowMonitor.ensureWorkflowRunning (/Users/thuanvo/Documents/Work/otomato/status-page/src/monitor.ts:96:27)\n    at async WorkflowMonitor.runMonitoring (/Users/thuanvo/Documents/Work/otomato/status-page/src/monitor.ts:160:11)"
+      }
+    },
+    {
+      "message": "API Error for /workflows/ffd6f3c9-37d5-47e1-8b2f-c05a96c0b00b/run: HTTP 500: Internal Server Error",
+      "timestamp": "2025-06-30T07:47:50.334Z",
+      "data": {
+        "endpoint": "/workflows/ffd6f3c9-37d5-47e1-8b2f-c05a96c0b00b/run",
+        "error": "HTTP 500: Internal Server Error",
+        "stack": "Error: HTTP 500: Internal Server Error\n    at ApiService.makeRequest (/Users/thuanvo/Documents/Work/otomato/status-page/src/services/apiService.ts:34:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async WorkflowMonitor.ensureWorkflowRunning (/Users/thuanvo/Documents/Work/otomato/status-page/src/monitor.ts:96:27)\n    at async WorkflowMonitor.runMonitoring (/Users/thuanvo/Documents/Work/otomato/status-page/src/monitor.ts:160:11)"
+      }
+    },
+    {
+      "message": "API Error for /workflows/c8c25da7-f88a-441e-a792-3a8423625a4d/run: HTTP 500: Internal Server Error",
+      "timestamp": "2025-06-30T07:47:50.672Z",
+      "data": {
+        "endpoint": "/workflows/c8c25da7-f88a-441e-a792-3a8423625a4d/run",
+        "error": "HTTP 500: Internal Server Error",
+        "stack": "Error: HTTP 500: Internal Server Error\n    at ApiService.makeRequest (/Users/thuanvo/Documents/Work/otomato/status-page/src/services/apiService.ts:34:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async WorkflowMonitor.ensureWorkflowRunning (/Users/thuanvo/Documents/Work/otomato/status-page/src/monitor.ts:96:27)\n    at async WorkflowMonitor.runMonitoring (/Users/thuanvo/Documents/Work/otomato/status-page/src/monitor.ts:160:11)"
+      }
+    },
+    {
+      "message": "API Error for /workflows/b1d36a3c-d709-401a-9824-7ee13019e7a9/run: HTTP 500: Internal Server Error",
+      "timestamp": "2025-06-30T07:48:22.972Z",
+      "data": {
+        "endpoint": "/workflows/b1d36a3c-d709-401a-9824-7ee13019e7a9/run",
+        "error": "HTTP 500: Internal Server Error",
+        "stack": "Error: HTTP 500: Internal Server Error\n    at ApiService.makeRequest (/Users/thuanvo/Documents/Work/otomato/status-page/src/services/apiService.ts:34:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async WorkflowMonitor.ensureWorkflowRunning (/Users/thuanvo/Documents/Work/otomato/status-page/src/monitor.ts:96:27)\n    at async WorkflowMonitor.runMonitoring (/Users/thuanvo/Documents/Work/otomato/status-page/src/monitor.ts:160:11)"
+      }
+    },
+    {
+      "message": "API Error for /workflows/a66ab47c-8ce5-4e55-8325-38ebff2d9c64/run: HTTP 500: Internal Server Error",
+      "timestamp": "2025-06-30T07:48:23.382Z",
+      "data": {
+        "endpoint": "/workflows/a66ab47c-8ce5-4e55-8325-38ebff2d9c64/run",
+        "error": "HTTP 500: Internal Server Error",
+        "stack": "Error: HTTP 500: Internal Server Error\n    at ApiService.makeRequest (/Users/thuanvo/Documents/Work/otomato/status-page/src/services/apiService.ts:34:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async WorkflowMonitor.ensureWorkflowRunning (/Users/thuanvo/Documents/Work/otomato/status-page/src/monitor.ts:96:27)\n    at async WorkflowMonitor.runMonitoring (/Users/thuanvo/Documents/Work/otomato/status-page/src/monitor.ts:160:11)"
+      }
+    },
+    {
+      "message": "API Error for /workflows/77ffa454-7a9c-44af-a417-13f8c27f2ba1/run: HTTP 500: Internal Server Error",
+      "timestamp": "2025-06-30T07:48:24.430Z",
+      "data": {
+        "endpoint": "/workflows/77ffa454-7a9c-44af-a417-13f8c27f2ba1/run",
+        "error": "HTTP 500: Internal Server Error",
+        "stack": "Error: HTTP 500: Internal Server Error\n    at ApiService.makeRequest (/Users/thuanvo/Documents/Work/otomato/status-page/src/services/apiService.ts:34:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async WorkflowMonitor.ensureWorkflowRunning (/Users/thuanvo/Documents/Work/otomato/status-page/src/monitor.ts:96:27)\n    at async WorkflowMonitor.runMonitoring (/Users/thuanvo/Documents/Work/otomato/status-page/src/monitor.ts:160:11)"
+      }
+    },
+    {
+      "message": "API Error for /workflows/ffd6f3c9-37d5-47e1-8b2f-c05a96c0b00b/run: HTTP 500: Internal Server Error",
+      "timestamp": "2025-06-30T07:48:24.872Z",
+      "data": {
+        "endpoint": "/workflows/ffd6f3c9-37d5-47e1-8b2f-c05a96c0b00b/run",
+        "error": "HTTP 500: Internal Server Error",
+        "stack": "Error: HTTP 500: Internal Server Error\n    at ApiService.makeRequest (/Users/thuanvo/Documents/Work/otomato/status-page/src/services/apiService.ts:34:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async WorkflowMonitor.ensureWorkflowRunning (/Users/thuanvo/Documents/Work/otomato/status-page/src/monitor.ts:96:27)\n    at async WorkflowMonitor.runMonitoring (/Users/thuanvo/Documents/Work/otomato/status-page/src/monitor.ts:160:11)"
+      }
+    },
+    {
+      "message": "API Error for /workflows/c8c25da7-f88a-441e-a792-3a8423625a4d/run: HTTP 500: Internal Server Error",
+      "timestamp": "2025-06-30T07:48:25.158Z",
+      "data": {
+        "endpoint": "/workflows/c8c25da7-f88a-441e-a792-3a8423625a4d/run",
+        "error": "HTTP 500: Internal Server Error",
+        "stack": "Error: HTTP 500: Internal Server Error\n    at ApiService.makeRequest (/Users/thuanvo/Documents/Work/otomato/status-page/src/services/apiService.ts:34:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async WorkflowMonitor.ensureWorkflowRunning (/Users/thuanvo/Documents/Work/otomato/status-page/src/monitor.ts:96:27)\n    at async WorkflowMonitor.runMonitoring (/Users/thuanvo/Documents/Work/otomato/status-page/src/monitor.ts:160:11)"
+      }
+    },
+    {
+      "message": "API Error for /workflows/b1d36a3c-d709-401a-9824-7ee13019e7a9/run: HTTP 500: Internal Server Error",
+      "timestamp": "2025-06-30T07:48:58.820Z",
+      "data": {
+        "endpoint": "/workflows/b1d36a3c-d709-401a-9824-7ee13019e7a9/run",
+        "error": "HTTP 500: Internal Server Error",
+        "stack": "Error: HTTP 500: Internal Server Error\n    at ApiService.makeRequest (/Users/thuanvo/Documents/Work/otomato/status-page/src/services/apiService.ts:34:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async WorkflowMonitor.ensureWorkflowRunning (/Users/thuanvo/Documents/Work/otomato/status-page/src/monitor.ts:96:27)\n    at async WorkflowMonitor.runMonitoring (/Users/thuanvo/Documents/Work/otomato/status-page/src/monitor.ts:160:11)"
+      }
+    },
+    {
+      "message": "API Error for /workflows/a66ab47c-8ce5-4e55-8325-38ebff2d9c64/run: HTTP 500: Internal Server Error",
+      "timestamp": "2025-06-30T07:48:59.207Z",
+      "data": {
+        "endpoint": "/workflows/a66ab47c-8ce5-4e55-8325-38ebff2d9c64/run",
+        "error": "HTTP 500: Internal Server Error",
+        "stack": "Error: HTTP 500: Internal Server Error\n    at ApiService.makeRequest (/Users/thuanvo/Documents/Work/otomato/status-page/src/services/apiService.ts:34:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async WorkflowMonitor.ensureWorkflowRunning (/Users/thuanvo/Documents/Work/otomato/status-page/src/monitor.ts:96:27)\n    at async WorkflowMonitor.runMonitoring (/Users/thuanvo/Documents/Work/otomato/status-page/src/monitor.ts:160:11)"
+      }
+    },
+    {
+      "message": "API Error for /workflows/77ffa454-7a9c-44af-a417-13f8c27f2ba1/run: HTTP 500: Internal Server Error",
+      "timestamp": "2025-06-30T07:49:00.389Z",
+      "data": {
+        "endpoint": "/workflows/77ffa454-7a9c-44af-a417-13f8c27f2ba1/run",
+        "error": "HTTP 500: Internal Server Error",
+        "stack": "Error: HTTP 500: Internal Server Error\n    at ApiService.makeRequest (/Users/thuanvo/Documents/Work/otomato/status-page/src/services/apiService.ts:34:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async WorkflowMonitor.ensureWorkflowRunning (/Users/thuanvo/Documents/Work/otomato/status-page/src/monitor.ts:96:27)\n    at async WorkflowMonitor.runMonitoring (/Users/thuanvo/Documents/Work/otomato/status-page/src/monitor.ts:160:11)"
+      }
+    },
+    {
+      "message": "API Error for /workflows/ffd6f3c9-37d5-47e1-8b2f-c05a96c0b00b/run: HTTP 500: Internal Server Error",
+      "timestamp": "2025-06-30T07:49:00.796Z",
+      "data": {
+        "endpoint": "/workflows/ffd6f3c9-37d5-47e1-8b2f-c05a96c0b00b/run",
+        "error": "HTTP 500: Internal Server Error",
+        "stack": "Error: HTTP 500: Internal Server Error\n    at ApiService.makeRequest (/Users/thuanvo/Documents/Work/otomato/status-page/src/services/apiService.ts:34:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async WorkflowMonitor.ensureWorkflowRunning (/Users/thuanvo/Documents/Work/otomato/status-page/src/monitor.ts:96:27)\n    at async WorkflowMonitor.runMonitoring (/Users/thuanvo/Documents/Work/otomato/status-page/src/monitor.ts:160:11)"
+      }
+    },
+    {
+      "message": "API Error for /workflows/c8c25da7-f88a-441e-a792-3a8423625a4d/run: HTTP 500: Internal Server Error",
+      "timestamp": "2025-06-30T07:49:01.132Z",
+      "data": {
+        "endpoint": "/workflows/c8c25da7-f88a-441e-a792-3a8423625a4d/run",
+        "error": "HTTP 500: Internal Server Error",
+        "stack": "Error: HTTP 500: Internal Server Error\n    at ApiService.makeRequest (/Users/thuanvo/Documents/Work/otomato/status-page/src/services/apiService.ts:34:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async WorkflowMonitor.ensureWorkflowRunning (/Users/thuanvo/Documents/Work/otomato/status-page/src/monitor.ts:96:27)\n    at async WorkflowMonitor.runMonitoring (/Users/thuanvo/Documents/Work/otomato/status-page/src/monitor.ts:160:11)"
+      }
+    }
+  ]
+}

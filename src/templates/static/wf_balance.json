@@ -1,0 +1,72 @@
+{
+  "id": null,
+  "name": "Workflow - Balance",
+  "state": "inactive",
+  "dateCreated": null,
+  "dateModified": null,
+  "executionId": null,
+  "agentId": null,
+  "nodes": [
+      {
+          "id": null,
+          "ref": "2",
+          "blockId": 5,
+          "type": "trigger",
+          "state": "inactive",
+          "parameters": {
+              "chainId": 8453,
+              "abi": {
+                  "parameters": {
+                      "account": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045"
+                  }
+              },
+              "contractAddress": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+              "condition": "neq",
+              "comparisonValue": "{{history.0.value}}"
+          },
+          "frontendHelpers": {
+              "output": {
+                  "balance": {
+                      "formatAmount": false,
+                      "erc20Token": {
+                          "contractAddress": "{{parameters.contractAddress}}",
+                          "chainId": "{{parameters.chainId}}"
+                      }
+                  }
+              }
+          },
+          "position": {
+              "x": 400,
+              "y": 120
+          }
+      },
+      {
+          "id": null,
+          "ref": "3",
+          "blockId": 100010,
+          "type": "action",
+          "state": "inactive",
+          "parameters": {
+              "time": "1000"
+          },
+          "frontendHelpers": {},
+          "position": {
+              "x": 400,
+              "y": 240
+          }
+      }
+  ],
+  "edges": [
+      {
+          "id": null,
+          "source": "2",
+          "target": "3"
+      }
+  ],
+  "notes": [],
+  "settings": {
+      "loopingType": "polling",
+      "limit": 1000000,
+      "period": 600000
+  }
+}

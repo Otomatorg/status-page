@@ -1,0 +1,52 @@
+{
+  "id": null,
+  "name": "Workflow - Every Period",
+  "state": "inactive",
+  "dateCreated": null,
+  "dateModified": null,
+  "executionId": null,  
+  "agentId": null,
+  "nodes": [
+      {
+          "id": null,
+          "ref": "7",
+          "blockId": 18,
+          "type": "trigger",
+          "state": "inactive",
+          "parameters": {
+              "period": 600000,
+              "timeout": null,
+              "limit": 1000000
+          },
+          "frontendHelpers": {},
+          "position": {
+              "x": 400,
+              "y": 120
+          }
+      },
+      {
+          "id": null,
+          "ref": "6",
+          "blockId": 100010,
+          "type": "action",
+          "state": "inactive",
+          "parameters": {
+              "time": "1000"
+          },
+          "frontendHelpers": {},
+          "position": {
+              "x": 400,
+              "y": 240
+          }
+      }
+  ],
+  "edges": [
+      {
+          "id": null,
+          "source": "7",
+          "target": "6"
+      }
+  ],
+  "notes": [],
+  "settings": null
+}

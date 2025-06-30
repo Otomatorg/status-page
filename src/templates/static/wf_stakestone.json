@@ -1,0 +1,57 @@
+{
+  "id": null,
+  "name": "Workflow - StakeStone",
+  "state": "inactive",
+  "dateCreated": null,
+  "dateModified": null,
+  "executionId": null,
+  "agentId": null,
+  "nodes": [
+      {
+          "id": null,
+          "ref": "5",
+          "blockId": 63,
+          "type": "trigger",
+          "state": "inactive",
+          "parameters": {
+              "chainId": 1,
+              "contractAddress": "0x8f88ae3798e8ff3d0e0de7465a0863c9bbb577f0",
+              "condition": "neq",
+              "comparisonValue": "{{history.0.value}}"
+          },
+          "frontendHelpers": {},
+          "position": {
+              "x": 400,
+              "y": 120
+          }
+      },
+      {
+          "id": null,
+          "ref": "3",
+          "blockId": 100010,
+          "type": "action",
+          "state": "inactive",
+          "parameters": {
+              "time": "1000"
+          },
+          "frontendHelpers": {},
+          "position": {
+              "x": 400,
+              "y": 240
+          }
+      }
+  ],
+  "edges": [
+      {
+          "id": null,
+          "source": "5",
+          "target": "3"
+      }
+  ],
+  "notes": [],
+  "settings": {
+      "loopingType": "polling",
+      "limit": 1000000,
+      "period": 600000
+  }
+}
