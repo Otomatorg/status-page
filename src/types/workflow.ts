@@ -141,4 +141,10 @@ export interface MonitoringReport {
     overall: 'healthy' | 'degraded' | 'critical';
     issues: string[];
   };
+}
+
+export interface VerificationError {
+  message: string;
+  timestamp: string;
+  data: any;
 } 

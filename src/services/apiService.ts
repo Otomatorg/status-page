@@ -37,7 +37,26 @@ class ApiService {
       const data = await response.json() as T;
       return { data, success: true };
     } catch (error: any) {
-      // console.error(`API Error for ${endpoint}:`, error);
+      
+      // Log error using dataService
+      const errorEntry = {
+        message: `API Error for ${endpoint}: ${error instanceof Error ? error.message : 'Unknown error'}`,
+        timestamp: new Date().toISOString(),
+        data: {
+          endpoint,
+          error: error instanceof Error ? error.message : 'Unknown error',
+          stack: error instanceof Error ? error.stack : undefined
+        }
+      };
+
+      try {
+        const { dataService } = await import('./dataService.js');
+        const today = new Date().toISOString().split('T')[0];
+        await dataService.saveErrorLog(today, 'SERVER', errorEntry);
+      } catch (logError) {
+        console.error('Failed to write to error log:', logError);
+      }
+
       return {
         data: {} as T,
         success: false,

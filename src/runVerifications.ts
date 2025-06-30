@@ -2,6 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { fileURLToPath } from 'url';
 import { INTERVALS } from './constants/workflowTypes';
+import { VerificationError } from './types/workflow';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -21,39 +22,6 @@ function loadJson(filePath: string) {
     return JSON.parse(fs.readFileSync(filePath, 'utf-8'));
 }
 
-// Helper to flatten executions by type
-function getExecutionsByType(executions: any[]) {
-    const byType: Record<string, any[]> = {
-        EVERY_PERIOD: [],
-        STAKESTONE: [],
-        PRICE: [],
-        BALANCE: [],
-        TRANSFER: [],
-    };
-
-    for (const exec of executions) {
-        if (!exec.workflow || !exec.workflow.name) continue;
-        const name = exec.workflow.name.toUpperCase();
-        if (name.includes('EVERY PERIOD')) byType.EVERY_PERIOD.push(exec);
-        else if (name.includes('STAKESTONE')) byType.STAKESTONE.push(exec);
-        else if (name.includes('PRICE')) byType.PRICE.push(exec);
-        else if (name.includes('BALANCE')) byType.BALANCE.push(exec);
-        else if (name.includes('TRANSFER')) byType.TRANSFER.push(exec);
-    }
-    return byType;
-}
-
-// Helper to get all executions as a flat array
-function loadAllExecutions(executionsJson: any): any[] {
-    // executionsJson is an array or an object with array at root
-    if (Array.isArray(executionsJson)) return executionsJson;
-    // Try to find array in object
-    for (const k in executionsJson) {
-        if (Array.isArray(executionsJson[k])) return executionsJson[k];
-    }
-    return [];
-}
-
 // Main
 function main() {
     const currentDate = new Date().toISOString().split('T')[0];
@@ -63,53 +31,58 @@ function main() {
     const comparisonData = loadJson(comparisonPath);
     const executionsData = loadJson(executionsPath);
 
-    // Flatten executions
-    // let executions: any[] = [];
-    // if (Array.isArray(executionsData)) {
-    //     executions = executionsData;
-    // } else if (executionsData && typeof executionsData === 'object') {
-    //     // Try to find array in object
-    //     for (const k in executionsData) {
-    //         if (Array.isArray(executionsData[k])) {
-    //             executions = executionsData[k];
-    //             break;
-    //         }
-    //     }
-    // }
-    // // If still not found, try to parse as NDJSON
-    // if (!executions.length && typeof executionsData === 'string') {
-    //     executions = executionsData.split('\n').map((l: string) => l && JSON.parse(l)).filter(Boolean);
-    // }
+    const errorLogPath = path.join(__dirname, `../public/data/executions/${currentDate}/errorLog.json`);
+    let errorLog: Record<string, VerificationError[]> = {
+        BALANCE: [],
+        STAKESTONE: [],
+        PRICE: [],
+        TRANSFER: [],
+        EVERY_PERIOD: []
+    };
 
-    // const executionsByType = getExecutionsByType(executionsData);
-
-    // console.log(executionsByType);
+    // Try to load existing error log
+    try {
+        errorLog = loadJson(errorLogPath);
+    } catch {
+        // If file doesn't exist, use default structure
+    }
 
     // 1. EVERY_PERIOD: check interval between executions
     function verifyEveryPeriod() {
         const execs = executionsData.EVERY_PERIOD
-            .map((e: any) => e.dateCreated)
-            .filter(Boolean)
-            .map(toMs)
-            .sort((a: number, b: number) => a - b);
+            .map((e: any) => ({ id: e.id, dateCreated: toMs(e.dateCreated) }))
+            .filter((e: any) => e.dateCreated)
+            .sort((a: any, b: any) => a.dateCreated - b.dateCreated);
 
         if (execs.length < 2) {
             console.log('EVERY_PERIOD: Not enough executions to check interval.');
             return;
         }
         let allOk = true;
+        const errors: any[] = [];
         for (let i = 1; i < execs.length; ++i) {
-            const diff = execs[i] - execs[i - 1];
+            const diff = execs[i].dateCreated - execs[i - 1].dateCreated;
+            console.log(diff);
             if (Math.abs(diff - EVERY_PERIOD_INTERVAL_MS) > ALLOWED_ERROR_MS) {
-                console.log(
-                    `EVERY_PERIOD: Interval between execution ${i - 1} and ${i} is ${Math.round(diff / 60000)} min, expected ${EVERY_PERIOD_INTERVAL_MIN} min (+/- 1 min)`
-                );
+                const errorMsg = `EVERY_PERIOD: Interval between execution ${execs[i - 1].id} and ${execs[i].id} is ${Math.round(diff / 60000)} min, expected ${EVERY_PERIOD_INTERVAL_MIN} min (+/- 1 min)`;
+                console.log(errorMsg);
+                errors.push({ 
+                    message: errorMsg, 
+                    timestamp: new Date().toISOString(),
+                    data: {
+                        executionIndex: execs[i].id, 
+                        actualInterval: diff, 
+                        expectedInterval: EVERY_PERIOD_INTERVAL_MS 
+                    }
+                });
                 allOk = false;
             }
         }
         if (allOk) {
             console.log('EVERY_PERIOD: All intervals OK.');
         }
+        // Override error log for EVERY_PERIOD
+        errorLog.EVERY_PERIOD = errors;
     }
 
     // 2. For STAKESTONE, PRICE, BALANCE: for each new column in comparisonData, between the time of 2 items, there should be an execution on server
@@ -126,7 +99,6 @@ function main() {
         const now = new Date().getTime();
         const tenMinutesAgo = now - intervalMs
 
-
         // Find all executions between tenMinutesAgo and now
         const execsInTimeRange = executionsData[type]?.filter((exec: any) => {
             const execTime = new Date(exec.dateCreated).getTime();
@@ -139,15 +111,23 @@ function main() {
             return compTime >= tenMinutesAgo && compTime <= now;
         });
 
-        console.log(`${type}: Found ${execsInTimeRange.length} executions and ${compInTimeRange.length} comparison entries in the last ${INTERVALS[type]} minutes`);
-
-        // // Check if we have executions for each comparison data entry
-        // if (compInTimeRange.length > 0 && execsInTimeRange.length === 0) {
-        //     console.log(`${type}: Missing executions - found ${compInTimeRange.length} comparison entries but no executions`);
-        // } else if (compInTimeRange.length > 0 && execsInTimeRange.length > 0) {
-        //     console.log(`${type}: Found ${execsInTimeRange.length} executions for ${compInTimeRange.length} comparison entries`);
-        // }
-        
+        // Only add error log entry if execution count and comparison count are different
+        if (compInTimeRange.length > 0 && execsInTimeRange.length == 0) {
+            const errorEntry = {
+                message: `${type}: Found ${execsInTimeRange.length} executions and ${compInTimeRange.length} comparison entries in the last ${INTERVALS[type]} minutes`,
+                timestamp: new Date().toISOString(),
+                data: {
+                    executionsCount: execsInTimeRange.length,
+                    comparisonEntriesCount: compInTimeRange.length,
+                    timeRange: { from: new Date(tenMinutesAgo).toISOString(), to: new Date(now).toISOString() }
+                }
+            };
+            
+            if (!errorLog[type]) {
+                errorLog[type] = [];
+            }
+            errorLog[type].push(errorEntry);
+        }
     }
 
     // 3. TRANSFER: for each comparisonData entry, check if any execution is missing
@@ -178,7 +158,6 @@ function main() {
             const txHash = compArr[i].transactionHash;
             if (!txHash) continue;
             if (!execHashes.has(txHash.toLowerCase())) {
-                // console.log(`TRANSFER: Missing execution for transactionHash ${txHash} (comparisonData[${i}])`);
                 allOk = false;
                 missingHashes.add(txHash);
             }
@@ -187,7 +166,21 @@ function main() {
             console.log('TRANSFER: All comparisonData entries have corresponding executions.');
         } else {
             console.log(`TRANSFER: Missing executions for ${missingHashes.size} transaction hashes`);
-            console.log(Array.from(missingHashes));
+            // Add new error log entry for TRANSFER
+            const errorEntry = {
+              message: allOk ? 'TRANSFER: All comparisonData entries have corresponding executions.' : `TRANSFER: Missing executions for ${missingHashes.size} transaction hashes`,
+              timestamp: new Date().toISOString(),
+              data: {
+                  missingHashes: Array.from(missingHashes),
+                  totalComparisonEntries: compArr.length,
+                  totalExecutions: execs.length
+              }
+            };
+
+            if (!errorLog.TRANSFER) {
+              errorLog.TRANSFER = [];
+            }
+            errorLog.TRANSFER.push(errorEntry);
         }
     }
 
@@ -197,6 +190,10 @@ function main() {
     verifyColumnBased('PRICE');
     verifyColumnBased('BALANCE');
     verifyTransfer();
+
+    // Save the error log
+    fs.writeFileSync(errorLogPath, JSON.stringify(errorLog, null, 2));
 }
 
 main();
+
