@@ -94,7 +94,7 @@
         "nodes": null,
         "state": "active"
       },
-      "state": "active",
+      "state": "completed",
       "count": 1,
       "totalUnseen": 0,
       "notification": null,
@@ -104,7 +104,10 @@
       "nodeOutputs": [
         {
           "blockId": 10,
-          "output": null,
+          "output": {
+            "price": 2480.7615940978703,
+            "currency": "USD"
+          },
           "param": {
             "chainId": 8453,
             "currency": "USD",
