@@ -36,7 +36,49 @@
         "totalComparisonEntries": 9,
         "totalExecutions": 1
       }
+    },
+    {
+      "message": "TRANSFER: Missing executions for 2 transaction hashes",
+      "timestamp": "2025-06-30T09:52:11.965Z",
+      "data": {
+        "missingHashes": [
+          "0x8b6c06a82ef9299a18941065f69004711e82a3afd5b82e848304be872259202e",
+          "0x07fce4628f913c94dc6d9595d81000d3c2da13fd2cc9cec62f8f0119552658d4"
+        ],
+        "totalComparisonEntries": 6,
+        "totalExecutions": 2
+      }
     }
   ],
-  "EVERY_PERIOD": []
+  "EVERY_PERIOD": [
+    {
+      "message": "EVERY_PERIOD: Interval between execution 735a14af-a2c2-4221-b364-eed5b36b8c85 and b21813ea-2be8-414a-96f5-16d3826cff85 is 8 min, expected 10 min (+/- 1 min)",
+      "timestamp": "2025-06-30T09:52:11.964Z",
+      "data": {
+        "executionIndex": "b21813ea-2be8-414a-96f5-16d3826cff85",
+        "actualInterval": 474064,
+        "expectedInterval": 600000
+      }
+    }
+  ],
+  "SERVER": [
+    {
+      "message": "API Error for /workflows/6d55d128-3c59-4686-b09b-83f1bef1084b/run: HTTP 500: Internal Server Error",
+      "timestamp": "2025-06-30T09:51:59.341Z",
+      "data": {
+        "endpoint": "/workflows/6d55d128-3c59-4686-b09b-83f1bef1084b/run",
+        "error": "HTTP 500: Internal Server Error",
+        "stack": "Error: HTTP 500: Internal Server Error\n    at ApiService.makeRequest (file:///home/runner/work/status-page/status-page/dist/services/apiService.js:20:23)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async WorkflowMonitor.ensureWorkflowRunning (file:///home/runner/work/status-page/status-page/dist/monitor.js:81:33)\n    at async WorkflowMonitor.runMonitoring (file:///home/runner/work/status-page/status-page/dist/monitor.js:133:21)"
+      }
+    },
+    {
+      "message": "API Error for /workflows/d3fb7c39-ac4a-4a54-9dc0-1b3541466c9d/run: HTTP 500: Internal Server Error",
+      "timestamp": "2025-06-30T09:52:07.139Z",
+      "data": {
+        "endpoint": "/workflows/d3fb7c39-ac4a-4a54-9dc0-1b3541466c9d/run",
+        "error": "HTTP 500: Internal Server Error",
+        "stack": "Error: HTTP 500: Internal Server Error\n    at ApiService.makeRequest (file:///home/runner/work/status-page/status-page/dist/services/apiService.js:20:23)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async WorkflowMonitor.ensureWorkflowRunning (file:///home/runner/work/status-page/status-page/dist/monitor.js:81:33)\n    at async WorkflowMonitor.runMonitoring (file:///home/runner/work/status-page/status-page/dist/monitor.js:133:21)"
+      }
+    }
+  ]
 }
