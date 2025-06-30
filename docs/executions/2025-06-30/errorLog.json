@@ -1,6 +1,19 @@
 {
   "BALANCE": [],
-  "STAKESTONE": [],
+  "STAKESTONE": [
+    {
+      "message": "STAKESTONE: Found 0 executions and 1 comparison entries in the last 10 minutes",
+      "timestamp": "2025-06-30T11:12:05.859Z",
+      "data": {
+        "executionsCount": 0,
+        "comparisonEntriesCount": 1,
+        "timeRange": {
+          "from": "2025-06-30T11:02:05.859Z",
+          "to": "2025-06-30T11:12:05.859Z"
+        }
+      }
+    }
+  ],
   "PRICE": [],
   "TRANSFER": [
     {
@@ -85,6 +98,31 @@
         ],
         "totalComparisonEntries": 44,
         "totalExecutions": 4
+      }
+    },
+    {
+      "message": "TRANSFER: Missing executions for 15 transaction hashes",
+      "timestamp": "2025-06-30T11:12:05.860Z",
+      "data": {
+        "missingHashes": [
+          "0xc00f80aa7b032610069ac02f23eee592d0a99218c89e313e87394357ba71e852",
+          "0x7cdb5edc9fba38112a33ea5b6e1824da5cd4d38fca6d44b9effbc15fd9daf0b5",
+          "0x5c82fce04a61d68581171df69f794f98681fdabf0ecbe777040b2da76a158375",
+          "0x6235ba72c116161aaaf1c99386ecfa5941daebef526c675944e5725c02d8ce67",
+          "0xcc1daa539eddc165c84c92eadb3bb281b8dccdef2ab00420561bdbeffeff90ea",
+          "0x327150956a749e581fac1f9547f8d6b2d4f852b7bfc16ed966d86f31617e5401",
+          "0xc0840ec0ee374d79d402ae035b08190566719809bf3f8ca1076a3bd2e315c564",
+          "0x64ea380a74521d55f8547f64d16e1de3dadbc3c0b21e8d715de76df6ab558715",
+          "0xf4c3ba089e9159aa20531525e13aeedb8b87709233190333347793f3312d6f3e",
+          "0x79d27941956f9d1364bca4b51c89a09cdace4666c0aef7ac2e78d6053ef5c1a0",
+          "0x5c6d0420b8d09a7b192df4e2f7f65cc46672774a878280dcfa0f6fa0acf7f422",
+          "0x90ea38d097e68596c2009debe1fd5ad48ecb03e8ce47def792983542173003fa",
+          "0x1701c428be98d57a02e39bd1a0be5e5b5bbbabd98addbaf1706a6cb748d4e77d",
+          "0xfa626c1679ce2a18f2b6e04907ed2a55c090c517e8415e1024e1bbaf024c9e96",
+          "0xebcea5000e0deb71e42e55e84ebee5200bf97e749df2b385b88fe07bf03a6407"
+        ],
+        "totalComparisonEntries": 45,
+        "totalExecutions": 5
       }
     }
   ],
