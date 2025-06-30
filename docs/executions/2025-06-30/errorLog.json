@@ -14,7 +14,20 @@
       }
     }
   ],
-  "PRICE": [],
+  "PRICE": [
+    {
+      "message": "PRICE: Found 0 executions and 1 comparison entries in the last 10 minutes",
+      "timestamp": "2025-06-30T11:49:08.529Z",
+      "data": {
+        "executionsCount": 0,
+        "comparisonEntriesCount": 1,
+        "timeRange": {
+          "from": "2025-06-30T11:39:08.529Z",
+          "to": "2025-06-30T11:49:08.529Z"
+        }
+      }
+    }
+  ],
   "TRANSFER": [
     {
       "message": "TRANSFER: Missing executions for 11 transaction hashes",
