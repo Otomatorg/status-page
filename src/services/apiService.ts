@@ -1,5 +1,5 @@
 import fetch, { RequestInit } from 'node-fetch';
-import { CreateWorkflowPayload, Workflow, ExecutionResponse } from '../types/workflow.js';
+import { CreateWorkflowPayload, Workflow, ExecutionResponse } from '../types/types.js';
 
 import dotenv from 'dotenv';
 dotenv.config();

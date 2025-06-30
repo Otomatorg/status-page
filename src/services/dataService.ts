@@ -1,8 +1,8 @@
 import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { WorkflowState, MonitoringResult, MonitoringReport } from '../types/workflow.js';
-import { WORKFLOW_TYPES } from '../constants/workflowTypes.js';
+import { WorkflowState } from '../types/types.js';
+import { WORKFLOW_TYPES } from '../constants/constants.js';
 import { apiService } from './apiService.js';
 import { convertBigIntToString } from '../utils/utils.js';
 
@@ -152,23 +152,9 @@ class DataService {
 
     // Special case for TRANSFER: deduplicate by txHash in output
     if (workflowType === 'TRANSFER') {
-      // Collect all txHashes already present in the comparison data
-      // Deduplicate by full value of output (deep equality)
-      // const existingOutputs = new Set(
-      //   comparisonData[workflowType].map((entry: any) => JSON.stringify(entry))
-      // );
 
-      // newResults = result.filter((item: any) => {
-      //   const outputString = JSON.stringify(item);
-      //   return !existingOutputs.has(outputString);
-      // });
-
-      // just override the entire array
-      console.log('result.length', result.length);
       newResults = result;
     } else if (workflowType !== 'EVERY_PERIOD') {
-      // For other workflow types, deduplicate by dateCreated+output
-
       const existingSignatures = new Set<string>(
         comparisonData[workflowType].map((item: any) => {
           if (workflowType === 'BALANCE') {
@@ -233,50 +219,6 @@ class DataService {
     
     await fs.writeFile(errorsFile, JSON.stringify(errors, null, 2));
   }
-
-  // async generateMonitoringReport(workflowsState: Record<string, WorkflowState>): Promise<void> {
-  //   const totalWorkflows = Object.keys(workflowsState).length;
-  //   const healthyWorkflows = Object.values(workflowsState).filter(w => w.isHealthy).length;
-  //   const failedWorkflows = Object.values(workflowsState).filter(w => w.state === 'failed').length;
-  //   const notCreatedWorkflows = Object.values(workflowsState).filter(w => w.state === 'not_created').length;
-
-  //   const issues: string[] = [];
-    
-  //   Object.entries(workflowsState).forEach(([type, state]) => {
-  //     if (state.state === 'failed') {
-  //       issues.push(`${type}: Workflow failed - ${state.lastError}`);
-  //     }
-  //     if (state.state === 'not_created') {
-  //       issues.push(`${type}: Workflow not created yet`);
-  //     }
-  //     if (state.errorCount > 5) {
-  //       issues.push(`${type}: High error count (${state.errorCount})`);
-  //     }
-  //   });
-
-  //   let overall: 'healthy' | 'degraded' | 'critical' = 'healthy';
-  //   if (failedWorkflows > 0 || notCreatedWorkflows > totalWorkflows / 2) {
-  //     overall = 'critical';
-  //   } else if (healthyWorkflows < totalWorkflows * 0.8) {
-  //     overall = 'degraded';
-  //   }
-
-  //   const report: MonitoringReport = {
-  //     generatedAt: new Date().toISOString(),
-  //     totalWorkflows,
-  //     healthyWorkflows,
-  //     failedWorkflows,
-  //     notCreatedWorkflows,
-  //     executions: [], // This would be populated from recent execution results
-  //     summary: {
-  //       overall,
-  //       issues
-  //     }
-  //   };
-
-  //   await this.ensureDataDirectory();
-  //   await fs.writeFile(this.reportFile, JSON.stringify(report, null, 2));
-  // }
 
   getCurrentDateString(): string {
     return new Date().toISOString().split('T')[0];

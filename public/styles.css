@@ -396,6 +396,7 @@ body {
 
 .workflows-grid {
   display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
 }
 
@@ -607,6 +608,10 @@ body {
   
   .history-chart {
     grid-template-columns: repeat(12, 1fr);
+  }
+  
+  .workflows-grid {
+    grid-template-columns: 1fr;
   }
   
   .workflow-details {

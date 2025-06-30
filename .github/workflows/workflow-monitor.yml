@@ -2,8 +2,8 @@ name: Workflow Monitor
 
 on:
   schedule:
-    - cron: '*/30 * * * *'  # Run every 30 minutes
-  workflow_dispatch:  # Allow manual trigger
+    - cron: '*/10 * * * *'  # Run every 10 minutes
+  # workflow_dispatch:  # Allow manual trigger
 
 jobs:
   monitor:
@@ -13,31 +13,27 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
       with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.PAT_TOKEN }}
         
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '18'
+        node-version: 22
         cache: 'npm'
+
+    - name: Echo multiline secret to file
+      run: |
+        echo -e '${{ secrets.ENV }}' >> .env
         
     - name: Install dependencies
       run: npm ci
-      
-    - name: Run workflow monitoring
-      run: npm run monitor
-      env:
-        API_BASE_URL: ${{ secrets.API_BASE_URL }}
-        API_TOKEN: ${{ secrets.API_TOKEN }}
         
-    - name: Commit and push changes
+    - name: Pull and update data
       run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add public/data/
-        if git diff --staged --quiet; then
-          echo "No changes to commit"
-        else
-          git commit -m "📊 Update workflow monitoring data [$(date -u +%Y-%m-%d\ %H:%M:%S)]"
-          git push
-        fi 
+        git pull origin main --rebase
+        npm run build:verify
+        git config --global user.name 'GitHub Action'
+        git config --global user.email 'action@github.com'
+        git add .
+        git commit -m "Update data: $(date +'%Y-%m-%d %H:%M:%S')" || echo "No changes to commit"
+        git push https://${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository }}.git main

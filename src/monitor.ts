@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 
-import { WorkflowState } from './types/workflow.js';
-import { WORKFLOW_TYPES } from './constants/workflowTypes.js';
+import { WorkflowState } from './types/types.js';
+import { WORKFLOW_TYPES } from './constants/constants.js';
 import { WORKFLOW_TEMPLATES } from './templates/workflowTemplates.js';
 import { apiService } from './services/apiService.js';
 import { dataService } from './services/dataService.js';
-import { verifyWorkflow } from './verifiers/workflowVerifiers.js';
+import { dataFetcher } from './verifiers/workflowVerifiers.js';
 
 class WorkflowMonitor {
   private async ensureWorkflowExists(workflowType: string, workflowState: WorkflowState): Promise<boolean> {
@@ -97,9 +97,12 @@ class WorkflowMonitor {
       
       if (runResponse.success) {
         workflowState.started = true;
+        workflowState.state = 'active';
         workflowState.lastExecution = new Date().toISOString();
         console.log(`✅ ${workflowType}: Workflow execution started (ID: ${runResponse.data.executionId})`);
       } else {
+        workflowState.started = false;
+        workflowState.state = 'inactive';
         console.log(`⚠️ ${workflowType}: Failed to start workflow: ${runResponse.error}`);
       }
       return false;
@@ -130,9 +133,9 @@ class WorkflowMonitor {
 
     const parameters = template.nodes[0].parameters;
 
-    const verificationResult = await verifyWorkflow(workflowType, parameters);
+    const data = await dataFetcher(workflowType, parameters);
 
-    return verificationResult;
+    return data;
   }
 
   public async runMonitoring(): Promise<void> {
@@ -151,13 +154,13 @@ class WorkflowMonitor {
         const workflowState = workflowsState[workflowType];
 
         try {
+          // todo: there is an edge case where the event happen so close to the end of the interval, and the wf may not capture the event
 
           // Ensure workflow exists and get status in one call when possible
           // Compare src json vs server data
           // if not exist -> create new wf
           // if exist -> update status from server response
           await this.ensureWorkflowExists(workflowType, workflowState);
-          
           await this.ensureWorkflowRunning(workflowType, workflowState);
 
           // Fetch comparison data

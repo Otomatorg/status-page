@@ -1,4 +1,4 @@
-import { WORKFLOW_TYPES } from '../constants/workflowTypes.js';
+import { WORKFLOW_TYPES } from '../constants/constants.js';
 
 // Direct JSON imports
 import wfBalance from './static/wf_balance.json' with { type: 'json' };

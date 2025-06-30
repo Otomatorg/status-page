@@ -1,6 +1,4 @@
-#!/usr/bin/env node
-
-import { WORKFLOW_TYPES } from './constants/workflowTypes.js';
+import { WORKFLOW_TYPES } from './constants/constants.js';
 import { apiService } from './services/apiService.js';
 import { dataService } from './services/dataService.js';
 

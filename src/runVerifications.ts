@@ -1,8 +1,8 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { fileURLToPath } from 'url';
-import { INTERVALS } from './constants/workflowTypes';
-import { VerificationError } from './types/workflow';
+import { INTERVALS } from './constants/constants';
+import { VerificationError } from './types/types';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

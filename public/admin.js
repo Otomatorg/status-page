@@ -154,7 +154,13 @@ class AdminDashboard {
           </div>
           <div class="info-item">
             <span class="info-label">Workflow ID:</span>
-            <span class="info-value execution-id">${workflow.id || 'None'}</span>
+            <span class="info-value execution-id" >
+              <span class="copy-btn" onclick="navigator.clipboard.writeText('${workflow.id || ''}')" title="Copy ID" style="cursor: pointer;">
+                <span class="copy-icon">📋</span>
+                <span class="copy-text">Copy</span>
+              </span>
+              ${workflow.id || 'None'}
+            </span>
           </div>
         </div>
         <div class="workflow-timestamps">
