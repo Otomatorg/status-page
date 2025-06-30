@@ -25,13 +25,13 @@ function loadJson(filePath: string) {
 // Main
 function main() {
     const currentDate = new Date().toISOString().split('T')[0];
-    const comparisonPath = path.join(__dirname, `../public/data/executions/${currentDate}/comparisonData.json`);
-    const executionsPath = path.join(__dirname, `../public/data/executions/${currentDate}/executions.json`);
+    const comparisonPath = path.join(__dirname, `../docs/executions/${currentDate}/comparisonData.json`);
+    const executionsPath = path.join(__dirname, `../docs/executions/${currentDate}/executions.json`);
 
     const comparisonData = loadJson(comparisonPath);
     const executionsData = loadJson(executionsPath);
 
-    const errorLogPath = path.join(__dirname, `../public/data/executions/${currentDate}/errorLog.json`);
+    const errorLogPath = path.join(__dirname, `../docs/executions/${currentDate}/errorLog.json`);
     let errorLog: Record<string, VerificationError[]> = {
         BALANCE: [],
         STAKESTONE: [],

@@ -10,7 +10,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 class DataService {
-  private readonly dataDir = path.resolve(__dirname, '../../public/data');
+  private readonly dataDir = path.resolve(__dirname, '../../docs');
   private readonly workflowsStateFile = path.join(this.dataDir, 'workflows.json');
   private readonly reportFile = path.join(this.dataDir, 'monitoring-report.json');  
 
