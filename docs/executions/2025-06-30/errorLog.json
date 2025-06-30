@@ -1,5 +1,18 @@
 {
-  "BALANCE": [],
+  "BALANCE": [
+    {
+      "message": "BALANCE: Found 0 executions and 1 comparison entries in the last 10 minutes",
+      "timestamp": "2025-06-30T18:57:14.859Z",
+      "data": {
+        "executionsCount": 0,
+        "comparisonEntriesCount": 1,
+        "timeRange": {
+          "from": "2025-06-30T18:47:14.859Z",
+          "to": "2025-06-30T18:57:14.859Z"
+        }
+      }
+    }
+  ],
   "STAKESTONE": [
     {
       "message": "STAKESTONE: Found 0 executions and 1 comparison entries in the last 10 minutes",
@@ -192,6 +205,18 @@
         "timeRange": {
           "from": "2025-06-30T17:48:18.210Z",
           "to": "2025-06-30T17:58:18.210Z"
+        }
+      }
+    },
+    {
+      "message": "PRICE: Found 0 executions and 1 comparison entries in the last 10 minutes",
+      "timestamp": "2025-06-30T18:57:14.859Z",
+      "data": {
+        "executionsCount": 0,
+        "comparisonEntriesCount": 1,
+        "timeRange": {
+          "from": "2025-06-30T18:47:14.859Z",
+          "to": "2025-06-30T18:57:14.859Z"
         }
       }
     }
@@ -740,6 +765,25 @@
         ],
         "totalComparisonEntries": 44,
         "totalExecutions": 22
+      }
+    },
+    {
+      "message": "TRANSFER: Missing executions for 9 transaction hashes",
+      "timestamp": "2025-06-30T18:57:14.860Z",
+      "data": {
+        "missingHashes": [
+          "0xe7e22679c44fcebc9ed88aa7a2f292a484ce23f6494303ed8aa400a5b09d772a",
+          "0x760a56c9755a919f553e0622f2c138be9b8d44c598bda6ee9032e2c14078cb21",
+          "0xee714ec56615be84ef78492906e847b7c936f1c99d43a16522506a238ec38b36",
+          "0x92d30ad7bf02efc3b8c8be2a8d60cc43d4f2272071e943fac7686e686bb720a6",
+          "0x1ab5adff97f6d9c366dbeca48cab017bb15fa811681747b1f82fabc019986e9d",
+          "0x480d88ee8171ea6a14b3eab4d0f478430a2c3b7b0ce669e336151942b366b109",
+          "0x92d6641eef883a22e113fa728319cb36e11c6c202a4178d000a4fca9cc17968c",
+          "0xbefe1a1b00d03111eb12a762fa7cc1cb531e39f3b86e2f98a8972a2f4f61ddc4",
+          "0x91f1b24f609e1d6a123c494fca2e73f63c14cfe13c706e0f88212feda0d43143"
+        ],
+        "totalComparisonEntries": 26,
+        "totalExecutions": 23
       }
     }
   ],
