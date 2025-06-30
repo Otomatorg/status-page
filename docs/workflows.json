@@ -1,0 +1,72 @@
+{
+  "BALANCE": {
+    "id": "a54d3a5d-1fd2-4357-a98e-a91370d92fc6",
+    "started": true,
+    "name": "Workflow - Balance",
+    "type": "BALANCE",
+    "state": "active",
+    "executionId": null,
+    "lastCheck": null,
+    "lastExecution": "2025-06-30T09:58:46.450Z",
+    "isHealthy": false,
+    "createdAt": "2025-06-30T09:58:45.569Z",
+    "errorCount": 0,
+    "lastError": null
+  },
+  "TRANSFER": {
+    "id": "c64b1b97-1c0c-4f4a-8ce6-8e6d94064ab6",
+    "started": true,
+    "name": "Workflow - Transfer",
+    "type": "TRANSFER",
+    "state": "active",
+    "executionId": null,
+    "lastCheck": null,
+    "lastExecution": "2025-06-30T09:58:48.121Z",
+    "isHealthy": false,
+    "createdAt": "2025-06-30T09:58:47.290Z",
+    "errorCount": 0,
+    "lastError": null
+  },
+  "PRICE": {
+    "id": "608c9b5c-7ef6-4caa-aa65-66d30b0101e1",
+    "started": true,
+    "name": "Workflow - Price",
+    "type": "PRICE",
+    "state": "active",
+    "executionId": null,
+    "lastCheck": null,
+    "lastExecution": "2025-06-30T09:58:49.773Z",
+    "isHealthy": false,
+    "createdAt": "2025-06-30T09:58:48.962Z",
+    "errorCount": 0,
+    "lastError": null
+  },
+  "STAKESTONE": {
+    "id": "07dc7b1d-becb-4889-9ad3-ee67d165d211",
+    "started": true,
+    "name": "Workflow - StakeStone",
+    "type": "STAKESTONE",
+    "state": "active",
+    "executionId": null,
+    "lastCheck": null,
+    "lastExecution": "2025-06-30T09:58:51.422Z",
+    "isHealthy": false,
+    "createdAt": "2025-06-30T09:58:50.576Z",
+    "errorCount": 0,
+    "lastError": null
+  },
+  "EVERY_PERIOD": {
+    "id": "f671fb2a-7c0a-4598-a631-101dade360b9",
+    "started": true,
+    "name": "Workflow - Every Period",
+    "type": "EVERY_PERIOD",
+    "state": "active",
+    "executionId": null,
+    "lastCheck": null,
+    "lastExecution": "2025-06-30T09:58:53.129Z",
+    "isHealthy": false,
+    "createdAt": "2025-06-30T09:58:52.276Z",
+    "errorCount": 0,
+    "lastError": null
+  }
+}

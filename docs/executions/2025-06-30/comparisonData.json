@@ -1,0 +1,29 @@
+{
+  "BALANCE": [
+    {
+      "balance": "788955770",
+      "account": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045",
+      "contractAddress": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913",
+      "chainId": 8453,
+      "dateCreated": "2025-06-30T09:58:47.021Z"
+    }
+  ],
+  "TRANSFER": [],
+  "PRICE": [
+    {
+      "price": 2469.9729961533894,
+      "contractAddress": "0x4200000000000000000000000000000000000006",
+      "chainId": 8453,
+      "dateCreated": "2025-06-30T09:58:50.333Z"
+    }
+  ],
+  "STAKESTONE": [
+    {
+      "latestRoundID": "10",
+      "contractAddress": "0x8f88ae3798e8ff3d0e0de7465a0863c9bbb577f0",
+      "chainId": 1,
+      "dateCreated": "2025-06-30T09:58:52.016Z"
+    }
+  ],
+  "EVERY_PERIOD": []
+}
