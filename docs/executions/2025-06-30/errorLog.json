@@ -122,6 +122,18 @@
           "to": "2025-06-30T15:39:39.643Z"
         }
       }
+    },
+    {
+      "message": "PRICE: Found 0 executions and 1 comparison entries in the last 10 minutes",
+      "timestamp": "2025-06-30T15:53:39.043Z",
+      "data": {
+        "executionsCount": 0,
+        "comparisonEntriesCount": 1,
+        "timeRange": {
+          "from": "2025-06-30T15:43:39.043Z",
+          "to": "2025-06-30T15:53:39.043Z"
+        }
+      }
     }
   ],
   "TRANSFER": [
@@ -392,6 +404,36 @@
         ],
         "totalComparisonEntries": 11,
         "totalExecutions": 15
+      }
+    },
+    {
+      "message": "TRANSFER: Missing executions for 20 transaction hashes",
+      "timestamp": "2025-06-30T15:53:39.044Z",
+      "data": {
+        "missingHashes": [
+          "0xbe25ca460d2d150caa882a93d5c36849634ff26319ef612c4763492440f48241",
+          "0x3c8e0af29e2c9bbef0fc54c31833fe855b908cbc237ba852eab85fe4702098bd",
+          "0x956cbb77e08ce347afde2568972871617be0db5c360359e91497f76f8621b1c8",
+          "0xa169c90ec7b107ee7fd51a6f7f11828654130691035ca2b40d97892051df4741",
+          "0xc6dfe1443aa5f7e6778bbc86c7311c728e93333e9a79bb3268fad1774aff8496",
+          "0xbdb5b4f6224f2d2ae6497bcd661469c5bcb111f76fa64520d94a338ee483de4c",
+          "0xd0edf397f46e7b3ca999587a1ba91997e6d71d24637d0b440ddde4d5783e4984",
+          "0xc1a11aee28bdc3166ac6ebd27ad596614532b771ed8c51a436c13b09d404352e",
+          "0x6bee2e8366172331345ddf088a7643e67372cdf6a77fe73e97e112e16e620f24",
+          "0x1e423e5258bea1de830c9d2adc1b94ad0bbc9aa4124124023aac03f684b33512",
+          "0x072cc551c2bce6fe5a7a60e2eb0ece367ebcdd6f025075cff351d40bd13a4b6a",
+          "0xe55f75ecd9480e40849d95f9a0f5a8d03812892cbdb82adf91ee93111c019280",
+          "0xd224030a2a7bb6f2e1aa672e377d01e478ed21211a13efc08efebdb1fb53d25a",
+          "0x90e80f0fd9fff250675e842d472fdc9875d37b44a9ca720fee9b7055e1549ca4",
+          "0xc736dc3afba4fec8deac76a7c021f9d64c253f9f4f108d9c7306595f0f20dade",
+          "0x41dfe192b9b8a79f2ca02b823d8abfd0ac1cfe5a4e038cba2f3208418e287f3a",
+          "0x2db1d14aef7f62ac44956e676696b136d4383036a9c0aba74fb75fa3356899f1",
+          "0xa7431260f30777cc1afb2581c965fa637c8fd0a633102c638cedbd5f2643ccda",
+          "0x54d35bf8726021638f9f88d40412de5f0c7ec1b1160c21e0cb0bdb487024b69b",
+          "0x1a0692f703a140e72aa80e745e7a6d31d4387de301bcf1202da172a513a4a921"
+        ],
+        "totalComparisonEntries": 62,
+        "totalExecutions": 16
       }
     }
   ],
