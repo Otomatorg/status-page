@@ -23,6 +23,45 @@
         "totalComparisonEntries": 39,
         "totalExecutions": 2
       }
+    },
+    {
+      "message": "TRANSFER: Missing executions for 29 transaction hashes",
+      "timestamp": "2025-06-30T10:28:22.737Z",
+      "data": {
+        "missingHashes": [
+          "0x631d1929be8304d171607589cf792daaa8510e3c103e356cb9c6bcd003728753",
+          "0x3d34e06d00288e3381f43c778e1c0c8dc9edb0909b00f92a2e60f9d848643717",
+          "0x4c5b91dab2eeca7a27aec4d8ac8764120255cc3bf1928a130257478496a055df",
+          "0xb598ade360409c5b796259c72869dc11a5f94256670078f9cfa8bef7b1ae8d4d",
+          "0xf6547cbd0fec8bcedbc45988354b6ca2c1989728d1af4b651666e0eb8f8407fc",
+          "0xcde91e3b50654a46d5d626ac0e36dfd27347b7ac69dd0260c0485a49546428a0",
+          "0x8a353c959221b78ed738a0c2c24fc8b71828564a3c69c5dfac11f1ff7dd8f4c2",
+          "0xf1df4fd4681fce775406be8b524c0fabae1c0986f7ff6b90b40f1934641ff578",
+          "0xff080258fc148827252626240dee6aaa6314422e95fa8b209e8d432265aa00ba",
+          "0x02a6332dd55b031823b6ae4347731c64018b586e05dfde46b3f20f075ce8bbc9",
+          "0x7cec4b537f44a408f732ffc130935cd407057f2f09961b06195d40ed4d147554",
+          "0x3b78ea401f103396262dc7a2de43a1ef9d7965006d1070af6d37843af0ce1136",
+          "0xe7b5556baeb7877e5dcf5bc1b9cd925e36829845a5e85c1785d3e42c1dfd5038",
+          "0xc2fff0e24c26b89b14fdd951c8eaff322d878f11a0bae199b72eea172ab0cf6a",
+          "0x358748238042d52881a59c2c3049dd046cbd2b0a7a1991fcb9e1df8512c010b1",
+          "0xef08ce9f197509d1f04306a29ee6217ca7a0b935058dbc760cdbd109d2d9c0cb",
+          "0x34b64091b7e4031aff7202203a85ed848f1052cae96b863b6ce4cccfcdc00cdb",
+          "0x4e4d8e97920a012066e45c2afdd63c0b55ba1ea43b83816683e69f00ebe192c9",
+          "0xae17a932df3fc2f9b8b310561d1a12c79e95703996676d7f2d25a5a2b83e2464",
+          "0x86c49574c78f6ee3a3dd6322fa09bd048b649850ed626e6e934d530128654aab",
+          "0x82227e768bd654b8f27cdb7e9972c1ac1161191ec0a0d08e4a62a3f0fc6646da",
+          "0xdc2af08387c2c3f94304772cbeda1a1f9652f1b132ae6c09036dfc470268f5de",
+          "0x61fd03ea2a22fbd226e3d435694c648674eba986674fa9203e2e45fc5b5a325a",
+          "0x3c767695d5e937513a413a275f1af1e226de3ab2d87dd3e6aeb55bbe835d30d2",
+          "0x405edb7a766e8cef4c8f1a936dbe2402766095b8a8c0c34eb26401dd34a4a857",
+          "0x390fa1746eb1ecfbcd19fe9af0e3ebd4920a4c311b266f9086db05e2726b9a7b",
+          "0x5530034dcd7b4ee974ed952263153b2192bee207dec3e42e14e9ef0bd8be7b6b",
+          "0x247d0cb2c05671b5ce7fceeef5c8d432801dae4622237ee4c464937bedbb2090",
+          "0x4560a3214747a73def9fe3c666aa7a9e811a04144857dc8c1efe7f169c6688e3"
+        ],
+        "totalComparisonEntries": 86,
+        "totalExecutions": 3
+      }
     }
   ],
   "EVERY_PERIOD": []
