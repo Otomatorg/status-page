@@ -10,12 +10,36 @@
   ],
   "TRANSFER": [
     {
-      "from": "0xD6aC33f387Aa6f9f82aFeeB148f0568798fA4798",
-      "to": "0xb4E38F1A3Bf250144364CF29076Ecd2D1f8C2329",
-      "value": "70390794578137792380928",
-      "blockNumber": 25600473,
-      "transactionHash": "0x42baad0dab642754cc8769c387fccc7b6c04bc3343dc88d1d0635b59c7c769a0",
-      "dateCreated": "2025-07-01T11:21:56.198Z"
+      "from": "0xff745bdB76AfCBa9d3ACdCd71664D4250Ef1ae49",
+      "to": "0x99FC968d932f394256e536B5dF3A6e2C8aa2DD36",
+      "value": "60065176872023893059670",
+      "blockNumber": 25601142,
+      "transactionHash": "0x67c9eb5bdcc7d4cc651c90ec819e30b7ffaa6799bd79e322e380a928f85232e4",
+      "dateCreated": "2025-07-01T11:41:59.187Z"
+    },
+    {
+      "from": "0xBA12222222228d8Ba445958a75a0704d566BF2C8",
+      "to": "0xC8b940E3865bcf65c1AAcB961da4C6B9f13F9CDb",
+      "value": "96446400152835896052",
+      "blockNumber": 25601236,
+      "transactionHash": "0xc920f607fdf2e3c1e749388254972d0c6e8fdc0de772e3fdfd1a7adb81bce7cf",
+      "dateCreated": "2025-07-01T11:41:59.187Z"
+    },
+    {
+      "from": "0xC8b940E3865bcf65c1AAcB961da4C6B9f13F9CDb",
+      "to": "0x283bA4E204DFcB6381BCBf2cb5d0e765A2B57bC2",
+      "value": "96446400152835896052",
+      "blockNumber": 25601236,
+      "transactionHash": "0xc920f607fdf2e3c1e749388254972d0c6e8fdc0de772e3fdfd1a7adb81bce7cf",
+      "dateCreated": "2025-07-01T11:41:59.187Z"
+    },
+    {
+      "from": "0x283bA4E204DFcB6381BCBf2cb5d0e765A2B57bC2",
+      "to": "0xC95A2a3161d8652C1965a2D06Aa3FDb941F38d5c",
+      "value": "289339200458507688",
+      "blockNumber": 25601236,
+      "transactionHash": "0xc920f607fdf2e3c1e749388254972d0c6e8fdc0de772e3fdfd1a7adb81bce7cf",
+      "dateCreated": "2025-07-01T11:41:59.187Z"
     }
   ],
   "PRICE": [
@@ -126,6 +150,12 @@
       "contractAddress": "0x4200000000000000000000000000000000000006",
       "chainId": 8453,
       "dateCreated": "2025-07-01T11:22:01.418Z"
+    },
+    {
+      "price": 2461.801696150619,
+      "contractAddress": "0x4200000000000000000000000000000000000006",
+      "chainId": 8453,
+      "dateCreated": "2025-07-01T11:42:04.311Z"
     }
   ],
   "STAKESTONE": [
