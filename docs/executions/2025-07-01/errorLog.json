@@ -433,6 +433,18 @@
           "to": "2025-07-01T22:28:57.846Z"
         }
       }
+    },
+    {
+      "message": "PRICE: Found 0 executions and 1 comparison entries in the last 10 minutes",
+      "timestamp": "2025-07-01T22:47:50.482Z",
+      "data": {
+        "executionsCount": 0,
+        "comparisonEntriesCount": 1,
+        "timeRange": {
+          "from": "2025-07-01T22:37:50.482Z",
+          "to": "2025-07-01T22:47:50.482Z"
+        }
+      }
     }
   ],
   "TRANSFER": [
@@ -2088,12 +2100,29 @@
         "totalComparisonEntries": 76,
         "totalExecutions": 44
       }
+    },
+    {
+      "message": "TRANSFER: Missing executions for 7 transaction hashes",
+      "timestamp": "2025-07-01T22:47:50.482Z",
+      "data": {
+        "missingHashes": [
+          "0x76809d507132c78fa0213daf44b2f82fe371c77d606a4d8c3001edfd02df8958",
+          "0xb782bd57609f4860f50efa73361cee85bf3ef490694a43f52ca8b16065bb9721",
+          "0xbdfc2e8d9653d0cf3c680ff3450f3e80b7d0e757c6a72e18dfdc6dfda00ee4b0",
+          "0xb47dea2744c697432c5ae9aeefafae580dedb9f5f180c25a0c3f20ff9a5f0783",
+          "0x9ff77734e82b23fec5b41d82e600f8ef9424ac760bb6ed48d7796ae138d29a62",
+          "0xe69c7be20d85ea1df751a036a218245fb46e42cef25d5014434f39b3848c1e73",
+          "0xfc5c5ffcb98fbaa1496ec572e961b5c48352cc521442cc9974dfdb1c8b503531"
+        ],
+        "totalComparisonEntries": 23,
+        "totalExecutions": 45
+      }
     }
   ],
   "EVERY_PERIOD": [
     {
       "message": "EVERY_PERIOD: Interval between execution 41582ace-85c3-4afe-8680-4d9a81e17dc7 and 80fdebc5-43d6-42fe-9f8c-f0673f461efb is 20 min, expected 10 min (+/- 1 min)",
-      "timestamp": "2025-07-01T22:28:57.844Z",
+      "timestamp": "2025-07-01T22:47:50.480Z",
       "data": {
         "executionIndex": "80fdebc5-43d6-42fe-9f8c-f0673f461efb",
         "actualInterval": 1199805,
