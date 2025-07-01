@@ -85,6 +85,18 @@
           "to": "2025-07-01T09:52:27.137Z"
         }
       }
+    },
+    {
+      "message": "PRICE: Found 0 executions and 1 comparison entries in the last 10 minutes",
+      "timestamp": "2025-07-01T10:29:12.770Z",
+      "data": {
+        "executionsCount": 0,
+        "comparisonEntriesCount": 1,
+        "timeRange": {
+          "from": "2025-07-01T10:19:12.770Z",
+          "to": "2025-07-01T10:29:12.770Z"
+        }
+      }
     }
   ],
   "TRANSFER": [
@@ -1023,12 +1035,97 @@
         "totalComparisonEntries": 11,
         "totalExecutions": 15
       }
+    },
+    {
+      "message": "TRANSFER: Missing executions for 75 transaction hashes",
+      "timestamp": "2025-07-01T10:29:12.770Z",
+      "data": {
+        "missingHashes": [
+          "0xf899c63806d6036470c36dee27d83480ae129b63b2f192689c5270abd9090136",
+          "0xb5e99fd59500d463f588d6edde3ecd4025cafc0717a8bd5cbe30dbb71322977b",
+          "0x6a755c0b4ea66e576c29964d108d24f28d6b22d8b2d4cff700a960a3ee0cda2e",
+          "0x5b60badaf20398c906026356e2a29ab7d02225db76abf04b9b729779dee38b4f",
+          "0xd84880d44c3157e0138aeb3bdd0bd262eb171d7eb88e0ca88a88bb4417afeb27",
+          "0xfa5791a22bab3e24a1978cbf2e5a7039cc2d8212a0aaa653bd3de25ec00f100b",
+          "0x3ebbb7844af662b236a2c283dfb5fdaf998760be4532e953c22cef55d0fa4f35",
+          "0xb81d4191b78b3e264daa8206f01a7680f48898c0f03e80444567b66ac281ef96",
+          "0x81c4b6d0092733035ec4722ad0cca1eb1902284992202283eef6c71cb61c96df",
+          "0x150d76f89ab2438a2698fde590c340a52a3bdc1461535367e7363cb48791de25",
+          "0x556eded9d03e8e0df142d7914394c1af071d2a164b9daa6426b5760977a01eec",
+          "0x1d6c9b7c5a0a9fea77c6e6c1c6235b854bd5ffb5e5bf569c79b23c42e4ceaa61",
+          "0xf33f76e34d0354639b8e494433d2da77bce837d93e2257bca737de0bed2a2131",
+          "0x0d0400e9da9e1c361a36bdf39577f0465999e85a82a6199321ff93f579e1a745",
+          "0x4851d0a4cdca7457252f59168b2fcc60a46c3c94fbb497b0efdbab31bdb1b870",
+          "0xacb9dacd1005d69ea553e02a73143c5d3ea66aade8fb22cbe5570669ebd42aea",
+          "0x7a236ec1680466f069405ff13d630f4519d680420b262498195fa8ca68359591",
+          "0xccba27ff207d0b3aa97bea90a474d582145a644798060d8dc5d9efd8627738db",
+          "0xff7ee516044d34b8d9e4b02c82556053c9973e572e7056da49c8207dcefee19f",
+          "0xfb17b2096c641b4dd3a8c4afad095dae3f336a89e91276494212300db41db2f4",
+          "0x15ea67b2b6734c74766438594b3daa6d9cf21c724b78caeea7dbae7a932c02f9",
+          "0x431a09767da6a0c4f383a1a53efbc16ef982173191e6625bd8a11716779c40c3",
+          "0xe4605a1dc9593e7468f5bfc41536a2e2a3fb7a281cad40a13f75c16b41fc43bc",
+          "0x6659e4feef469c137e2a88c011b85c2362b847f25a66d1f3cd2f01c763ab464f",
+          "0x1c0c1555e751d6cef1923a979150d6dad28542f43b4e062f81894979b44cb395",
+          "0x37c9a90a7dadbf3cd31fef250b104a8c8f8ce7bdf84ef491ac392797bbf831e8",
+          "0x693a993ab28ed33dd40a1416a0009749c46a5b015141a6b4e5139fea1082a5a2",
+          "0xfa8c386465db84de08c974d0301754eaf818868a683d4ec3e4b15452f6cb6a70",
+          "0x8b60f00e49e0bc62ea5de701828f7b0688503223dae0d03e7bbc0c68f3476195",
+          "0x7b56757d4225d00eb95cd89c6bf908cb45c8a1c4d2cf9a526ce28b1bdd45438a",
+          "0x73ae40cf6f5bc85179c64da6a37a814029de08b86345002b62cd7e39d945bd79",
+          "0x526555790530193f4ec31ac8465246792a8ca645fed9a857236ccac4ed53e9bf",
+          "0xf00f7f76a4cb6406067f4578be3b1ee9c4f1df35058fe796bf26cf97f34310b6",
+          "0x62034e76eb0fe260e5c25802f5bd2c848cbe56de6d79af04bd6e9cf341d7fd90",
+          "0xe1ed7e5d236129bb1aaee72816279820b0c515f8c69c1ed11accf0b5f41c2fe0",
+          "0x8b10eb9e872cd3bda9c880205243285d546f5105702da7d1e903f39c95b99535",
+          "0xd41dff3abcbe03bf60ed409ac03b6c48223a3a5ba491ebde35293365901ccaa7",
+          "0x2ce5177c8fc78b212b7b5fd03ea7e8f4169a1e1d5dd45231d9ea170071d7622a",
+          "0x78d6d092f02e3c8be92cc92c76e372baedae774c80fd3c4bd1d0aa71ee5830ea",
+          "0x9bcc50c12518255276c5c8c8008b0e24c8549309c64ffad23c1fb8265ec669a0",
+          "0x6d92185ec54ed8981540915384394b0f7cf0f0e142ae7ec432f236be4f5ed40a",
+          "0xfc964822144ff7355be8f2d534f48241d7316b8bd4af1afd1baad917dbdcb00c",
+          "0x95b0d7f77d37a1398cab2f7faea4f588d92e08d8159d5b4a50311d1b66b3b1c9",
+          "0x5c928a18bfa5ce2f8340adc440e61a14c84517c4bba3c316e35b73cd6ff2820e",
+          "0xbf98057641092d047e962e98f18294501ac1e531036798383da99adc43442743",
+          "0xf0c0719bcd5343ca913a8e237bb60c624a0b6a9860c55d01b4b15afabe91d1b2",
+          "0x4e8e0870f4001b012fe908be84568e54fe12812227fdf6334c5bcfbd9048328b",
+          "0x33c263975d8fa5a68c23e51899981b156e479796197bba7a98cc83e1e4081167",
+          "0x8ceebc8ff8febfc8ec2cc7dcde4b87911877666260f3f1207224dea7d3640885",
+          "0x4a91826ca54ea5f0c807c9ff3ddfc9bc7acb7bb600d225fa887bbf0b16904a55",
+          "0x832a3455b3749f1a536d738a96a204f1d03025c50ee780dfbf4d332a3b70ee0d",
+          "0x5aab17db092c845cdbc9ed7b1543ea5d5c9b5afc48a2e70f1d9246f4476f8af2",
+          "0xf77d86f3d650af83bee3653719ccad8fd78fd539ff2b51205621fc72534e5f1e",
+          "0xdff5a709c170406a7479878e0f42d072cde4ae28b5ce39105ba1f45a3bd120a6",
+          "0x7e8375a80043c1e25f42376977cea053ebd90e86403007e4ea76d6d3cb710655",
+          "0x0d3da4c2e3c4ac10d953742894faf9cb65e16bbb502d980bf19cd567438932b0",
+          "0x7719988bdb4e43cd03646522f9590127dfae73708847d63f9f678afa281e07ef",
+          "0xf1d2a312026985e0f74e04118e7d2caf4a5495f1cd082248784614e235cb2896",
+          "0xc668afb9c02ca9a6a738f19410438115a1637192f289436cea59030a2e1fd8d2",
+          "0xc555df89e91687ff65e0ab1a480476d375120341edc4509122a05af5c148867b",
+          "0x6fd753e645701808cb34c59cfe3b795dfa008cd1438dde295bff8b553deb75bf",
+          "0x28af5f959ca7bbbde158784eb8fc3cbe07514ac62dc3bb3393ff462939deab39",
+          "0xcedfea1f079efb580652d370a22a019f63a2230b615da4c20e29f121a32c6e8a",
+          "0x8be011c0fae744feab3fa00fdb3edc84b0cd02d39952e38cbbc67f0b03b9911d",
+          "0x082a52fb7d19f20627c656cf08e21f2a2a06ed450902ae56b8e7f5f189ebaa35",
+          "0x13ec38e0b712910e22c99e5bb5a198545d88133d28c296d137382b9db2cd4177",
+          "0xa61018ce5820e4cf4113d02c4d20051d55393477d27d8b1a923bd74a807eb345",
+          "0x5509a0b1e428328f31c894dcc22e37d11f3254f0d5da5d6dbefea4bcff1a9a6d",
+          "0x6ca056da524379a53482d0d28f12a6a6750d6847fbd8d967044e1508be9c3236",
+          "0x6b3178f81eb08e9da48545aaa6f2aa1321ff88f3eee606e85ee319b497787b3e",
+          "0xb89cda02a23f478aa75c82200608c21379776cbc64e6423b3310be893f0d8d7d",
+          "0x76ca4948f65775d96d2c82d7e150267603993ae9882fcf0d4edfcecbe848a67c",
+          "0x9c0ded4f1ff8da25dd2ed408b7e339a2a4cefdb7ee70e8377d0799ec43eab767",
+          "0x115566180928ba2c76f641bdb5caf21e22a7bff3e775d891fad1e2fc275cbb13",
+          "0x1caafaa8edbcdf3c31b84c4b718183ca3c38fdbb2bddb8a85c8821e0ce688379"
+        ],
+        "totalComparisonEntries": 212,
+        "totalExecutions": 16
+      }
     }
   ],
   "EVERY_PERIOD": [
     {
       "message": "EVERY_PERIOD: Interval between execution 41582ace-85c3-4afe-8680-4d9a81e17dc7 and 80fdebc5-43d6-42fe-9f8c-f0673f461efb is 20 min, expected 10 min (+/- 1 min)",
-      "timestamp": "2025-07-01T09:52:27.137Z",
+      "timestamp": "2025-07-01T10:29:12.769Z",
       "data": {
         "executionIndex": "80fdebc5-43d6-42fe-9f8c-f0673f461efb",
         "actualInterval": 1199805,
