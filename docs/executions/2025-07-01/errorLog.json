@@ -120,6 +120,39 @@
         "totalComparisonEntries": 1,
         "totalExecutions": 6
       }
+    },
+    {
+      "message": "TRANSFER: Missing executions for 23 transaction hashes",
+      "timestamp": "2025-07-01T06:38:22.829Z",
+      "data": {
+        "missingHashes": [
+          "0x18fa74d681d2df82a61029a053c59c0c3dc34ffa7f0d480cf1efc20237a2dd5c",
+          "0xb35e16b2bb326721fc5137f2d27eae03f628b50ca00187cc44d0ff7127d4f585",
+          "0xd8ff78e875c8109122fe6e51ef7282236e470ad5b7df88a117d0edbc72dbb153",
+          "0x1d3acc8d1aa5eaa7b2d7a6f749aaa4a30a02c0d1a9d035f4c59a5f39fc3d22f1",
+          "0xcf0e396e19a728dad441b36986be728a4566e1644431897c7e9a442a8718a9cc",
+          "0x0a562defa8e281857002901f537d713471179b2dc52c970e1fa80da8234702a3",
+          "0xd9050525f3116cd6dba1c1ec14da3d1cee0d55cfece41f303898825c137a353d",
+          "0xd5b5036f885917e7968bf09727c1a93b33bb7e9cba38efa018b25cb2942792f7",
+          "0x23d3735e291710b3cdb69ccfeb7897517418953ab7c821607f1e643ad83e5c98",
+          "0xf4cdde89eb1cf8ed5d67eb706f3b14e13e4455796fd0410d5da0b8cbc0f1add3",
+          "0x1ce4e6e02f4387606c03c27af068562cb5762cbfecb727ce48855c278767c6b0",
+          "0xc448d3115142f219921570d00b5161a4560e77024fe6b6eec09c3713e3f85ff8",
+          "0x9e39661be84b50f5faf75427d1272c35bf6f463d0e248347f88931eb6b0dfc07",
+          "0xd3100776ff3c0133947b63ee6f7fa310a7874acbf8cffee1b26df29036a1d8d3",
+          "0x913410f500cc0f7f360df6e2af1d2f884017f2d79d0d5cccb242aecbcc339af5",
+          "0x90344b1150db8b570c34e51d475035bcb40e735dea95a443c7b138a484ab409d",
+          "0x8ded0bc08c4ededdd5b616562f754ceabd27c30c012f752fb7d852213bc97686",
+          "0xf29e9695d984bf1f70c6dbc5118ddfa3fb370768a087aa0fd2c1d9cb0d7f83d9",
+          "0xc4685c1b9245ec1f41f96e34dc262b26210beb75326a2f183a1e1f5d057b1e4f",
+          "0xe4175df352c6a1b5c0ee2744ec038dd43507ad91d18f87662c81c84f54351e6b",
+          "0x170df032c91da8abf249a4af51ba96c92236b0fd3d30edb5283a9c8ae01d0aa0",
+          "0x2d8cbccbe407de68de164d73e5457a2bf61193563d648aa4cec6ff6a68585f86",
+          "0x1c6d92855d1893e4bdf2f010a5e65d462e0d6478a06518e61956213a29b8a669"
+        ],
+        "totalComparisonEntries": 60,
+        "totalExecutions": 7
+      }
     }
   ],
   "EVERY_PERIOD": []
