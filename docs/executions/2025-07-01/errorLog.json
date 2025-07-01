@@ -253,6 +253,18 @@
           "to": "2025-07-01T16:33:26.471Z"
         }
       }
+    },
+    {
+      "message": "PRICE: Found 0 executions and 1 comparison entries in the last 10 minutes",
+      "timestamp": "2025-07-01T16:57:31.645Z",
+      "data": {
+        "executionsCount": 0,
+        "comparisonEntriesCount": 1,
+        "timeRange": {
+          "from": "2025-07-01T16:47:31.645Z",
+          "to": "2025-07-01T16:57:31.645Z"
+        }
+      }
     }
   ],
   "TRANSFER": [
@@ -1573,12 +1585,35 @@
         "totalComparisonEntries": 3,
         "totalExecutions": 29
       }
+    },
+    {
+      "message": "TRANSFER: Missing executions for 13 transaction hashes",
+      "timestamp": "2025-07-01T16:57:31.645Z",
+      "data": {
+        "missingHashes": [
+          "0x271750dc4d106481193507a2316c2aefbac342266977d258433537e82d09fe2c",
+          "0x5e218c4867597f0e5cd0363516287bf96321e5f58816fa9d5617a4d73499b919",
+          "0x5e04d433544bb5393155cc96208b4882c082461e921c7754a3c371f1a7b33791",
+          "0x67a1b18dd5095c344e47158e3178dbd7f9ed09df0924e3245581fce7846b227b",
+          "0x909a92f4b536d018deddf0b58e62e5714110ef9af2ef6da64d3b1def290985e5",
+          "0xf8ab5118a81b64bdcc6eff1bf7046f9ba1e8c63042a2e606cc6ac144a3cfa34e",
+          "0x9b91316e6f0671168ef5c1a25d212c9c7892fe84b4dd0b75169e943bd44b5eef",
+          "0x189d5cc778e07c0749828252c910d6b29fc6a79b9107acad57224b844ff29577",
+          "0xd06cf31310f0e4260f9f0aaa670f1534eaa2d984d2d32a2f9056a3a1c839f3b5",
+          "0x824c12dc14635412a32e39ad76b30be7dacebe9505115d49730aa5fe342cd43b",
+          "0x1ab107922c55772868bb42a8da527bfbdcc2d8720422886482d2be0975299180",
+          "0x3782a56498563da9782ea7179c1fb0ca4601da2be4d411558f3bd92755d9c503",
+          "0x2e90f51db91dd5cb373f4f9aeb33e19120d80e150cdfea0d74d9a0499eb06cf8"
+        ],
+        "totalComparisonEntries": 44,
+        "totalExecutions": 30
+      }
     }
   ],
   "EVERY_PERIOD": [
     {
       "message": "EVERY_PERIOD: Interval between execution 41582ace-85c3-4afe-8680-4d9a81e17dc7 and 80fdebc5-43d6-42fe-9f8c-f0673f461efb is 20 min, expected 10 min (+/- 1 min)",
-      "timestamp": "2025-07-01T16:33:26.469Z",
+      "timestamp": "2025-07-01T16:57:31.644Z",
       "data": {
         "executionIndex": "80fdebc5-43d6-42fe-9f8c-f0673f461efb",
         "actualInterval": 1199805,
