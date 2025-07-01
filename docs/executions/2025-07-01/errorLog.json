@@ -25,6 +25,40 @@
         "totalComparisonEntries": 2,
         "totalExecutions": 2
       }
+    },
+    {
+      "message": "TRANSFER: Missing executions for 24 transaction hashes",
+      "timestamp": "2025-07-01T04:31:39.425Z",
+      "data": {
+        "missingHashes": [
+          "0xce34ab67eac3768122c842f5783264839acd218aea626ddfd33246f14e91d89e",
+          "0xe5adf3b39aa43b568804783a13c276e8db318b7b43c4fe43f43888ffe86e029d",
+          "0x04643ab08676f4ac079a55f8285500a79d3344a43846accf32fd01aa4719bb0d",
+          "0xf9907a0487e02526fc48c923b17cb51561beae778404b24c9a2b223a7a9aab8c",
+          "0xe52ac5af390a12c466a00d9f39de17d92b0e321def22ed4f253e7540d5b60732",
+          "0x14f379326c54954a4be2273938619e1991703491f3dc51aa3fee91c12bfe68ef",
+          "0x9fc64c52007b0b5a238e0a213e9540f15c24ace27420aaafbfa803fd197dbefb",
+          "0x7b9a583fe36f6a538241a5a76da6ae32d38e37217e874c6bc3cc4e92080b29a2",
+          "0xc909a1a92d05cd5d41daed1aa565fbfcbf0936449c59ec13007816b9080f4618",
+          "0x16e20031de241298ccb732402e99e10af18d264dd1223fb71b93359baac2a8ab",
+          "0x7940e5461369c6e38a61e4a9ff107f70a3594ffd54ad5a68661dd275a3f46ddb",
+          "0x6e8fb8ee19a747b7c164ca895cc6f2994bdbc7933d1e9efaea323370943bd873",
+          "0x92a270623c6b54f4521adeb9f802195c00e910f7d214e727cdfd0a46eaf9b7c2",
+          "0xab118957fc01aa281468bbeb81899178f31741a3b5f684bd54ffdb1e13cb0ee4",
+          "0xc62fa4dc1c36d3364caa853a728d231aca2e2d2330cc9c3755d0a42db001e611",
+          "0xc055b0139aa54775f485a0247fb7fe4f345a5a3dbd27170d285f4b3b4a30d926",
+          "0x9a93306508ba54f4f90868d3a66300d096d1f76278f6fe2ed0b0134415e8e22f",
+          "0x23fda5c31128e2058e2988f0f8acca2baa0facb181cd1a6473f3ceb055c4acb0",
+          "0x0d04ebca4e0c3b34f36a4df3720654a3315573dde95ded5f00f8d92a513aaafc",
+          "0x670e21590cdaa1da69c84afac2aeda1005e311abf1118e1fa9aa1e309570e424",
+          "0xe129c4c921ca78ab591336192d795b62b5cae4cf85ebe82cdd195b82c8d8893d",
+          "0xdb5ac786e9bd78c6011415f6afe560a9a314f6e83dd0d13359cb0cf3b1542349",
+          "0x8b6c70954406db863699839a3825ab746c69c9beb9a596eac8dbfc5fc4760636",
+          "0x52ddd901d76c5e100087a0e6e07578a278639e4c51efdc81309c91ec335062e8"
+        ],
+        "totalComparisonEntries": 53,
+        "totalExecutions": 3
+      }
     }
   ],
   "EVERY_PERIOD": []
