@@ -25,6 +25,18 @@
           "to": "2025-07-01T07:47:33.643Z"
         }
       }
+    },
+    {
+      "message": "PRICE: Found 0 executions and 1 comparison entries in the last 10 minutes",
+      "timestamp": "2025-07-01T07:59:50.248Z",
+      "data": {
+        "executionsCount": 0,
+        "comparisonEntriesCount": 1,
+        "timeRange": {
+          "from": "2025-07-01T07:49:50.248Z",
+          "to": "2025-07-01T07:59:50.248Z"
+        }
+      }
     }
   ],
   "TRANSFER": [
@@ -775,12 +787,48 @@
         "totalComparisonEntries": 1212,
         "totalExecutions": 10
       }
+    },
+    {
+      "message": "TRANSFER: Missing executions for 26 transaction hashes",
+      "timestamp": "2025-07-01T07:59:50.248Z",
+      "data": {
+        "missingHashes": [
+          "0xdc02df9262c7b4d0447c9e3966d6a517270fbdddfe6d07b14189dc46f4f19335",
+          "0xb690b4844c679faace287b4b5e639b15d5f78b56f54cc89f39a7b6b13192b114",
+          "0x80c312f58a2efee24057f44c0d1ff825503011dc82bae555f4ead727d893548c",
+          "0x8f38a073a661d202080ed144545f1d27a48ed9b0bd40304437246f17b6c9f9bc",
+          "0x68e8f4eea3c59f84f0d417ffe096ff71c7b318295a3b2aeb9351a1b7d71e51c9",
+          "0x0e1db3b673a200e92c48b3dea86195445e219df7f8df118a324ea6e9062933f3",
+          "0x8461463aa170463ff96df3c13e9d2804647361c910ae3b72a613facc60e5bfeb",
+          "0x8e8494886a06b72cce5e852b24d11db01f6915edcc345089cd9343ffce292307",
+          "0xe3f10dcba3c5a2e66319038b552134f5521331c21561464c6c51d7734065627b",
+          "0x21fe649d97f21e1bc3488ee3fc08a32e6996b2b07e513f14a197abac96a2016e",
+          "0xb605fba6df7edc4cbd1f46cd157d709d14dc9caf784ea55152bc364c34d6b2a3",
+          "0x1328e6179ccde3fed7645dff8562ff1d922dd37133fdca4800954196c1034007",
+          "0x6a457dafd0190cba12e4420b47d054ad1c5f6f639acdf777891095aca5ba6630",
+          "0x32f3abd36bf38b1d6d7275bce2e609a8f941bf63097eebf24c4f04dc9e32d68a",
+          "0x4c36b4b0f416609f26a48cde83dbb124656dd3ee68543f8092979534cacf8d7d",
+          "0x647a8a5ac2cf4852ab6fb242493dce8868ed550fdbc4a17cf26e21c9e39c0307",
+          "0x14e8ab94520be2e834c1d3f294bccf9eb5d6bf9152f462863d12621156eaee09",
+          "0x4dd29f27b7351f2021fe6909a4220e98ee24e1d51235f9bf11205ce9f2d96ea6",
+          "0xb96380188899a981fb210630a03ce52ea0cf99e90d3ed59c6f555941a7160da4",
+          "0xe7497bae282c880a364495658da37dc5b2dd5cf10a5dc32ba2ce5c8daf85cecd",
+          "0xd3fde63551db4f0ea06dc05641d2f1eaf6fec0de067ddf0ef646f4ba0d7e0a3e",
+          "0x400293745029621b362b382a0057494e330269493bd655b11948ade43f345655",
+          "0xe5fc3ef71ef089532b4282a2ea73d29c0a068d90571fa83622d06428b87d8f1b",
+          "0x220d87f4bb08b126a88406c9c3e9d0dc878958bf06df4ba1c317e2f47a275406",
+          "0xf9cee8dc5d8aa07e435f118a923c9b4da529b3050e852a3e1683127f597c1bc7",
+          "0xf84b03ab8a41c7676f86a96d0dbd537a46909af333b98f78f56f000e8cb7ba7c"
+        ],
+        "totalComparisonEntries": 71,
+        "totalExecutions": 11
+      }
     }
   ],
   "EVERY_PERIOD": [
     {
       "message": "EVERY_PERIOD: Interval between execution 41582ace-85c3-4afe-8680-4d9a81e17dc7 and 80fdebc5-43d6-42fe-9f8c-f0673f461efb is 20 min, expected 10 min (+/- 1 min)",
-      "timestamp": "2025-07-01T07:47:33.643Z",
+      "timestamp": "2025-07-01T07:59:50.247Z",
       "data": {
         "executionIndex": "80fdebc5-43d6-42fe-9f8c-f0673f461efb",
         "actualInterval": 1199805,
