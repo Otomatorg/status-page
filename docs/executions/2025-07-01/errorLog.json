@@ -361,6 +361,18 @@
           "to": "2025-07-01T19:58:54.027Z"
         }
       }
+    },
+    {
+      "message": "PRICE: Found 0 executions and 1 comparison entries in the last 10 minutes",
+      "timestamp": "2025-07-01T20:31:42.679Z",
+      "data": {
+        "executionsCount": 0,
+        "comparisonEntriesCount": 1,
+        "timeRange": {
+          "from": "2025-07-01T20:21:42.679Z",
+          "to": "2025-07-01T20:31:42.679Z"
+        }
+      }
     }
   ],
   "TRANSFER": [
@@ -1826,12 +1838,58 @@
         "totalComparisonEntries": 21,
         "totalExecutions": 38
       }
+    },
+    {
+      "message": "TRANSFER: Missing executions for 36 transaction hashes",
+      "timestamp": "2025-07-01T20:31:42.681Z",
+      "data": {
+        "missingHashes": [
+          "0x63a2e97a55c20ff44a54e893348aa7619d5b88bf85d53595ef3bc760cedb6376",
+          "0x79b45328c4aeea22fa51d0e0f95a93bb14c1d61abc5f00fc6b28ce781a43a2b6",
+          "0x13c8d5b386d2e3826ec7cf0af2d6042fd7aa691360bfa3c78c5228ceeeef70d6",
+          "0x1a5290207a6dc2276d2425bf0f0f2665024c8c3e6daa37648148df5cdb6a8927",
+          "0x0d7211263956478e5fa512bfae0659541c81f929f2a55f1dea7d8f2261daecb9",
+          "0xd014631fe0899f61f100d7369a98f93ba0fa5ba975af39ee89396590ee085bc5",
+          "0xd82c2191baf8c23faa3e1d7281c2e38cedaf2846041848bf70bec8c19a935708",
+          "0x5a74937ac727150beb9d253faf892cfd40b400d6baa6390f6b19eac40fc65c3f",
+          "0x7d1d13941803e5d31859d53bdac57769ca050a1f9f54e2516983dd3624aac2ca",
+          "0x587e90de199d199739f941a6afa4889002f6c6e7dfcaca43961e2a6b8eaeabc4",
+          "0x9c95e39165f91429ed08f2b2b53b0e8580d4e5a410f06a1be2644f7955e3574a",
+          "0x35cecfad58d95074c33bc5db703533b4baedb942e522094d70d197497c74044b",
+          "0x389cd0c5999f01b6453488adf70eca9df4ab7807c052a70e126086f40f340a7e",
+          "0xa12e381e01e37ea73b2087b708816457404a0349bc33cbc29e2ba9fdde5bad79",
+          "0x778ce6526baec01c06ade0f7431c9cab4c37cb1b90a1bd9afd1495f1fbad940c",
+          "0x40dfd2a726abcb82f31e18a31102b47d43c49ab7dae73c170c6b76b3e2cf0ad3",
+          "0xcddc1992fc7ceae2adabd5916de4a1797574b6457c56da816591a5c927680e6b",
+          "0x1fb483b93857d62c044c04a3fae4dbd13feae83220f6003b3f12dbf301cb0e63",
+          "0x28dbcab3861fbbb7f68caeffa789fb0dd3795523ec2ec7e0fd209fb5a4c372d3",
+          "0xa99c979a8b6eb4f1c413e504985e944ca29793ba5437e53c86dabdaa0764875e",
+          "0x3ac67bcc46171ca4d993cf4cf3ed0dba6e03bcf2a2fc7104b56c816c42680881",
+          "0xf6e48468b52dd24f03ca9b6ce699cc535f6eb6e261fd2ea4f0fd000249be81fd",
+          "0x9f029783f41a631cdc9741ac515499bf2f1f37f1bddb0a5d9616eea37571f023",
+          "0xb06d1c5463767a8b6a1fac64c8d88dfd7ca8105e2da7aabe8bc89cd6135a90f2",
+          "0x7d27b7c37c6606d8d0d800ab0e37f621558dbc353a43212252e80d85d7acae84",
+          "0x64d02a634ff5e80d62905046f06be86c712f9d71b5c853b2bfc3d55b147f4bee",
+          "0x7ad046c18ee5cf575941e6dd01ec37ff5af471c016b249ae65a58636faa34da1",
+          "0x7204866fd79736a3eec382ea3e68689bad32000de2b2277f96b21c460a4d7cdd",
+          "0x3fcb0475960f63255cb6e669d709bee849ef7b4bcb9e982f3b4d04609eee44cc",
+          "0x30b1abed30c88f8c18727849d583abc02d2cd28503167010d67bcc4efef875e4",
+          "0x380e36c14bd472152a03c6519c7c35b671e7ea116b3ff0e89b33df6c6bedf329",
+          "0x5cf1124272b08d1061621f402e5e05e84385bc6779548fc8b242d96c2ff529c7",
+          "0x77e3efc3c0ef3f92a2b2024eb78a1aa248aaa41992e8d9ba9b81da6d136afa24",
+          "0x98f449e4e6b6a2c4b9e3e8176ecc399af76caf446693854a92f3d2083a0eccb3",
+          "0x6cd3e957d9f9856fb1a53b2a457368afee076868a62a00401e4e306ae0af0858",
+          "0xf64f28c3d9d9fa328ee870e4dc75b70f0382a10a99b682cde960252bfe9af872"
+        ],
+        "totalComparisonEntries": 101,
+        "totalExecutions": 39
+      }
     }
   ],
   "EVERY_PERIOD": [
     {
       "message": "EVERY_PERIOD: Interval between execution 41582ace-85c3-4afe-8680-4d9a81e17dc7 and 80fdebc5-43d6-42fe-9f8c-f0673f461efb is 20 min, expected 10 min (+/- 1 min)",
-      "timestamp": "2025-07-01T19:58:54.026Z",
+      "timestamp": "2025-07-01T20:31:42.678Z",
       "data": {
         "executionIndex": "80fdebc5-43d6-42fe-9f8c-f0673f461efb",
         "actualInterval": 1199805,
