@@ -163,12 +163,10 @@ class WorkflowMonitor {
           await this.ensureWorkflowExists(workflowType, workflowState);
           await this.ensureWorkflowRunning(workflowType, workflowState);
 
-          // Fetch comparison data
-          const [comparisonData, executions] = await Promise.all([
-            this.fetchComparisonData(workflowType),
-            this.fetchWorkflowExecutions(workflowType, workflowState)
-          ]);
-          
+          // Fetch data (executions go first)
+          const executions = await this.fetchWorkflowExecutions(workflowType, workflowState)
+          const comparisonData = await this.fetchComparisonData(workflowType)
+
           await dataService.saveComparisonData(currentDate, workflowType, comparisonData);
           await dataService.saveExecutionResult(currentDate, workflowType, executions);
 

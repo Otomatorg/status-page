@@ -52,7 +52,7 @@
   "notes": [],
   "settings": {
       "loopingType": "polling",
-      "limit": 1000000,
+      "limit": 1440,
       "period": 600000
   }
 }
