@@ -325,6 +325,18 @@
           "to": "2025-07-01T18:57:13.367Z"
         }
       }
+    },
+    {
+      "message": "PRICE: Found 0 executions and 1 comparison entries in the last 10 minutes",
+      "timestamp": "2025-07-01T19:22:18.192Z",
+      "data": {
+        "executionsCount": 0,
+        "comparisonEntriesCount": 1,
+        "timeRange": {
+          "from": "2025-07-01T19:12:18.192Z",
+          "to": "2025-07-01T19:22:18.192Z"
+        }
+      }
     }
   ],
   "TRANSFER": [
@@ -1747,12 +1759,23 @@
         "totalComparisonEntries": 17,
         "totalExecutions": 35
       }
+    },
+    {
+      "message": "TRANSFER: Missing executions for 1 transaction hashes",
+      "timestamp": "2025-07-01T19:22:18.193Z",
+      "data": {
+        "missingHashes": [
+          "0x7c41c2ecf8f4411a5e12f2dd9076bec00c532a773d3fbbca144385c296e8a791"
+        ],
+        "totalComparisonEntries": 1,
+        "totalExecutions": 36
+      }
     }
   ],
   "EVERY_PERIOD": [
     {
       "message": "EVERY_PERIOD: Interval between execution 41582ace-85c3-4afe-8680-4d9a81e17dc7 and 80fdebc5-43d6-42fe-9f8c-f0673f461efb is 20 min, expected 10 min (+/- 1 min)",
-      "timestamp": "2025-07-01T18:57:13.366Z",
+      "timestamp": "2025-07-01T19:22:18.191Z",
       "data": {
         "executionIndex": "80fdebc5-43d6-42fe-9f8c-f0673f461efb",
         "actualInterval": 1199805,
