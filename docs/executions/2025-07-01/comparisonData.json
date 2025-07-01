@@ -10,12 +10,52 @@
   ],
   "TRANSFER": [
     {
-      "from": "0xff8AB822b8A853b01F9a9E9465321d6Fe77c9D2F",
-      "to": "0x535C1c2bc3099ff6ea418Ed0593c98ad14005E89",
-      "value": "28800000000000000000000",
-      "blockNumber": 25612199,
-      "transactionHash": "0xa4741d3351fe6bccfae7407fedf92d8b9e74568f9c567d53e44dda6a68f7457d",
-      "dateCreated": "2025-07-01T17:46:43.141Z"
+      "from": "0xBA12222222228d8Ba445958a75a0704d566BF2C8",
+      "to": "0xC8b940E3865bcf65c1AAcB961da4C6B9f13F9CDb",
+      "value": "11229194544453174963",
+      "blockNumber": 25612372,
+      "transactionHash": "0xee528b4233fc18901e0a4ea0f6d86ae4d2dcdf54ea427975e771776e62742e9f",
+      "dateCreated": "2025-07-01T17:59:17.152Z"
+    },
+    {
+      "from": "0xC0037098afcd022A984fdEdc1A74cfA1d3914674",
+      "to": "0xC8b940E3865bcf65c1AAcB961da4C6B9f13F9CDb",
+      "value": "483185039276889068",
+      "blockNumber": 25612372,
+      "transactionHash": "0xee528b4233fc18901e0a4ea0f6d86ae4d2dcdf54ea427975e771776e62742e9f",
+      "dateCreated": "2025-07-01T17:59:17.152Z"
+    },
+    {
+      "from": "0xC8b940E3865bcf65c1AAcB961da4C6B9f13F9CDb",
+      "to": "0x844c00562d5DA9754b571501c903807D84b37E40",
+      "value": "2148050415656093743",
+      "blockNumber": 25612372,
+      "transactionHash": "0xee528b4233fc18901e0a4ea0f6d86ae4d2dcdf54ea427975e771776e62742e9f",
+      "dateCreated": "2025-07-01T17:59:17.152Z"
+    },
+    {
+      "from": "0xC8b940E3865bcf65c1AAcB961da4C6B9f13F9CDb",
+      "to": "0x17298f6e971921E7C2a03Bd2f3140c883fee47d2",
+      "value": "2471422657030313922",
+      "blockNumber": 25612372,
+      "transactionHash": "0xee528b4233fc18901e0a4ea0f6d86ae4d2dcdf54ea427975e771776e62742e9f",
+      "dateCreated": "2025-07-01T17:59:17.152Z"
+    },
+    {
+      "from": "0xC8b940E3865bcf65c1AAcB961da4C6B9f13F9CDb",
+      "to": "0xf8922025FBD6304d990d06562950D33db1248af1",
+      "value": "6017621883969438060",
+      "blockNumber": 25612372,
+      "transactionHash": "0xee528b4233fc18901e0a4ea0f6d86ae4d2dcdf54ea427975e771776e62742e9f",
+      "dateCreated": "2025-07-01T17:59:17.152Z"
+    },
+    {
+      "from": "0xC8b940E3865bcf65c1AAcB961da4C6B9f13F9CDb",
+      "to": "0x59Dc9154Da0800B45F5c70620E89E6a37EB60423",
+      "value": "1075284627074218306",
+      "blockNumber": 25612372,
+      "transactionHash": "0xee528b4233fc18901e0a4ea0f6d86ae4d2dcdf54ea427975e771776e62742e9f",
+      "dateCreated": "2025-07-01T17:59:17.152Z"
     }
   ],
   "PRICE": [
@@ -210,6 +250,12 @@
       "contractAddress": "0x4200000000000000000000000000000000000006",
       "chainId": 8453,
       "dateCreated": "2025-07-01T17:46:48.348Z"
+    },
+    {
+      "price": 2436.093901132727,
+      "contractAddress": "0x4200000000000000000000000000000000000006",
+      "chainId": 8453,
+      "dateCreated": "2025-07-01T17:59:22.277Z"
     }
   ],
   "STAKESTONE": [
