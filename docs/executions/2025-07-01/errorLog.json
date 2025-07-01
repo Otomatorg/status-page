@@ -80,6 +80,35 @@
         "totalComparisonEntries": 33,
         "totalExecutions": 4
       }
+    },
+    {
+      "message": "TRANSFER: Missing executions for 19 transaction hashes",
+      "timestamp": "2025-07-01T05:36:55.444Z",
+      "data": {
+        "missingHashes": [
+          "0x8f19505dc6b4d26c85b2d4215413299570ea3cae17f515699089f8cc5c01f89d",
+          "0x2a93ca6ddf6593cc49b2a1454598cfde9d7b1999848b0a044a998d67e0c056f8",
+          "0x5daa5c97b42612a6652fbba14e555dd553c51f81440a27e88b856e604803007b",
+          "0x99ac168a725ea887b8dd6014feb85c9da5602468480a5a452092d76f4630832c",
+          "0xac2f3bd118b21b7b475cae9f03963c456007f613e012b9dd70e6d21fa0d25d80",
+          "0x62a09ba3fad7eeb399b572edfd801be2e8e51286e398280aca2bc753e8d8cc94",
+          "0xebdad87a8b1c861b8286c4e0b0f83aa49dc4106a23fd9f6bc4b5d5496369b9cf",
+          "0x7835ac502788a78236d3f98223595b0957b97f953d82070453e11f8ae33fcc9a",
+          "0xa15fbbab8e7d6cad5f4babd692ed7d5f674d41b7e1aa14f77612047011bb62a5",
+          "0x589729068a11973d9459b4bc3248cb4b7e108db4ae7c064fa9f7ec08237f7ad5",
+          "0x7ef5ddd433549fcc1098575ed32e63f00130a6c9b01c25806b2888c5df9bdd8d",
+          "0xc371a6302eed1d6b882c308518d8c5fb3537ddb5df8d674c519e1a143e247eb1",
+          "0x34096cb45194a6008bca75fff6656254d0a5faee5a2a04290d8aa5be508f35b2",
+          "0x68ee8a17d1971b8467bb55ba2624b44a0c86ecc1a3c0f57332573ff24d3420e0",
+          "0x57b466c4983423b0313b1969a43e2a2859f08afbc8ecd416be78a4d48e0cb1bf",
+          "0x59e3ff460ea7a88279306e1e449190a331ad099713b6e1eb1b76ba9753662f8d",
+          "0xd3dc2047ba3fc9dc54538500da6815d828b9ad4ee5b031d228cb01dc536f4a7c",
+          "0x39a6ecbfe4aa05ed051c3af8347199878822fa76cf5955bdbcc4a92375e75939",
+          "0x53cd1f132c679bf084f09a0264816df5c772c13173c6fca63fdafc6da72a9db3"
+        ],
+        "totalComparisonEntries": 49,
+        "totalExecutions": 5
+      }
     }
   ],
   "EVERY_PERIOD": []
