@@ -205,6 +205,18 @@
           "to": "2025-07-01T14:47:25.198Z"
         }
       }
+    },
+    {
+      "message": "PRICE: Found 0 executions and 1 comparison entries in the last 10 minutes",
+      "timestamp": "2025-07-01T14:59:58.880Z",
+      "data": {
+        "executionsCount": 0,
+        "comparisonEntriesCount": 1,
+        "timeRange": {
+          "from": "2025-07-01T14:49:58.880Z",
+          "to": "2025-07-01T14:59:58.880Z"
+        }
+      }
     }
   ],
   "TRANSFER": [
@@ -1445,12 +1457,32 @@
         "totalComparisonEntries": 26,
         "totalExecutions": 25
       }
+    },
+    {
+      "message": "TRANSFER: Missing executions for 10 transaction hashes",
+      "timestamp": "2025-07-01T14:59:58.880Z",
+      "data": {
+        "missingHashes": [
+          "0xe7f77b3141a58c6e110b2742bf5bb4342f03bd76d2e282c5890a9f952d79d001",
+          "0x4d4c8f668454455c18fc64e10c72d125a6f6ffb3533cd719040fd752c987021e",
+          "0xf6aa0619ae4fe7904e804db2c6a8bcf3140853251288b35c2d4757c052295880",
+          "0x53c1c5848b4e727a8489863c9fd84049ee8ef8749be4ce350ec9348b3abd6d56",
+          "0x0ddbf1051b4148e0c776d08822f937620d506f21fcedc0a757db851e5a2a0015",
+          "0xfdf853f59a739e84c84231ef2657d16e41c484e22773122e8d8367258b645b06",
+          "0xaa5bf849fa42b62edc5d92a140f8621738aad9fa5aafa5c8cefbe3bc8904ddad",
+          "0xc85a216494b356d492dd533cb688ba980f3d2fed313c0a047678c8e981e3dbce",
+          "0x89e6bb475e9a08e8fceb804e25b205331529ba01a366fe2951273fce0d6363a4",
+          "0x28a3956e22cf9df4c2eeeee48787d19d77b077d48beff598d7ebe1aa1e8b83d9"
+        ],
+        "totalComparisonEntries": 60,
+        "totalExecutions": 26
+      }
     }
   ],
   "EVERY_PERIOD": [
     {
       "message": "EVERY_PERIOD: Interval between execution 41582ace-85c3-4afe-8680-4d9a81e17dc7 and 80fdebc5-43d6-42fe-9f8c-f0673f461efb is 20 min, expected 10 min (+/- 1 min)",
-      "timestamp": "2025-07-01T14:47:25.197Z",
+      "timestamp": "2025-07-01T14:59:58.880Z",
       "data": {
         "executionIndex": "80fdebc5-43d6-42fe-9f8c-f0673f461efb",
         "actualInterval": 1199805,
