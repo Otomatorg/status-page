@@ -157,6 +157,18 @@
           "to": "2025-07-02T18:39:35.913Z"
         }
       }
+    },
+    {
+      "message": "PRICE: Found 0 executions and 1 comparison entries in the last 10 minutes",
+      "timestamp": "2025-07-02T18:57:50.611Z",
+      "data": {
+        "executionsCount": 0,
+        "comparisonEntriesCount": 1,
+        "timeRange": {
+          "from": "2025-07-02T18:47:50.611Z",
+          "to": "2025-07-02T18:57:50.611Z"
+        }
+      }
     }
   ],
   "TRANSFER": [
@@ -1237,6 +1249,37 @@
           "0x8f392ebaf5adeb046538cd8e5c6af2d663105e43e75ab79a307bd0b8d4454202"
         ],
         "totalComparisonEntries": 14,
+        "totalExecutions": 36
+      }
+    },
+    {
+      "message": "TRANSFER: Missing executions for 21 transaction hashes",
+      "timestamp": "2025-07-02T18:57:50.611Z",
+      "data": {
+        "missingHashes": [
+          "0x2a126c131a35ce43d3b0221ade52fac5d24f25fb4b74bf1d2bd0b05178fd52ba",
+          "0xf862b335ef94b77122ec89eabad138a860486835ed44ddce7a5b1df7f0c44009",
+          "0x96e2a1b4689040158e7198755157766c1969216ddf3158bdc3e0f5081a0972a5",
+          "0x2b5cffd1343948c6f0312aa7863d2edb0f5b7ecf2743e7d02e606b801f46bb37",
+          "0x93179fc5e75f3da978892300a1aaa1efce581aea6d1416c1c837ca2d7d7772bd",
+          "0x19bba26ec6af34c4be246dc02e632e5ae1d7307b62f74c3732a383d6cd69e020",
+          "0xb8bbd7f8f6a23f0bbd32fae610e48c3263aecca438e540e9a2f7e2394f5dbc8c",
+          "0x80da80f8c035a75cb55b2fa47e0fe7272ade5f98f47a00ed102e179f1fc0ae55",
+          "0x5c261fd74baf1698ad63ac7dae5f5e493f4f96864a8c510bdcb60ed1deee9f97",
+          "0x4cfb2204ad851d1fbfde72b5d9dadb99a6e14035f1648650cd2c667926526d4e",
+          "0x43a1d0a898bdc8a3c3adfd377625341b39dd9974a23a33eb822c83da88608d84",
+          "0xfa62cd9b82d9c2e3b2448911a44d030ca2ab2a287bea106b106ff1c188127e30",
+          "0x31f2c21640e5505dbbcad63b64d7c4940dd5e0ffb4a84488f5c8fd789a731280",
+          "0x25750f8ccc0b1b936f3ceba619e78131cb96dc5e0f68e2edbe7a79ba3c3aaa42",
+          "0xe7af3e5cc03e2dcdf9f9dad5c1e85c5a19e778cdb4eff350fbdc1954938b0b1f",
+          "0xb35baa76c4294c1fc319749e7345c29f96a954e9bb7a5171a51da0247718841a",
+          "0xa95fae1dfdb6715a2de744a1c18e1c959f2f8ee15217d949f3d60ebe3c025187",
+          "0xeeeb83ebffae22d6c4b5f91a102a1c02530c2e0bf99940316f1bcfe9b291dc28",
+          "0x062ba20d5f9bdc6bc1deeccb78fb04d243e9df56dc94f0f3e450723d09cce1da",
+          "0xee70bea40838b8eb4b9a9caa52eaeff43f549321d5616871095942daac39d0b1",
+          "0x04e7c1529ca8b73cbd10b28bd2ba7b2a64bdfc3634c583a28fcfb36a0243fd68"
+        ],
+        "totalComparisonEntries": 52,
         "totalExecutions": 36
       }
     }
