@@ -552,6 +552,23 @@
         "totalComparisonEntries": 11,
         "totalExecutions": 19
       }
+    },
+    {
+      "message": "TRANSFER: Missing executions for 7 transaction hashes",
+      "timestamp": "2025-07-02T11:33:23.070Z",
+      "data": {
+        "missingHashes": [
+          "0x26897c2bde11bf1bc46576e22a03c408844305a63bad7bb4afd5f311e4b72c8e",
+          "0x479541b82581b7ceb202fcbca3f16ae9b6c9bb8bd911d64e701df069af481769",
+          "0x26ed6634edeb03e17cc38adc3d39e424a2a26966525f92d601cad367a1a7fb51",
+          "0xf006d0fbf868aa840415b7a97a23a73010b103e6f126484d5724d6b92f8cb0c2",
+          "0x2553b84b0fcb2df024cf2a619360573c7eb715a1c8b52643a9d633529ba17310",
+          "0xa50c04c308bf1b6d56767cb4c225f61b8d97afbe1631d249e8ac04e96f90919c",
+          "0xea6bcaa99814eb22f0d520694063ef78f4573b87b7e9a69c9109be1b75dd63d5"
+        ],
+        "totalComparisonEntries": 15,
+        "totalExecutions": 20
+      }
     }
   ],
   "EVERY_PERIOD": []
