@@ -97,6 +97,18 @@
           "to": "2025-07-02T16:32:46.603Z"
         }
       }
+    },
+    {
+      "message": "PRICE: Found 0 executions and 1 comparison entries in the last 10 minutes",
+      "timestamp": "2025-07-02T16:57:03.371Z",
+      "data": {
+        "executionsCount": 0,
+        "comparisonEntriesCount": 1,
+        "timeRange": {
+          "from": "2025-07-02T16:47:03.371Z",
+          "to": "2025-07-02T16:57:03.371Z"
+        }
+      }
     }
   ],
   "TRANSFER": [
@@ -1053,6 +1065,60 @@
         ],
         "totalComparisonEntries": 48,
         "totalExecutions": 31
+      }
+    },
+    {
+      "message": "TRANSFER: Missing executions for 44 transaction hashes",
+      "timestamp": "2025-07-02T16:57:03.372Z",
+      "data": {
+        "missingHashes": [
+          "0xc443701bee3a97593863545979f067478e55ba8114e1c9ba36d7bafb896eafc5",
+          "0x8778933551ac35594883506e0002323da6de77f27a9acbf68d7858a567352e9b",
+          "0x27569b5e435e3d9e58ef0a81425899e2405df37420c2cfa6dc117c7415cc4b1a",
+          "0x0666640772c60fd1635b31f7fbb19ba60e85621f1e194e050fb06627549fb615",
+          "0x2ce93299e2d4b1ac10c343e6e5acd327fd574592cafb772511be87ec923dca4d",
+          "0xa1592c6492621eef2282f550e24803099048624d0ad076408f22bfa1102ff9f1",
+          "0xe606aeccfb9fc9226791740d14e802b6c83d6368c16ec0c0a65e55e9c1fb0ea3",
+          "0x7f008ea54c6f7e95996c059505e4aa836bb70c43625a24b9757442cbbb09d127",
+          "0x6e130da815d393e6ccdef4cf693193c281504e390a1185b116014377e5423898",
+          "0x90b529febbefb465a8f187e406e91126cfacf5ddce83949b9900c1d1d098964e",
+          "0xd76f0aba04e6f810ce92a3a1eb3e587bcbeecb21ec8b7ae643f05def396aaa99",
+          "0x7f65b2ad26f922354a25b2b4850a3a04472f881914e5ce45578b0474053fcc26",
+          "0x6de124c702f3c85b8b6408cea5f90df81f8c1e781efa44e840b4d02a94a657cb",
+          "0x2788e5f3e7b0ed6d5bc3940b4984d1fed8e909a594d177f6f9c9deb67eab79e3",
+          "0xbd21f0a4f669e4c70692e247bf14da0538df1a3f77ceb104b4d994fe003eab1a",
+          "0x4a88a1b195e6557ff6d6739be344a5f4335767bdc5f3edc63e6a5970ca3fb76a",
+          "0x5acebd7fdbeaf7543569649069b676f752a74f7d6fedaaa67963feacf94afd80",
+          "0x919c9ce1b2d31bc26e20a0d7f3e28a729048840d62e0db9890d2a61c425d8876",
+          "0x4684214c6f1026c43bf69f9c3ace8657b537fc07eb707dbb7d3aaed4de3ec387",
+          "0xd9897af1501c9a6ccb298ad5772e4c25cdc5daa1fdd388825454f4c092460ab8",
+          "0x14983b6853f4b42b9489351849565d721efdf5dbd6bd7fc3a4aed2c6d8bf8f04",
+          "0x03a953f2bffaabb0bd6ccd7e8c9edc71bed466b77c06166b065a5a8a41ce96db",
+          "0x4e064cf55f800dfdc7149db7364331e44239c6ce431ec6468105929fab3af57d",
+          "0x6a32079c1e0967c9db5df35c8249926de736856f1b4213964e6c833ab1b200e7",
+          "0xe01515604dc54ac1813f526f5ad5b2f82857751f39d8262d1c0befa1bd9a78b6",
+          "0x89059034e98b3eca5adc6c688f444d62f0d8b73198210c0b35fbd49f638f9420",
+          "0x19e1fcb8352f2b43bccea50d557ea0803b951b875e5a86f45d51a09a04c40095",
+          "0xfad6ce9c76f4e4d7939e862c4ef1ef65b66cd0b27ed7fe48f95634103773b29c",
+          "0x730d20719e055a810987b183deb9ccffc1ab896e1c470042805fa27aa8e70190",
+          "0x90f5a9deba75ebccfd7d7c14ec3f33d80e16de7095c65d71e65ef664b26c79f8",
+          "0x26c879baf9fe9ec02842e6d57bb60935a6c78b8b14799eceaa2bd710be2c78bc",
+          "0x70f06e2d51818ed9e915d72f165b87a59178745cfe3ac54dc420a65c45dee889",
+          "0x766054f74265417c10d60c051f5df1901bbcccb16fd5998fccca9843efa2e682",
+          "0x8f5a7bf3a45812733396049d10628de278d0847b1b5d21dcae3351f6a8abbb8c",
+          "0x20457a84b8bfb35b76d9e9f9032aa7b35550fb6ee3121c3af92f9196f19c3224",
+          "0x61d88cff2eeaa574b1394f1840590bf1eccf832b7141f92386a83da0dd5e45ae",
+          "0xd9dcb92f79eaa93b4df24474f2fdcd65f1352a363232bbdb85ec52db974af3f9",
+          "0x6e882f2fb67d181916af405254c9b96dae3f4740a52fc2aa1e0d074ca0bf977a",
+          "0x924b0a3b69d6ec960f2fd91b7b740166a68b381c9d56c435e341cb1c82085ccb",
+          "0xdb575a8716989f862c10238aeb6bc80ef4a49975d67c34a701c58cd78f0aa0e9",
+          "0xa24ca300e3d80576ff4dc21fc0eb923670a40cdd6251b9caa1f48869c27a9510",
+          "0xbbb19c49b9c90a81a3a256aea77299d3f3bb1e2aa58137b592c6557a7ddb4f7a",
+          "0x397a117cd1228696807077a22a7f6220d9d3f5547ea83c6d9002cfeeb75bde82",
+          "0xf1c6b1f884218fc7bcbea214efc16d66e631d2367ad9d7c3e2e838e11c293e6b"
+        ],
+        "totalComparisonEntries": 171,
+        "totalExecutions": 32
       }
     }
   ],
