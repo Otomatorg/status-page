@@ -1,0 +1,199 @@
+{
+  "BALANCE": [
+    {
+      "id": "7980174e-98ca-42e8-b1a8-b24a107d6c62",
+      "workflow": {
+        "id": "9a08311d-d3fa-48e9-844b-5449e74a2d54",
+        "name": "Workflow - Balance",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "active",
+      "count": 1,
+      "totalUnseen": 0,
+      "notification": null,
+      "dateCreated": "2025-07-02T02:17:38.169Z",
+      "dateModified": "2025-07-02T02:17:38.171Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 5,
+          "output": {
+            "balance": 789.95584
+          },
+          "param": {
+            "abi": {
+              "parameters": {
+                "account": "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045"
+              }
+            },
+            "chainId": 8453,
+            "condition": "neq",
+            "comparisonValue": "{{history.0.value}}",
+            "contractAddress": "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913"
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null,
+          "param": {
+            "time": "1000"
+          }
+        }
+      ]
+    }
+  ],
+  "TRANSFER": [
+    {
+      "id": "7f5ff5cf-460c-4bbc-a10f-5572ab775a3f",
+      "workflow": {
+        "id": "41645b8b-770d-41e8-ab67-bad0985e7aee",
+        "name": "Workflow - Transfer",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "active",
+      "count": 1,
+      "totalUnseen": 0,
+      "notification": null,
+      "dateCreated": "2025-07-02T02:17:40.201Z",
+      "dateModified": "2025-07-02T02:17:40.202Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 1,
+          "output": null,
+          "param": {
+            "abi": {
+              "parameters": {
+                "to": null,
+                "from": null,
+                "value": null
+              }
+            },
+            "chainId": 34443,
+            "contractAddress": "0xDfc7C877a950e49D2610114102175A06C2e3167a"
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null,
+          "param": {
+            "time": "1000"
+          }
+        }
+      ]
+    }
+  ],
+  "PRICE": [
+    {
+      "id": "3ad72abc-50a7-4a28-9b04-98e9d64dc5b8",
+      "workflow": {
+        "id": "5c8b1c45-41c1-4596-acaa-33d4b5cfe7d4",
+        "name": "Workflow - Price",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "active",
+      "count": 1,
+      "totalUnseen": 0,
+      "notification": null,
+      "dateCreated": "2025-07-02T02:17:42.271Z",
+      "dateModified": "2025-07-02T02:17:42.273Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 10,
+          "output": null,
+          "param": {
+            "chainId": 8453,
+            "currency": "USD",
+            "condition": "neq",
+            "comparisonValue": "{{history.0.value}}",
+            "contractAddress": "0x4200000000000000000000000000000000000006"
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null,
+          "param": {
+            "time": "1000"
+          }
+        }
+      ]
+    }
+  ],
+  "STAKESTONE": [
+    {
+      "id": "23d7c77f-b581-42db-b8e7-f8629999ea7d",
+      "workflow": {
+        "id": "121a23dc-14ee-47ba-8aa2-b839fb98d2cf",
+        "name": "Workflow - StakeStone",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "active",
+      "count": 1,
+      "totalUnseen": 0,
+      "notification": null,
+      "dateCreated": "2025-07-02T02:17:45.341Z",
+      "dateModified": "2025-07-02T02:17:45.345Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 63,
+          "output": null,
+          "param": {
+            "chainId": 1,
+            "condition": "neq",
+            "comparisonValue": "{{history.0.value}}",
+            "contractAddress": "0x8f88ae3798e8ff3d0e0de7465a0863c9bbb577f0"
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null,
+          "param": {
+            "time": "1000"
+          }
+        }
+      ]
+    }
+  ],
+  "EVERY_PERIOD": [
+    {
+      "id": "d55477e6-601a-4bb6-9ff1-6b149d454f52",
+      "workflow": {
+        "id": "66a41606-1a34-452e-ad8d-c8916c5c8540",
+        "name": "Workflow - Every Period",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 1,
+      "totalUnseen": 0,
+      "notification": null,
+      "dateCreated": "2025-07-02T02:17:47.576Z",
+      "dateModified": "2025-07-02T02:17:47.578Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 18,
+          "output": null,
+          "param": {
+            "limit": 1440,
+            "period": 600000,
+            "timeout": null
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null,
+          "param": {
+            "time": "1000"
+          }
+        }
+      ]
+    }
+  ]
+}
