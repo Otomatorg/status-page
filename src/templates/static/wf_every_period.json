@@ -16,7 +16,7 @@
           "parameters": {
               "period": 600000,
               "timeout": null,
-              "limit": 1440
+              "limit": 144
           },
           "frontendHelpers": {},
           "position": {

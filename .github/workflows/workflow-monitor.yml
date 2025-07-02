@@ -28,9 +28,8 @@ jobs:
     - name: Install dependencies
       run: npm ci
         
-    - name: Pull and update data
+    - name: Run monitoring and update data
       run: |
-        git pull origin main --rebase
         npm run build:verify
         {
           set +e
