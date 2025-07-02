@@ -49,6 +49,18 @@
           "to": "2025-07-02T14:48:28.168Z"
         }
       }
+    },
+    {
+      "message": "PRICE: Found 0 executions and 1 comparison entries in the last 10 minutes",
+      "timestamp": "2025-07-02T15:01:07.494Z",
+      "data": {
+        "executionsCount": 0,
+        "comparisonEntriesCount": 1,
+        "timeRange": {
+          "from": "2025-07-02T14:51:07.494Z",
+          "to": "2025-07-02T15:01:07.494Z"
+        }
+      }
     }
   ],
   "TRANSFER": [
@@ -862,6 +874,31 @@
         ],
         "totalComparisonEntries": 9,
         "totalExecutions": 27
+      }
+    },
+    {
+      "message": "TRANSFER: Missing executions for 15 transaction hashes",
+      "timestamp": "2025-07-02T15:01:07.494Z",
+      "data": {
+        "missingHashes": [
+          "0xab7b5e609baf2ab806f9fe5a3d4029142da1fbab2d30ec1f812418afcb1ced81",
+          "0x00481d7e940f9caa9f0bccc2ae54990d1228ad95eb67500eaf0416147bec4965",
+          "0xba51d869ca874c9716bf3c31bbef5043fa9a7f32de7910fd8eaf298a0fcdf9f3",
+          "0xe040a04ec64ad5395d10d905e6100038f4ca9eac7e5e88c7d1ebe582f8e13610",
+          "0x2fe4e7188d1e0e8e746ac79a3691676cfc568ccd637fb2824dc25bf76d413f4d",
+          "0x823cfd20fd082382116b59dcc587450d66b6e99f3e1144a093560b8cad834a76",
+          "0xc42e11c133b960af3ffec5a928ef55b94d19da552a70ccb111d3efe8a278648b",
+          "0xb404d1ff4c753ac5ff558d8e60a32a0b5e18a71ceb8b63ab4e314fe262c46f80",
+          "0xdd7792054951db61a6d45b7dd53734e068e55ad9400a2f5a31430648a7d40da3",
+          "0x1b3be71daeb78d068b05050dc8df96cc37d59d2ded5855f451c19cc30e4a1068",
+          "0x47d11c9fa4acb539e9c3c66181c6f4d90f0770cb0b126baad2d68119c4e4646f",
+          "0x47ff133f4d0bb9247b545b4535f6141dc8420c440b1ad5f51e94945e34e26de3",
+          "0x9d9d6c425d1f2951b9c4f46d0e12ef48cb1f96e541626749e0e9b94ecdb00ec0",
+          "0x25fa54b9a2da0f9a222d1bba098daf9337fb5c47488fe1ec23f2608427437057",
+          "0xccfcb0f54f7d1951cc6a1d9d28204e605bbdf8f22946e78cf6b5f3a941659df5"
+        ],
+        "totalComparisonEntries": 22,
+        "totalExecutions": 28
       }
     }
   ],
