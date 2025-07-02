@@ -1,0 +1,38 @@
+name: Clear Old Logs
+
+on:
+  schedule:
+    - cron: '0 2 * * *'  # Run daily at 2 AM UTC
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  clear-logs:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.PAT_TOKEN }}
+        
+    - name: Clear old execution logs
+      run: |
+        # Calculate date 21 days ago
+        cutoff_date=$(date -d '21 days ago' +'%Y-%m-%d')
+        
+        # Find and remove directories older than 21 days
+        find docs/executions -type d -name "????-??-??" | while read dir; do
+          dir_date=$(basename "$dir")
+          if [[ "$dir_date" < "$cutoff_date" ]]; then
+            echo "Removing old execution logs: $dir"
+            rm -rf "$dir"
+          fi
+        done
+        
+    - name: Commit and push changes
+      run: |
+        git config --global user.name 'GitHub Action'
+        git config --global user.email 'action@github.com'
+        git add .
+        git commit -m "Clear old execution logs older than 21 days" || echo "No changes to commit"
+        git push https://${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository }}.git main || echo "Push failed"

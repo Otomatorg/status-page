@@ -4,6 +4,7 @@ class AdminDashboard {
     this.currentErrorFilter = 'all';
     this.workflows = {};
     this.errorLogs = {};
+    this.collapsedDays = new Set(); // Track which days are collapsed
     this.init();
   }
 
@@ -42,8 +43,8 @@ class AdminDashboard {
 
   async loadErrorLogs() {
     try {
-      // Load error logs for the last 7 days
-      const errorLogs = {};
+      // Load error logs for the last 7 days, organized by date
+      const errorLogsByDate = {};
       const today = new Date();
       
       for (let i = 0; i < 7; i++) {
@@ -55,15 +56,20 @@ class AdminDashboard {
           const response = await fetch(`./executions/${dateString}/errorLog.json`);
           if (response.ok) {
             const dayLogs = await response.json();
-            // Merge the logs, using date as prefix to avoid conflicts
-            Object.entries(dayLogs).forEach(([type, errors]) => {
-              if (!errorLogs[type]) {
-                errorLogs[type] = [];
-              }
-              if (Array.isArray(errors)) {
-                errorLogs[type].push(...errors);
-              }
-            });
+            
+            // Only add if there are actual errors for this day
+            if (Object.keys(dayLogs).length > 0) {
+              errorLogsByDate[dateString] = {
+                date: dateString,
+                displayDate: date.toLocaleDateString('en-US', { 
+                  weekday: 'long', 
+                  year: 'numeric', 
+                  month: 'long', 
+                  day: 'numeric' 
+                }),
+                logs: dayLogs
+              };
+            }
           }
         } catch (dayError) {
           console.warn(`Failed to load error logs for ${dateString}:`, dayError);
@@ -71,7 +77,7 @@ class AdminDashboard {
         }
       }
       
-      this.errorLogs = errorLogs;
+      this.errorLogs = errorLogsByDate;
     } catch (error) {
       console.error('Failed to load error logs:', error);
       // Don't throw error here, just set empty error logs
@@ -191,7 +197,7 @@ class AdminDashboard {
       container.innerHTML = `
         <div class="no-errors">
           <div style="font-size: 2rem; margin-bottom: 0.5rem;">✅</div>
-          <div>No errors found</div>
+          <div>No errors found in the last 7 days</div>
         </div>
       `;
       return;
@@ -208,34 +214,132 @@ class AdminDashboard {
       container.innerHTML = `
         <div class="no-errors">
           <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🔍</div>
-          <div>No errors found for ${this.currentErrorFilter}</div>
+          <div>No errors found for ${this.currentErrorFilter} in the last 7 days</div>
         </div>
       `;
       return;
     }
 
-    filteredErrors.forEach(error => {
-      const card = this.createErrorCard(error);
-      container.appendChild(card);
+    // Group errors by date
+    const errorsByDate = this.groupErrorsByDate(filteredErrors);
+    
+    // Create day sections
+    Object.entries(errorsByDate).forEach(([date, dayData]) => {
+      const daySection = this.createDaySection(date, dayData.displayDate, dayData.errors);
+      container.appendChild(daySection);
     });
   }
 
   getAllErrors() {
     const allErrors = [];
     
-    Object.entries(this.errorLogs).forEach(([type, errors]) => {
-      if (Array.isArray(errors)) {
-        errors.forEach(error => {
-          allErrors.push({
-            ...error,
-            type: type
+    Object.entries(this.errorLogs).forEach(([date, dayData]) => {
+      Object.entries(dayData.logs).forEach(([type, errors]) => {
+        if (Array.isArray(errors)) {
+          errors.forEach(error => {
+            allErrors.push({
+              ...error,
+              type: type,
+              date: date,
+              displayDate: dayData.displayDate
+            });
           });
-        });
-      }
+        }
+      });
     });
     
     // Sort by timestamp (most recent first)
     return allErrors.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+  }
+
+  groupErrorsByDate(errors) {
+    const grouped = {};
+    
+    errors.forEach(error => {
+      if (!grouped[error.date]) {
+        grouped[error.date] = {
+          displayDate: error.displayDate,
+          errors: []
+        };
+      }
+      grouped[error.date].errors.push(error);
+    });
+    
+    // Sort dates (most recent first)
+    const sortedEntries = Object.entries(grouped).sort(([a], [b]) => new Date(b) - new Date(a));
+    return Object.fromEntries(sortedEntries);
+  }
+
+  createDaySection(date, displayDate, errors) {
+    const section = document.createElement('div');
+    section.className = 'day-section';
+    section.dataset.date = date;
+    
+    // Create day header
+    const header = document.createElement('div');
+    header.className = 'day-header';
+    header.style.cursor = 'pointer';
+    
+    const isToday = date === new Date().toISOString().split('T')[0];
+    const isYesterday = date === new Date(Date.now() - 24*60*60*1000).toISOString().split('T')[0];
+    
+    let dayLabel = displayDate;
+    if (isToday) dayLabel = `Today (${displayDate})`;
+    else if (isYesterday) dayLabel = `Yesterday (${displayDate})`;
+    
+    const isCollapsed = this.collapsedDays.has(date);
+    
+    header.innerHTML = `
+      <div class="day-header-content">
+        <span class="collapse-icon" style="transform: ${isCollapsed ? 'rotate(-90deg)' : 'rotate(0deg)'}">▼</span>
+        <h3 class="day-title">${dayLabel}</h3>
+      </div>
+      <span class="error-count">${errors.length} error${errors.length !== 1 ? 's' : ''}</span>
+    `;
+    
+    // Add click handler for collapse/expand
+    header.addEventListener('click', () => {
+      this.toggleDaySection(date);
+    });
+    
+    section.appendChild(header);
+    
+    // Create errors container for this day
+    const errorsContainer = document.createElement('div');
+    errorsContainer.className = 'day-errors';
+    
+    if (isCollapsed) {
+      errorsContainer.style.display = 'none';
+      section.classList.add('collapsed');
+    }
+    
+    errors.forEach(error => {
+      const card = this.createErrorCard(error);
+      errorsContainer.appendChild(card);
+    });
+    
+    section.appendChild(errorsContainer);
+    return section;
+  }
+
+  toggleDaySection(date) {
+    const section = document.querySelector(`[data-date="${date}"]`);
+    const errorsContainer = section.querySelector('.day-errors');
+    const collapseIcon = section.querySelector('.collapse-icon');
+    
+    if (this.collapsedDays.has(date)) {
+      // Expand
+      this.collapsedDays.delete(date);
+      errorsContainer.style.display = '';
+      section.classList.remove('collapsed');
+      collapseIcon.style.transform = 'rotate(0deg)';
+    } else {
+      // Collapse
+      this.collapsedDays.add(date);
+      errorsContainer.style.display = 'none';
+      section.classList.add('collapsed');
+      collapseIcon.style.transform = 'rotate(-90deg)';
+    }
   }
 
   createErrorCard(error) {
