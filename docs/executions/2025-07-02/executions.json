@@ -682,12 +682,57 @@
         "nodes": null,
         "state": "active"
       },
-      "state": "active",
+      "state": "completed",
       "count": 15,
       "totalUnseen": 0,
       "notification": null,
       "dateCreated": "2025-07-02T09:32:22.345Z",
       "dateModified": "2025-07-02T09:32:22.455Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 1,
+          "output": {
+            "to": "0xBA12222222228d8Ba445958a75a0704d566BF2C8",
+            "from": "0xAa72b201Fc49eDB5764E8dcBaE9fCeD3eAb1364F",
+            "value": 32451.05842066658,
+            "transactionHash": "0xf8da3b82e23c9cbcb8f558f9ed18112e9f350076d8fdefb57d873d73e0644fa2"
+          },
+          "param": {
+            "abi": {
+              "parameters": {
+                "to": null,
+                "from": null,
+                "value": null
+              }
+            },
+            "chainId": 34443,
+            "contractAddress": "0xDfc7C877a950e49D2610114102175A06C2e3167a"
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null,
+          "param": {
+            "time": "1000"
+          }
+        }
+      ]
+    },
+    {
+      "id": "e7281b3c-64f9-4060-ae20-a8798beb0861",
+      "workflow": {
+        "id": "41645b8b-770d-41e8-ab67-bad0985e7aee",
+        "name": "Workflow - Transfer",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "active",
+      "count": 16,
+      "totalUnseen": 0,
+      "notification": null,
+      "dateCreated": "2025-07-02T09:51:44.896Z",
+      "dateModified": "2025-07-02T09:51:44.901Z",
       "status": "new",
       "nodeOutputs": [
         {
@@ -2560,6 +2605,90 @@
           }
         }
       ]
+    },
+    {
+      "id": "b0b4756a-9908-47d4-972c-9c19f80577da",
+      "workflow": {
+        "id": "5c8b1c45-41c1-4596-acaa-33d4b5cfe7d4",
+        "name": "Workflow - Price",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 46,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "e91b0f22-7cee-428b-8cce-b884e2f04920",
+        "isSeen": false
+      },
+      "dateCreated": "2025-07-02T09:47:43.288Z",
+      "dateModified": "2025-07-02T09:47:43.731Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 10,
+          "output": {
+            "price": 2457.821482473597,
+            "currency": "USD"
+          },
+          "param": {
+            "chainId": 8453,
+            "currency": "USD",
+            "condition": "neq",
+            "comparisonValue": "{{history.0.value}}",
+            "contractAddress": "0x4200000000000000000000000000000000000006"
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null,
+          "param": {
+            "time": "1000"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ac89e2d2-3be7-4604-8946-1e0dd538a9cf",
+      "workflow": {
+        "id": "5c8b1c45-41c1-4596-acaa-33d4b5cfe7d4",
+        "name": "Workflow - Price",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 46,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "f0a7b9b7-b896-4b9a-a51c-05578a6485ad",
+        "isSeen": false
+      },
+      "dateCreated": "2025-07-02T09:37:43.578Z",
+      "dateModified": "2025-07-02T09:37:43.999Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 10,
+          "output": {
+            "price": 2457.040740838714,
+            "currency": "USD"
+          },
+          "param": {
+            "chainId": 8453,
+            "currency": "USD",
+            "condition": "neq",
+            "comparisonValue": "{{history.0.value}}",
+            "contractAddress": "0x4200000000000000000000000000000000000006"
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null,
+          "param": {
+            "time": "1000"
+          }
+        }
+      ]
     }
   ],
   "STAKESTONE": [
@@ -4205,6 +4334,80 @@
       },
       "dateCreated": "2025-07-02T09:07:48.341Z",
       "dateModified": "2025-07-02T09:07:48.513Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 18,
+          "output": null,
+          "param": {
+            "limit": 1440,
+            "period": 600000,
+            "timeout": null
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null,
+          "param": {
+            "time": "1000"
+          }
+        }
+      ]
+    },
+    {
+      "id": "71c1b35c-c70f-4f2e-99f3-8d9815ee5691",
+      "workflow": {
+        "id": "66a41606-1a34-452e-ad8d-c8916c5c8540",
+        "name": "Workflow - Every Period",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 46,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "1879807d-f934-48fd-9fa7-d90a118fa461",
+        "isSeen": false
+      },
+      "dateCreated": "2025-07-02T09:47:48.312Z",
+      "dateModified": "2025-07-02T09:47:48.505Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 18,
+          "output": null,
+          "param": {
+            "limit": 1440,
+            "period": 600000,
+            "timeout": null
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null,
+          "param": {
+            "time": "1000"
+          }
+        }
+      ]
+    },
+    {
+      "id": "1b3cdc71-c3f3-490a-959d-f1dd35819d40",
+      "workflow": {
+        "id": "66a41606-1a34-452e-ad8d-c8916c5c8540",
+        "name": "Workflow - Every Period",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 46,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "74de12be-17fc-484c-ba50-8780f7660fe8",
+        "isSeen": false
+      },
+      "dateCreated": "2025-07-02T09:37:48.641Z",
+      "dateModified": "2025-07-02T09:37:48.819Z",
       "status": "new",
       "nodeOutputs": [
         {
