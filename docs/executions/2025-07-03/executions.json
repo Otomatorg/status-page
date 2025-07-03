@@ -6015,6 +6015,43 @@
           }
         }
       ]
+    },
+    {
+      "id": "77c78573-ff27-4448-855b-38ec83c42b1d",
+      "workflow": {
+        "id": "9459500b-5df5-4008-912f-fd5849864c6c",
+        "name": "Workflow - Every Period",
+        "nodes": null,
+        "state": "active"
+      },
+      "state": "completed",
+      "count": 130,
+      "totalUnseen": 2,
+      "notification": {
+        "id": "eae85ff6-9235-49b5-8019-b52e5f103584",
+        "isSeen": false
+      },
+      "dateCreated": "2025-07-03T23:48:19.555Z",
+      "dateModified": "2025-07-03T23:48:19.731Z",
+      "status": "new",
+      "nodeOutputs": [
+        {
+          "blockId": 18,
+          "output": null,
+          "param": {
+            "limit": 144,
+            "period": 600000,
+            "timeout": null
+          }
+        },
+        {
+          "blockId": 100010,
+          "output": null,
+          "param": {
+            "time": "1000"
+          }
+        }
+      ]
     }
   ]
 }
