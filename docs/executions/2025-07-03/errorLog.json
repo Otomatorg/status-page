@@ -23,6 +23,18 @@
           "to": "2025-07-03T13:36:38.686Z"
         }
       }
+    },
+    {
+      "message": "BALANCE: Found 0 executions and 1 comparison entries in the last 10 minutes",
+      "timestamp": "2025-07-03T13:54:16.465Z",
+      "data": {
+        "executionsCount": 0,
+        "comparisonEntriesCount": 1,
+        "timeRange": {
+          "from": "2025-07-03T13:44:16.465Z",
+          "to": "2025-07-03T13:54:16.465Z"
+        }
+      }
     }
   ],
   "STAKESTONE": [],
@@ -288,6 +300,18 @@
         "timeRange": {
           "from": "2025-07-03T13:26:38.686Z",
           "to": "2025-07-03T13:36:38.686Z"
+        }
+      }
+    },
+    {
+      "message": "PRICE: Found 0 executions and 1 comparison entries in the last 10 minutes",
+      "timestamp": "2025-07-03T13:54:16.465Z",
+      "data": {
+        "executionsCount": 0,
+        "comparisonEntriesCount": 1,
+        "timeRange": {
+          "from": "2025-07-03T13:44:16.465Z",
+          "to": "2025-07-03T13:54:16.465Z"
         }
       }
     }
@@ -609,6 +633,20 @@
         ],
         "totalComparisonEntries": 26,
         "totalExecutions": 23
+      }
+    },
+    {
+      "message": "TRANSFER: Missing executions for 4 transaction hashes",
+      "timestamp": "2025-07-03T13:54:16.465Z",
+      "data": {
+        "missingHashes": [
+          "0x8a05e57f38a0020aec483aace5f0bb1b9ae71d5349aa0856221f43f7b5ce91a3",
+          "0x9bc52b196317d9b0f9177202b7a9a5405d657ea02584cc0ef7ae1619d67ea21d",
+          "0x6446611e728cf0ee055ffbc56ee8ee4af8e0bded3108c5e571cf99baddb31ecd",
+          "0x2cb273de15344945024acc3f5a70b64a420d7d8837d97d72d0cefead9487ebca"
+        ],
+        "totalComparisonEntries": 6,
+        "totalExecutions": 24
       }
     }
   ],
