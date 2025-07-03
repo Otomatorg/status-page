@@ -6,8 +6,8 @@
   "state": "inactive",
   "settings": {
       "loopingType": "subscription",
-      "limit": 1000000,
-      "timeout": 0
+      "limit": 10000000,
+      "timeout": 86400000
   },
   "dateCreated": "2025-06-26T07:23:51.829Z",
   "dateModified": "2025-06-26T07:51:57.689Z",
