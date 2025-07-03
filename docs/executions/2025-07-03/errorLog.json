@@ -205,6 +205,18 @@
           "to": "2025-07-03T10:58:16.200Z"
         }
       }
+    },
+    {
+      "message": "PRICE: Found 0 executions and 1 comparison entries in the last 10 minutes",
+      "timestamp": "2025-07-03T11:25:11.858Z",
+      "data": {
+        "executionsCount": 0,
+        "comparisonEntriesCount": 1,
+        "timeRange": {
+          "from": "2025-07-03T11:15:11.858Z",
+          "to": "2025-07-03T11:25:11.858Z"
+        }
+      }
     }
   ],
   "TRANSFER": [
