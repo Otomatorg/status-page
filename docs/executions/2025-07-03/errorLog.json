@@ -47,6 +47,18 @@
           "to": "2025-07-03T16:32:23.751Z"
         }
       }
+    },
+    {
+      "message": "BALANCE: Found 0 executions and 1 comparison entries in the last 10 minutes",
+      "timestamp": "2025-07-03T16:56:56.809Z",
+      "data": {
+        "executionsCount": 0,
+        "comparisonEntriesCount": 1,
+        "timeRange": {
+          "from": "2025-07-03T16:46:56.809Z",
+          "to": "2025-07-03T16:56:56.809Z"
+        }
+      }
     }
   ],
   "STAKESTONE": [],
@@ -396,6 +408,18 @@
         "timeRange": {
           "from": "2025-07-03T16:22:23.751Z",
           "to": "2025-07-03T16:32:23.751Z"
+        }
+      }
+    },
+    {
+      "message": "PRICE: Found 0 executions and 1 comparison entries in the last 10 minutes",
+      "timestamp": "2025-07-03T16:56:56.809Z",
+      "data": {
+        "executionsCount": 0,
+        "comparisonEntriesCount": 1,
+        "timeRange": {
+          "from": "2025-07-03T16:46:56.809Z",
+          "to": "2025-07-03T16:56:56.809Z"
         }
       }
     }
@@ -805,6 +829,23 @@
           "0x50f60f8a0787c781fbf1aefe400f2f00d75cdc402523e8e1df3a21b5c10cbe05"
         ],
         "totalComparisonEntries": 8,
+        "totalExecutions": 24
+      }
+    },
+    {
+      "message": "TRANSFER: Missing executions for 7 transaction hashes",
+      "timestamp": "2025-07-03T16:56:56.809Z",
+      "data": {
+        "missingHashes": [
+          "0x147e458335854c26ff75c972635046426e86f8235448b08fddd33dcb1eb2c07e",
+          "0xdd252358cca8327ce810b5d22e28cf20034909692d905d7658e79b6056f53f40",
+          "0x3fead8bb4fe3e95e43e3d6d4b613e1a5c023398cd894e5cdc2be973e240ea864",
+          "0xe2205ba4581ebe834203e20bbbf90aed26b3d66da7ac888adef2718b6aeb834d",
+          "0xe716ddec5a6c1718d87e3226665a64681552271607991efd814fcaea3d0069e7",
+          "0x9f8e0fd41ed3504385269aafa3696a65c5937c8f9092e339c0af4ed5a985d58c",
+          "0x2719a9af2bd4ff601066a5bd7bd1a214c03bea860e7c90aa2d050ad938b712d6"
+        ],
+        "totalComparisonEntries": 19,
         "totalExecutions": 24
       }
     }
