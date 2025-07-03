@@ -11,6 +11,18 @@
           "to": "2025-07-03T12:55:45.480Z"
         }
       }
+    },
+    {
+      "message": "BALANCE: Found 0 executions and 1 comparison entries in the last 10 minutes",
+      "timestamp": "2025-07-03T13:36:38.686Z",
+      "data": {
+        "executionsCount": 0,
+        "comparisonEntriesCount": 1,
+        "timeRange": {
+          "from": "2025-07-03T13:26:38.686Z",
+          "to": "2025-07-03T13:36:38.686Z"
+        }
+      }
     }
   ],
   "STAKESTONE": [],
@@ -264,6 +276,18 @@
         "timeRange": {
           "from": "2025-07-03T12:45:45.480Z",
           "to": "2025-07-03T12:55:45.480Z"
+        }
+      }
+    },
+    {
+      "message": "PRICE: Found 0 executions and 1 comparison entries in the last 10 minutes",
+      "timestamp": "2025-07-03T13:36:38.686Z",
+      "data": {
+        "executionsCount": 0,
+        "comparisonEntriesCount": 1,
+        "timeRange": {
+          "from": "2025-07-03T13:26:38.686Z",
+          "to": "2025-07-03T13:36:38.686Z"
         }
       }
     }
@@ -567,6 +591,24 @@
         ],
         "totalComparisonEntries": 49,
         "totalExecutions": 22
+      }
+    },
+    {
+      "message": "TRANSFER: Missing executions for 8 transaction hashes",
+      "timestamp": "2025-07-03T13:36:38.686Z",
+      "data": {
+        "missingHashes": [
+          "0x9a3ac2609fbd52800024a21741dafb085ea4001551cb162cd6f9831c7c3deab0",
+          "0x1d038c064e5e201383fca710637f68735b62c3911f958d339e22d97830601063",
+          "0x524e31b5267b9bf4ff3adee882d82673464452d5dec967400bb20d1be57626a2",
+          "0xc761d2e86d5b074995a93648f8b79960d0630e0700aa1c3c5b3d7492b21deb23",
+          "0xb0a34ce3ee3c7ab6bb4207435f795ec98ec90abdf771b5eec07b6d261b135bc1",
+          "0xa499c4c0331cf3d123ce5bb8829613faae223ced93fe82fdbe8e786fd91523b3",
+          "0xb8259f31020b236bba5ebb6fd9486ae624edcfd771766709508f7597df6baa77",
+          "0x4d95cd8fbe9085066d09ec776893530973c11c70b3de521295e2708ca3da3b52"
+        ],
+        "totalComparisonEntries": 26,
+        "totalExecutions": 23
       }
     }
   ],
