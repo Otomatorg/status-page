@@ -578,6 +578,18 @@
           "to": "2025-07-03T20:59:31.383Z"
         }
       }
+    },
+    {
+      "message": "PRICE: Found 0 executions and 1 comparison entries in the last 10 minutes",
+      "timestamp": "2025-07-03T21:27:23.140Z",
+      "data": {
+        "executionsCount": 0,
+        "comparisonEntriesCount": 1,
+        "timeRange": {
+          "from": "2025-07-03T21:17:23.139Z",
+          "to": "2025-07-03T21:27:23.139Z"
+        }
+      }
     }
   ],
   "TRANSFER": [
@@ -1177,6 +1189,17 @@
           "0xba8b5a3b26a4a0cf9c24a2490aec8b116e3848bfa6811a9b47753638dc07354d"
         ],
         "totalComparisonEntries": 30,
+        "totalExecutions": 24
+      }
+    },
+    {
+      "message": "TRANSFER: Missing executions for 1 transaction hashes",
+      "timestamp": "2025-07-03T21:27:23.140Z",
+      "data": {
+        "missingHashes": [
+          "0xe848e3a7b4800280353f6b6b75e844dfdba1dc875371627355a1a27dcf7cd979"
+        ],
+        "totalComparisonEntries": 2,
         "totalExecutions": 24
       }
     }
