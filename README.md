@@ -5,3 +5,5 @@ This source monitors workflows running on the Otomato backend. It fetches workfl
 - For STAKESTONE, BALANCE, PRICE: Fetches latest data; if there is a new data point, verifies that at least one execution occurred for it.
 
 The goal is to detect missing or delayed executions and log errors for any mismatches.
+
+This source will be imported as submodule in microservice.
