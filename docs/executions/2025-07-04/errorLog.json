@@ -17,7 +17,117 @@
         "totalComparisonEntries": 18,
         "totalExecutions": 1
       }
+    },
+    {
+      "message": "TRANSFER: Missing executions for 7 transaction hashes",
+      "timestamp": "2025-07-04T02:46:13.000Z",
+      "data": {
+        "missingHashes": [
+          "0x2d71198c73cc43e9d4f98200eb070509ae42799cf5465f3dc38722abbeca05ef",
+          "0x433853a80f22aeed336bcbe59a5b6e9005dfa772894ae2a38a7891c051c1710f",
+          "0x1d2b3439090150e37053054e1dd2dd216b64c4b8eae013df6a9d620610e487c9",
+          "0x10b092653c25a395792053ebfef55e92025e31fe69fbc9a5361ff18494cbc8f5",
+          "0x051326cbcf0487e4fb6e9a8b3dbf13f088205211a07e7fa74f530a803b2b0ac6",
+          "0x9857ccd13e1b9dc8c47102f4bd48b5221dbb2829659bd9c8d0ba24c318304a61",
+          "0x72e2531ef2bf87f0f1f3574ad8274ccfe811b18cd9bb3b25e38b762787a9ceab"
+        ],
+        "totalComparisonEntries": 13,
+        "totalExecutions": 2
+      }
     }
   ],
-  "EVERY_PERIOD": []
+  "EVERY_PERIOD": [
+    {
+      "message": "EVERY_PERIOD: Interval between execution 7ac23c4e-39c0-4516-a99f-c7c98be46769 and d3f0345c-e6c0-44d2-97aa-beed5c015596 is 29 min, expected 10 min (+/- 1 min)",
+      "timestamp": "2025-07-04T02:46:13.000Z",
+      "data": {
+        "executionIndex": "d3f0345c-e6c0-44d2-97aa-beed5c015596",
+        "actualInterval": 1721661,
+        "expectedInterval": 600000
+      }
+    }
+  ],
+  "SERVER": [
+    {
+      "message": "API Error for /workflows/1989b07c-f38e-4d90-ad49-571dc5bd9c7f: HTTP 500: Internal Server Error",
+      "timestamp": "2025-07-04T02:46:09.980Z",
+      "data": {
+        "endpoint": "/workflows/1989b07c-f38e-4d90-ad49-571dc5bd9c7f",
+        "error": "HTTP 500: Internal Server Error",
+        "stack": "Error: HTTP 500: Internal Server Error\n    at ApiService.makeRequest (file:///Users/thuanvo/Documents/Work/otomato/status-page/dist/services/apiService.js:20:23)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async WorkflowMonitor.ensureWorkflowExists (file:///Users/thuanvo/Documents/Work/otomato/status-page/dist/monitor.js:14:37)\n    at async WorkflowMonitor.runMonitoring (file:///Users/thuanvo/Documents/Work/otomato/status-page/dist/monitor.js:132:21)"
+      }
+    },
+    {
+      "message": "API Error for /workflows/d79e8363-663a-42ad-8bc7-cb9f443cc698: HTTP 500: Internal Server Error",
+      "timestamp": "2025-07-04T02:46:10.491Z",
+      "data": {
+        "endpoint": "/workflows/d79e8363-663a-42ad-8bc7-cb9f443cc698",
+        "error": "HTTP 500: Internal Server Error",
+        "stack": "Error: HTTP 500: Internal Server Error\n    at ApiService.makeRequest (file:///Users/thuanvo/Documents/Work/otomato/status-page/dist/services/apiService.js:20:23)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async WorkflowMonitor.ensureWorkflowExists (file:///Users/thuanvo/Documents/Work/otomato/status-page/dist/monitor.js:14:37)\n    at async WorkflowMonitor.runMonitoring (file:///Users/thuanvo/Documents/Work/otomato/status-page/dist/monitor.js:132:21)"
+      }
+    },
+    {
+      "message": "API Error for /executions/32c4a5f3-f29d-40c4-b394-5b527062caa4: HTTP 404: Not Found",
+      "timestamp": "2025-07-04T02:46:11.323Z",
+      "data": {
+        "endpoint": "/executions/32c4a5f3-f29d-40c4-b394-5b527062caa4",
+        "error": "HTTP 404: Not Found",
+        "stack": "Error: HTTP 404: Not Found\n    at ApiService.makeRequest (file:///Users/thuanvo/Documents/Work/otomato/status-page/dist/services/apiService.js:20:23)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async DataService.saveExecutionResult (file:///Users/thuanvo/Documents/Work/otomato/status-page/dist/services/dataService.js:91:49)\n    at async WorkflowMonitor.runMonitoring (file:///Users/thuanvo/Documents/Work/otomato/status-page/dist/monitor.js:138:21)"
+      }
+    },
+    {
+      "message": "API Error for /workflows/bed516a4-0df8-432c-9eee-dd9eec6dac15: HTTP 500: Internal Server Error",
+      "timestamp": "2025-07-04T02:46:11.369Z",
+      "data": {
+        "endpoint": "/workflows/bed516a4-0df8-432c-9eee-dd9eec6dac15",
+        "error": "HTTP 500: Internal Server Error",
+        "stack": "Error: HTTP 500: Internal Server Error\n    at ApiService.makeRequest (file:///Users/thuanvo/Documents/Work/otomato/status-page/dist/services/apiService.js:20:23)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async WorkflowMonitor.ensureWorkflowExists (file:///Users/thuanvo/Documents/Work/otomato/status-page/dist/monitor.js:14:37)\n    at async WorkflowMonitor.runMonitoring (file:///Users/thuanvo/Documents/Work/otomato/status-page/dist/monitor.js:132:21)"
+      }
+    },
+    {
+      "message": "API Error for /executions/915a424f-2d66-4130-b301-941ed920da6b: HTTP 404: Not Found",
+      "timestamp": "2025-07-04T02:46:12.314Z",
+      "data": {
+        "endpoint": "/executions/915a424f-2d66-4130-b301-941ed920da6b",
+        "error": "HTTP 404: Not Found",
+        "stack": "Error: HTTP 404: Not Found\n    at ApiService.makeRequest (file:///Users/thuanvo/Documents/Work/otomato/status-page/dist/services/apiService.js:20:23)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async DataService.saveExecutionResult (file:///Users/thuanvo/Documents/Work/otomato/status-page/dist/services/dataService.js:91:49)\n    at async WorkflowMonitor.runMonitoring (file:///Users/thuanvo/Documents/Work/otomato/status-page/dist/monitor.js:138:21)"
+      }
+    },
+    {
+      "message": "API Error for /workflows/3dde3fe7-e610-4e3f-9f9d-faff17ce95e6: HTTP 500: Internal Server Error",
+      "timestamp": "2025-07-04T02:46:12.355Z",
+      "data": {
+        "endpoint": "/workflows/3dde3fe7-e610-4e3f-9f9d-faff17ce95e6",
+        "error": "HTTP 500: Internal Server Error",
+        "stack": "Error: HTTP 500: Internal Server Error\n    at ApiService.makeRequest (file:///Users/thuanvo/Documents/Work/otomato/status-page/dist/services/apiService.js:20:23)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async WorkflowMonitor.ensureWorkflowExists (file:///Users/thuanvo/Documents/Work/otomato/status-page/dist/monitor.js:14:37)\n    at async WorkflowMonitor.runMonitoring (file:///Users/thuanvo/Documents/Work/otomato/status-page/dist/monitor.js:132:21)"
+      }
+    },
+    {
+      "message": "API Error for /executions/09b62381-682c-4c40-b265-32b7a8be228f: HTTP 404: Not Found",
+      "timestamp": "2025-07-04T02:46:12.789Z",
+      "data": {
+        "endpoint": "/executions/09b62381-682c-4c40-b265-32b7a8be228f",
+        "error": "HTTP 404: Not Found",
+        "stack": "Error: HTTP 404: Not Found\n    at ApiService.makeRequest (file:///Users/thuanvo/Documents/Work/otomato/status-page/dist/services/apiService.js:20:23)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async DataService.saveExecutionResult (file:///Users/thuanvo/Documents/Work/otomato/status-page/dist/services/dataService.js:91:49)\n    at async WorkflowMonitor.runMonitoring (file:///Users/thuanvo/Documents/Work/otomato/status-page/dist/monitor.js:138:21)"
+      }
+    },
+    {
+      "message": "API Error for /workflows/1db6890b-9ea8-4916-94e8-260e50164919: HTTP 500: Internal Server Error",
+      "timestamp": "2025-07-04T02:46:12.832Z",
+      "data": {
+        "endpoint": "/workflows/1db6890b-9ea8-4916-94e8-260e50164919",
+        "error": "HTTP 500: Internal Server Error",
+        "stack": "Error: HTTP 500: Internal Server Error\n    at ApiService.makeRequest (file:///Users/thuanvo/Documents/Work/otomato/status-page/dist/services/apiService.js:20:23)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async WorkflowMonitor.ensureWorkflowExists (file:///Users/thuanvo/Documents/Work/otomato/status-page/dist/monitor.js:14:37)\n    at async WorkflowMonitor.runMonitoring (file:///Users/thuanvo/Documents/Work/otomato/status-page/dist/monitor.js:132:21)"
+      }
+    },
+    {
+      "message": "API Error for /executions/7ac23c4e-39c0-4516-a99f-c7c98be46769: HTTP 404: Not Found",
+      "timestamp": "2025-07-04T02:46:12.936Z",
+      "data": {
+        "endpoint": "/executions/7ac23c4e-39c0-4516-a99f-c7c98be46769",
+        "error": "HTTP 404: Not Found",
+        "stack": "Error: HTTP 404: Not Found\n    at ApiService.makeRequest (file:///Users/thuanvo/Documents/Work/otomato/status-page/dist/services/apiService.js:20:23)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async DataService.saveExecutionResult (file:///Users/thuanvo/Documents/Work/otomato/status-page/dist/services/dataService.js:91:49)\n    at async WorkflowMonitor.runMonitoring (file:///Users/thuanvo/Documents/Work/otomato/status-page/dist/monitor.js:138:21)"
+      }
+    }
+  ]
 }
