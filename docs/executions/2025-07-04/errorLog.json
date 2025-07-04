@@ -1,7 +1,32 @@
 {
   "BALANCE": [],
   "STAKESTONE": [],
-  "PRICE": [],
+  "PRICE": [
+    {
+      "message": "PRICE: Found 0 executions and 1 comparison entries in the last 10 minutes",
+      "timestamp": "2025-07-04T02:56:12.643Z",
+      "data": {
+        "executionsCount": 0,
+        "comparisonEntriesCount": 1,
+        "timeRange": {
+          "from": "2025-07-04T02:46:12.643Z",
+          "to": "2025-07-04T02:56:12.643Z"
+        }
+      }
+    },
+    {
+      "message": "PRICE: Found 0 executions and 1 comparison entries in the last 10 minutes",
+      "timestamp": "2025-07-04T03:06:13.031Z",
+      "data": {
+        "executionsCount": 0,
+        "comparisonEntriesCount": 1,
+        "timeRange": {
+          "from": "2025-07-04T02:56:13.031Z",
+          "to": "2025-07-04T03:06:13.031Z"
+        }
+      }
+    }
+  ],
   "TRANSFER": [
     {
       "message": "TRANSFER: Missing executions for 5 transaction hashes",
