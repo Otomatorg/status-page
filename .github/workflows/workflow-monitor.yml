@@ -1,42 +1,42 @@
-name: Workflow Monitor
+# name: Workflow Monitor
 
-on:
-  schedule:
-    - cron: '*/10 * * * *'  # Run every 10 minutes
-  workflow_dispatch:  # Allow manual trigger
+# on:
+#   schedule:
+#     - cron: '*/10 * * * *'  # Run every 10 minutes
+#   workflow_dispatch:  # Allow manual trigger
 
-jobs:
-  monitor:
-    runs-on: ubuntu-latest
+# jobs:
+#   monitor:
+#     runs-on: ubuntu-latest
     
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-      with:
-        token: ${{ secrets.PAT_TOKEN }}
+#     steps:
+#     - name: Checkout repository
+#       uses: actions/checkout@v4
+#       with:
+#         token: ${{ secrets.PAT_TOKEN }}
         
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: 22
-        cache: 'npm'
+#     - name: Setup Node.js
+#       uses: actions/setup-node@v4
+#       with:
+#         node-version: 22
+#         cache: 'npm'
 
-    - name: Echo multiline secret to file
-      run: |
-        echo -e '${{ secrets.ENV }}' >> .env
+#     - name: Echo multiline secret to file
+#       run: |
+#         echo -e '${{ secrets.ENV }}' >> .env
         
-    - name: Install dependencies
-      run: npm ci
+#     - name: Install dependencies
+#       run: npm ci
         
-    - name: Run monitoring and update data
-      run: |
-        npm run build:verify
-        {
-          set +e
-          git config --global user.name 'GitHub Action'
-          git config --global user.email 'action@github.com'
-          git add .
-          git commit -m "Update data: $(date +'%Y-%m-%d %H:%M:%S')" || echo "No changes to commit"
-          git push https://${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository }}.git main || echo "Push failed"
-          set -e
-        }
+#     - name: Run monitoring and update data
+#       run: |
+#         npm run build:verify
+#         {
+#           set +e
+#           git config --global user.name 'GitHub Action'
+#           git config --global user.email 'action@github.com'
+#           git add .
+#           git commit -m "Update data: $(date +'%Y-%m-%d %H:%M:%S')" || echo "No changes to commit"
+#           git push https://${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository }}.git main || echo "Push failed"
+#           set -e
+#         }

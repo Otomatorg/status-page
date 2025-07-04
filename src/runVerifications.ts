@@ -23,7 +23,7 @@ function loadJson(filePath: string) {
 }
 
 // Main
-function main() {
+export function runVerifications() {
     const currentDate = new Date().toISOString().split('T')[0];
     const comparisonPath = path.join(__dirname, `../docs/executions/${currentDate}/comparisonData.json`);
     const executionsPath = path.join(__dirname, `../docs/executions/${currentDate}/executions.json`);
@@ -195,5 +195,5 @@ function main() {
     fs.writeFileSync(errorLogPath, JSON.stringify(errorLog, null, 2));
 }
 
-main();
+// runVerifications();
 

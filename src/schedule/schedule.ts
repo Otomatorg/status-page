@@ -1,26 +1,9 @@
-import express from 'express';
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
 import { exec } from 'child_process';
 import path from 'path';
 import fs from 'fs';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const app = express();
-const port = process.env.PORT || 3001;
-
-// Serve static files from docs directory
-app.use(express.static('docs'));
-
-app.get('/', (req, res) => {
-  res.sendFile('docs/index.html', { root: __dirname });
-});
-
-// --- Scheduler Integration ---
 // Helper to run shell commands and log output
-function runCommand(command) {
+function runCommand(command: string) {
   exec(command, (error, stdout, stderr) => {
     if (error) {
       console.error(`[${new Date().toISOString()}] Error:`, error);
@@ -33,7 +16,7 @@ function runCommand(command) {
 
 // --- Monitoring Job (every 10 minutes) ---
 function runMonitoringJob() {
-  console.log(`[${new Date().toISOString()}] Running monitoring job...`);
+  // Equivalent to: npm run build:verify
   runCommand('npm run build:verify');
 }
 
@@ -59,16 +42,16 @@ function clearOldLogsJob() {
 }
 
 // --- Scheduling ---
-function schedule(fn, intervalMs, runAtStart = false) {
+function schedule(fn: () => void, intervalMs: number, runAtStart = false) {
   if (runAtStart) fn();
   setInterval(fn, intervalMs);
 }
 
 // Run monitoring job every 10 minutes
-schedule(runMonitoringJob, 10 * 60 * 1000, true);
+schedule(runMonitoringJob, 10 * 60 * 1000, false);
 
 // Run clear logs job daily at 2 AM
-function scheduleDailyAt(hour, minute, fn) {
+function scheduleDailyAt(hour: number, minute: number, fn: () => void) {
   function getNextTimeout() {
     const now = new Date();
     const next = new Date(now);
@@ -82,10 +65,3 @@ function scheduleDailyAt(hour, minute, fn) {
   }, getNextTimeout());
 }
 scheduleDailyAt(2, 0, clearOldLogsJob);
-
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
-  console.log(`Scheduler started:`);
-  console.log(`  - Monitoring job: every 10 minutes`);
-  console.log(`  - Log cleanup: daily at 2 AM`);
-});

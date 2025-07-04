@@ -7,7 +7,7 @@ import { apiService } from './services/apiService.js';
 import { dataService } from './services/dataService.js';
 import { dataFetcher } from './verifiers/workflowVerifiers.js';
 
-class WorkflowMonitor {
+export class WorkflowMonitor {
   private async ensureWorkflowExists(workflowType: string, workflowState: WorkflowState): Promise<boolean> {
 
     // If workflow already exists, verify and update status in one call
@@ -186,8 +186,8 @@ class WorkflowMonitor {
   }
 }
 
-// Run monitor if called directly
-if (import.meta.url === `file://${process.argv[1]}`) {
-  const monitor = new WorkflowMonitor();
-  monitor.runMonitoring().catch(console.error);
-}
+// // Run monitor if called directly
+// if (import.meta.url === `file://${process.argv[1]}`) {
+//   const monitor = new WorkflowMonitor();
+//   monitor.runMonitoring().catch(console.error);
+// }
