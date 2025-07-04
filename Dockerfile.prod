@@ -7,6 +7,7 @@ RUN mkdir -p /tmp/build/
 COPY *.json /tmp/build/
 COPY *.js /tmp/build/
 COPY src/ /tmp/build/src
+COPY docs/ /tmp/build/docs
 
 WORKDIR /tmp/build
 # Install global dependencies
