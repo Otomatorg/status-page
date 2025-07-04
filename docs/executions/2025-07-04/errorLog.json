@@ -34,15 +34,41 @@
         "totalComparisonEntries": 13,
         "totalExecutions": 2
       }
+    },
+    {
+      "message": "TRANSFER: Missing executions for 7 transaction hashes",
+      "timestamp": "2025-07-04T03:33:58.275Z",
+      "data": {
+        "missingHashes": [
+          "0x3f2e92c6f50deee4bbc5ff6723e1628d1e73f23b980693d5a59382bcca1e79c5",
+          "0x24488224292d35f55a5ccc6e381105d8336d503f9bc263c9e21f338b151bd9c5",
+          "0xe81b48a8113234dfd24417779048da23d297e0e263149c7f15831fb76b2a8f26",
+          "0x541e511e1cebe0e32cd54c6e828ec6b7c6c4b9b7ec6fd02a561b3ed9cf5f3bc8",
+          "0x4c2254a24044b62eca7d303cd3a1409bf13d24bb33f9f82f2eea540e87de1559",
+          "0x51127a523fa997e0322443bf994ffa5abb5e5da2e7191b84c24341383553d9fa",
+          "0x123637763c98ac9779892f4c4527ba2f11d00fc28bf2c8749dc73464e1bf078e"
+        ],
+        "totalComparisonEntries": 8,
+        "totalExecutions": 3
+      }
     }
   ],
   "EVERY_PERIOD": [
     {
       "message": "EVERY_PERIOD: Interval between execution 7ac23c4e-39c0-4516-a99f-c7c98be46769 and d3f0345c-e6c0-44d2-97aa-beed5c015596 is 29 min, expected 10 min (+/- 1 min)",
-      "timestamp": "2025-07-04T02:46:13.000Z",
+      "timestamp": "2025-07-04T03:33:58.274Z",
       "data": {
         "executionIndex": "d3f0345c-e6c0-44d2-97aa-beed5c015596",
         "actualInterval": 1721661,
+        "expectedInterval": 600000
+      }
+    },
+    {
+      "message": "EVERY_PERIOD: Interval between execution d3f0345c-e6c0-44d2-97aa-beed5c015596 and d471c198-5812-488f-8438-77fe049aef82 is 48 min, expected 10 min (+/- 1 min)",
+      "timestamp": "2025-07-04T03:33:58.275Z",
+      "data": {
+        "executionIndex": "d471c198-5812-488f-8438-77fe049aef82",
+        "actualInterval": 2863504,
         "expectedInterval": 600000
       }
     }
@@ -127,6 +153,69 @@
         "endpoint": "/executions/7ac23c4e-39c0-4516-a99f-c7c98be46769",
         "error": "HTTP 404: Not Found",
         "stack": "Error: HTTP 404: Not Found\n    at ApiService.makeRequest (file:///Users/thuanvo/Documents/Work/otomato/status-page/dist/services/apiService.js:20:23)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async DataService.saveExecutionResult (file:///Users/thuanvo/Documents/Work/otomato/status-page/dist/services/dataService.js:91:49)\n    at async WorkflowMonitor.runMonitoring (file:///Users/thuanvo/Documents/Work/otomato/status-page/dist/monitor.js:138:21)"
+      }
+    },
+    {
+      "message": "API Error for /workflows/d2e2732a-ed33-4f10-9503-c343e2c0074e: HTTP 500: Internal Server Error",
+      "timestamp": "2025-07-04T03:33:43.978Z",
+      "data": {
+        "endpoint": "/workflows/d2e2732a-ed33-4f10-9503-c343e2c0074e",
+        "error": "HTTP 500: Internal Server Error",
+        "stack": "Error: HTTP 500: Internal Server Error\n    at ApiService.makeRequest (file:///home/runner/work/status-page/status-page/dist/services/apiService.js:20:23)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async WorkflowMonitor.ensureWorkflowExists (file:///home/runner/work/status-page/status-page/dist/monitor.js:14:37)\n    at async WorkflowMonitor.runMonitoring (file:///home/runner/work/status-page/status-page/dist/monitor.js:132:21)"
+      }
+    },
+    {
+      "message": "API Error for /workflows/694eca01-0b90-4316-8b66-967323e14ddf: HTTP 500: Internal Server Error",
+      "timestamp": "2025-07-04T03:33:46.450Z",
+      "data": {
+        "endpoint": "/workflows/694eca01-0b90-4316-8b66-967323e14ddf",
+        "error": "HTTP 500: Internal Server Error",
+        "stack": "Error: HTTP 500: Internal Server Error\n    at ApiService.makeRequest (file:///home/runner/work/status-page/status-page/dist/services/apiService.js:20:23)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async WorkflowMonitor.ensureWorkflowExists (file:///home/runner/work/status-page/status-page/dist/monitor.js:14:37)\n    at async WorkflowMonitor.runMonitoring (file:///home/runner/work/status-page/status-page/dist/monitor.js:132:21)"
+      }
+    },
+    {
+      "message": "API Error for /executions/bef29f3a-f943-4ad1-96d8-a4a37dc88447: HTTP 404: Not Found",
+      "timestamp": "2025-07-04T03:33:48.936Z",
+      "data": {
+        "endpoint": "/executions/bef29f3a-f943-4ad1-96d8-a4a37dc88447",
+        "error": "HTTP 404: Not Found",
+        "stack": "Error: HTTP 404: Not Found\n    at ApiService.makeRequest (file:///home/runner/work/status-page/status-page/dist/services/apiService.js:20:23)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async DataService.saveExecutionResult (file:///home/runner/work/status-page/status-page/dist/services/dataService.js:91:49)\n    at async WorkflowMonitor.runMonitoring (file:///home/runner/work/status-page/status-page/dist/monitor.js:138:21)"
+      }
+    },
+    {
+      "message": "API Error for /workflows/3aa3c604-c131-45a0-a4d8-8a813a207dd3: HTTP 500: Internal Server Error",
+      "timestamp": "2025-07-04T03:33:49.418Z",
+      "data": {
+        "endpoint": "/workflows/3aa3c604-c131-45a0-a4d8-8a813a207dd3",
+        "error": "HTTP 500: Internal Server Error",
+        "stack": "Error: HTTP 500: Internal Server Error\n    at ApiService.makeRequest (file:///home/runner/work/status-page/status-page/dist/services/apiService.js:20:23)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async WorkflowMonitor.ensureWorkflowExists (file:///home/runner/work/status-page/status-page/dist/monitor.js:14:37)\n    at async WorkflowMonitor.runMonitoring (file:///home/runner/work/status-page/status-page/dist/monitor.js:132:21)"
+      }
+    },
+    {
+      "message": "API Error for /workflows/07810e0b-3409-4fc4-bc8e-ca0ba65632a8: HTTP 500: Internal Server Error",
+      "timestamp": "2025-07-04T03:33:52.540Z",
+      "data": {
+        "endpoint": "/workflows/07810e0b-3409-4fc4-bc8e-ca0ba65632a8",
+        "error": "HTTP 500: Internal Server Error",
+        "stack": "Error: HTTP 500: Internal Server Error\n    at ApiService.makeRequest (file:///home/runner/work/status-page/status-page/dist/services/apiService.js:20:23)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async WorkflowMonitor.ensureWorkflowExists (file:///home/runner/work/status-page/status-page/dist/monitor.js:14:37)\n    at async WorkflowMonitor.runMonitoring (file:///home/runner/work/status-page/status-page/dist/monitor.js:132:21)"
+      }
+    },
+    {
+      "message": "API Error for /workflows/e43ad057-fe34-4b0b-8240-4b96bf43454c: HTTP 500: Internal Server Error",
+      "timestamp": "2025-07-04T03:33:55.450Z",
+      "data": {
+        "endpoint": "/workflows/e43ad057-fe34-4b0b-8240-4b96bf43454c",
+        "error": "HTTP 500: Internal Server Error",
+        "stack": "Error: HTTP 500: Internal Server Error\n    at ApiService.makeRequest (file:///home/runner/work/status-page/status-page/dist/services/apiService.js:20:23)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async WorkflowMonitor.ensureWorkflowExists (file:///home/runner/work/status-page/status-page/dist/monitor.js:14:37)\n    at async WorkflowMonitor.runMonitoring (file:///home/runner/work/status-page/status-page/dist/monitor.js:132:21)"
+      }
+    },
+    {
+      "message": "API Error for /executions/d3f0345c-e6c0-44d2-97aa-beed5c015596: HTTP 404: Not Found",
+      "timestamp": "2025-07-04T03:33:57.933Z",
+      "data": {
+        "endpoint": "/executions/d3f0345c-e6c0-44d2-97aa-beed5c015596",
+        "error": "HTTP 404: Not Found",
+        "stack": "Error: HTTP 404: Not Found\n    at ApiService.makeRequest (file:///home/runner/work/status-page/status-page/dist/services/apiService.js:20:23)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async DataService.saveExecutionResult (file:///home/runner/work/status-page/status-page/dist/services/dataService.js:91:49)\n    at async WorkflowMonitor.runMonitoring (file:///home/runner/work/status-page/status-page/dist/monitor.js:138:21)"
       }
     }
   ]
