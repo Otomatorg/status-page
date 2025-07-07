@@ -27,3 +27,4 @@ WORKDIR /opt/app
 COPY --from=builder /tmp/build/dist/ /opt/app/dist
 COPY --from=builder /tmp/build/*.json /opt/app/
 COPY --from=builder /tmp/build/node_modules/ /opt/app/node_modules
+COPY --from=builder /tmp/build/docs/ /opt/app/docs
