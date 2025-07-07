@@ -1,8 +1,8 @@
 import fetch, { RequestInit } from 'node-fetch';
 import { CreateWorkflowPayload, Workflow, ExecutionResponse } from '../types/types.js';
 
-import dotenv from 'dotenv';
-dotenv.config();
+// import dotenv from 'dotenv';
+// dotenv.config();
 
 // Configuration
 const API_ENDPOINT = process.env.API_ENDPOINT || 'http://localhost:3000/api';

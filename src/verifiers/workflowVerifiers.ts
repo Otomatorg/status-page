@@ -3,8 +3,8 @@ import { WORKFLOW_TYPES } from '../constants/constants.js';
 import { ethers } from 'ethers';
 import { externalApiService } from '../services/externalApiService.js';
 import { CHAINS } from 'otomato-sdk';
-import dotenv from "dotenv";
-dotenv.config();
+// import dotenv from "dotenv";
+// dotenv.config();
 
 function getProvider(chainId: number) {
   const chainName = chainId === 1 ? 'INFURA' : Object.keys(CHAINS).find(key => CHAINS[key as keyof typeof CHAINS] === chainId);
