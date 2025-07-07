@@ -14,9 +14,6 @@ const app = express();
 const port = process.env.PORT || 3001;
 
 const monitor = new WorkflowMonitor();
-await monitor.runMonitoring().catch(console.error);
-
-runVerifications();
 
 // Serve static files from docs directory
 app.use(express.static('docs'));
@@ -36,12 +33,6 @@ function runCommand(command: string) {
     if (stdout) console.log(`[${new Date().toISOString()}] ${stdout}`);
     if (stderr) console.error(`[${new Date().toISOString()}] ${stderr}`);
   });
-}
-
-// --- Monitoring Job (every 10 minutes) ---
-function runMonitoringJob() {
-  console.log(`[${new Date().toISOString()}] Running monitoring job...`);
-  runCommand('npm run build:verify');
 }
 
 // --- Clear Old Logs Job (daily at 2 AM) ---
@@ -72,7 +63,11 @@ function schedule(fn: () => void, intervalMs: number, runAtStart = false) {
 }
 
 // Run monitoring job every 10 minutes
-schedule(runMonitoringJob, 10 * 60 * 1000, true);
+schedule(async () => {
+  console.log(`[${new Date().toISOString()}] Running monitoring job...`);
+  await monitor.runMonitoring().catch(console.error);
+  runVerifications();
+}, 10 * 60 * 1000, true);
 
 // Run clear logs job daily at 2 AM
 function scheduleDailyAt(hour: number, minute: number, fn: () => void) {
@@ -88,6 +83,7 @@ function scheduleDailyAt(hour: number, minute: number, fn: () => void) {
     setTimeout(tick, 24 * 60 * 60 * 1000);
   }, getNextTimeout());
 }
+
 scheduleDailyAt(2, 0, clearOldLogsJob);
 
 app.listen(port, () => {
