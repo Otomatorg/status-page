@@ -1,0 +1,14 @@
+version: "3.8"
+services:
+  status-page:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    ports:
+      - "3001:3001"
+    volumes:
+      - docs_data:/opt/app/docs
+    restart: unless-stopped
+
+volumes:
+  docs_data:

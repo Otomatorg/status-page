@@ -197,6 +197,33 @@ class DataService {
     await fs.writeFile(comparisonDataFile, JSON.stringify(convertBigIntToString(comparisonData), null, 2));
   }
 
+  async updateComparisonData(date: string, workflowType: string, result: any): Promise<void> {
+    await this.ensureExecutionsDirectory(date);
+
+    const comparisonDataFile = path.join(this.dataDir, 'executions', date, 'comparisonData.json');
+
+    let comparisonData: Record<string, any[]> = {};
+
+    try {
+      const data = await fs.readFile(comparisonDataFile, 'utf-8');
+      comparisonData = JSON.parse(data);
+    } catch {
+      // File doesn't exist, start with empty object
+    }
+
+    if (!comparisonData[workflowType]) {
+      comparisonData[workflowType] = [];
+    }
+
+    // Update the comparison data for the specified workflow type
+    comparisonData[workflowType] = result.map((item: any) => ({
+      ...item,
+      dateCreated: new Date().toISOString()
+    }));
+
+    await fs.writeFile(comparisonDataFile, JSON.stringify(convertBigIntToString(comparisonData), null, 2));
+  }
+
   async saveError(date: string, workflowType: string, error: string, timestamp: string): Promise<void> {
     await this.ensureExecutionsDirectory(date);
     
@@ -246,6 +273,8 @@ class DataService {
 
   async saveErrorLog(date: string, workflowType: string, error: any): Promise<void> {
     await this.ensureDataDirectory();
+    await this.ensureExecutionsDirectory(date);
+
     const errorLogFile = path.join(this.dataDir, 'executions', date, 'errorLog.json');
     
     // Load existing error log or create new one

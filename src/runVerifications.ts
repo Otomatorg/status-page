@@ -3,6 +3,7 @@ import * as path from 'path';
 import { fileURLToPath } from 'url';
 import { INTERVALS } from './constants/constants.js';
 import { VerificationError } from './types/types.js';
+import { dataService } from './services/dataService.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -10,7 +11,7 @@ const __dirname = path.dirname(__filename);
 // Configurable interval in minutes for EVERY_PERIOD
 const EVERY_PERIOD_INTERVAL_MIN = 10;
 const EVERY_PERIOD_INTERVAL_MS = EVERY_PERIOD_INTERVAL_MIN * 60 * 1000;
-const ALLOWED_ERROR_MS = 1 * 60 * 1000; // 1 minute
+const ALLOWED_ERROR_MS = 15 * 1000; // 15 seconds
 
 // Helper to parse ISO date string to ms
 function toMs(date: string) {
@@ -24,6 +25,7 @@ function loadJson(filePath: string) {
 
 // Main
 export function runVerifications() {
+  try {
     const currentDate = new Date().toISOString().split('T')[0];
     const comparisonPath = path.join(__dirname, `../docs/executions/${currentDate}/comparisonData.json`);
     const executionsPath = path.join(__dirname, `../docs/executions/${currentDate}/executions.json`);
@@ -62,9 +64,8 @@ export function runVerifications() {
         const errors: any[] = [];
         for (let i = 1; i < execs.length; ++i) {
             const diff = execs[i].dateCreated - execs[i - 1].dateCreated;
-            console.log(diff);
             if (Math.abs(diff - EVERY_PERIOD_INTERVAL_MS) > ALLOWED_ERROR_MS) {
-                const errorMsg = `EVERY_PERIOD: Interval between execution ${execs[i - 1].id} and ${execs[i].id} is ${Math.round(diff / 60000)} min, expected ${EVERY_PERIOD_INTERVAL_MIN} min (+/- 1 min)`;
+                const errorMsg = `EVERY_PERIOD: Interval between execution ${execs[i - 1].id} and ${execs[i].id} is ${Math.round(diff / 60000)} min, expected ${EVERY_PERIOD_INTERVAL_MIN} min (+/- 15 secs)`;
                 console.log(errorMsg);
                 errors.push({ 
                     message: errorMsg, 
@@ -97,7 +98,7 @@ export function runVerifications() {
         const intervalMs = INTERVALS[type] * 60 * 1000; // Convert minutes to milliseconds
 
         const now = new Date().getTime();
-        const tenMinutesAgo = now - intervalMs
+        const tenMinutesAgo = now - intervalMs;
 
         // Find all executions between tenMinutesAgo and now
         const execsInTimeRange = executionsData[type]?.filter((exec: any) => {
@@ -111,10 +112,28 @@ export function runVerifications() {
             return compTime >= tenMinutesAgo && compTime <= now;
         });
 
+        // Find the nearest comparison entry that comes right before the time range
+        const earliestInRangeIndex = compArr.findIndex((comp: any) => {
+            const compTime = new Date(comp.dateCreated).getTime();
+            return compTime >= tenMinutesAgo;
+        });
+        
+        const nearestBeforeTimeRange = earliestInRangeIndex > 0 ? compArr[earliestInRangeIndex - 1] : undefined;
+
+        const getComparisonDataValue = (data: any) => {
+            if (type === 'STAKESTONE') {
+                return data.latestRoundID;
+            } else if (type === 'PRICE') {
+                return data.price;
+            } else if (type === 'BALANCE') {
+                return data.balance;
+            }
+        }
+
         // Only add error log entry if execution count and comparison count are different
         if (compInTimeRange.length > 0 && execsInTimeRange.length == 0) {
             const errorEntry = {
-                message: `${type}: Found ${execsInTimeRange.length} executions and ${compInTimeRange.length} comparison entries in the last ${INTERVALS[type]} minutes`,
+                message: `${type}: No execution presented as data changed from ${getComparisonDataValue(nearestBeforeTimeRange)} to ${getComparisonDataValue(compInTimeRange[compInTimeRange.length - 1])}`,
                 timestamp: new Date().toISOString(),
                 data: {
                     executionsCount: execsInTimeRange.length,
@@ -128,6 +147,8 @@ export function runVerifications() {
             }
             errorLog[type].push(errorEntry);
         }
+
+        dataService.updateComparisonData(currentDate, type, compArr);
     }
 
     // 3. TRANSFER: for each comparisonData entry, check if any execution is missing
@@ -192,8 +213,8 @@ export function runVerifications() {
     verifyTransfer();
 
     // Save the error log
-    fs.writeFileSync(errorLogPath, JSON.stringify(errorLog, null, 2));
+    fs.writeFileSync(errorLogPath, JSON.stringify(errorLog, null, 2));  
+  } catch (error) {
+    console.error('Error running verifications:', error);
+  }
 }
-
-// runVerifications();
-
