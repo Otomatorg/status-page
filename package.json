@@ -13,7 +13,9 @@
     "dev": "tsx src/server.ts"
   },
   "dependencies": {
+    "@types/archiver": "^6.0.3",
     "@types/express": "^5.0.3",
+    "archiver": "^7.0.1",
     "axios": "^1.10.0",
     "dotenv": "^16.5.0",
     "ethers": "^6.14.4",

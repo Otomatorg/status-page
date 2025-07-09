@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { fileURLToPath } from 'url';
 import { INTERVALS } from './constants/constants.js';
-import { VerificationError } from './types/types.js';
+import { Execution, VerificationError } from './types/types.js';
 import { dataService } from './services/dataService.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -30,8 +30,14 @@ export function runVerifications() {
     const comparisonPath = path.join(__dirname, `../docs/executions/${currentDate}/comparisonData.json`);
     const executionsPath = path.join(__dirname, `../docs/executions/${currentDate}/executions.json`);
 
-    const comparisonData = loadJson(comparisonPath);
-    const executionsData = loadJson(executionsPath);
+    let comparisonData: any, executionsData: any;
+    try {
+        comparisonData = loadJson(comparisonPath);
+        executionsData = loadJson(executionsPath);
+    } catch (err) {
+        // console.error('Failed to load comparison or executions data:', err);
+        return;
+    }
 
     const errorLogPath = path.join(__dirname, `../docs/executions/${currentDate}/errorLog.json`);
     let errorLog: Record<string, VerificationError[]> = {
@@ -148,7 +154,7 @@ export function runVerifications() {
             errorLog[type].push(errorEntry);
         }
 
-        dataService.updateComparisonData(currentDate, type, compArr);
+        // dataService.updateComparisonData(currentDate, type, compArr);
     }
 
     // 3. TRANSFER: for each comparisonData entry, check if any execution is missing

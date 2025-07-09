@@ -32,3 +32,6 @@ logs/
 # Keep data directory structure but ignore content during development
 # public/data/*.json
 !public/data/.gitkeep 
+
+docs/workflows.json
+docs/executions/*
