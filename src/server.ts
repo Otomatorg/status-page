@@ -19,7 +19,7 @@ const monitor = new WorkflowMonitor();
 app.use(express.static('docs'));
 
 app.get('/', (req, res) => {
-  res.sendFile('docs/data/index.html', { root: __dirname });
+  res.sendFile('docs/index.html', { root: __dirname });
 });
 
 app.get('/api/download', async (req: any, res: any) => {
