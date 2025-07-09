@@ -35,3 +35,5 @@ logs/
 
 docs/workflows.json
 docs/executions/*
+
+db/
