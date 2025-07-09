@@ -44,7 +44,7 @@ class AdminDashboard {
 
   async loadWorkflows() {
     try {
-      const response = await fetch('./workflows.json');
+      const response = await fetch('./data/workflows.json');
       console.log(response);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -68,7 +68,7 @@ class AdminDashboard {
         const dateString = date.toISOString().split('T')[0];
         
         try {
-          const response = await fetch(`./executions/${dateString}/errorLog.json`);
+          const response = await fetch(`./data/executions/${dateString}/errorLog.json`);
           if (response.ok) {
             const dayLogs = await response.json();
             
@@ -111,7 +111,7 @@ class AdminDashboard {
         const dateString = date.toISOString().split('T')[0];
         
         try {
-          const response = await fetch(`./executions/${dateString}/comparisonData.json`);
+          const response = await fetch(`./data/executions/${dateString}/comparisonData.json`);
           if (response.ok) {
             const dayData = await response.json();
             
@@ -151,7 +151,7 @@ class AdminDashboard {
         const dateString = date.toISOString().split('T')[0];
         
         try {
-          const response = await fetch(`./executions/${dateString}/executions.json`);
+          const response = await fetch(`./data/executions/${dateString}/executions.json`);
           if (response.ok) {
             const dayData = await response.json();
             

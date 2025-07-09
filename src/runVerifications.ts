@@ -39,7 +39,7 @@ export function runVerifications() {
         return;
     }
 
-    const errorLogPath = path.join(__dirname, `../docs/executions/${currentDate}/errorLog.json`);
+    const errorLogPath = path.join(__dirname, `../docs/data/executions/${currentDate}/errorLog.json`);
     let errorLog: Record<string, VerificationError[]> = {
         BALANCE: [],
         STAKESTONE: [],

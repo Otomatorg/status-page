@@ -33,7 +33,7 @@ logs/
 # public/data/*.json
 !public/data/.gitkeep 
 
-docs/workflows.json
-docs/executions/*
+docs/data/workflows.json
+docs/data/executions/*
 
 db/
