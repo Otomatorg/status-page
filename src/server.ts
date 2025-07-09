@@ -19,14 +19,14 @@ const monitor = new WorkflowMonitor();
 app.use(express.static('docs'));
 
 app.get('/', (req, res) => {
-  res.sendFile('docs/index.html', { root: __dirname });
+  res.sendFile('docs/data/index.html', { root: __dirname });
 });
 
 app.get('/api/download', async (req: any, res: any) => {
   try {
     // Query params: date (YYYY-MM-DD), type (comparisonData, executionData, errorLog)
     const { date, type } = req.query;
-    
+
     // Validate type
     const allowedTypes = ['comparisonData', 'executions', 'errorLog'];
     let fileType = typeof type === 'string' ? type : undefined;
@@ -41,7 +41,7 @@ app.get('/api/download', async (req: any, res: any) => {
     }
 
     // Build file path(s)
-    const baseDir = path.resolve('docs/executions');
+    const baseDir = path.resolve('docs/data/executions');
     let filesToSend: { filePath: string, downloadName: string }[] = [];
 
     if (dateStr) {
@@ -132,7 +132,7 @@ function runCommand(command: string) {
 
 // --- Clear Old Logs Job (daily at 2 AM) ---
 function clearOldLogsJob() {
-  const executionsDir = path.resolve('docs/executions');
+  const executionsDir = path.resolve('docs/data/executions');
   const cutoff = new Date();
   cutoff.setDate(cutoff.getDate() - 21);
 

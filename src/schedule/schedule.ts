@@ -22,7 +22,7 @@ function runMonitoringJob() {
 
 // --- Clear Old Logs Job (daily at 2 AM) ---
 function clearOldLogsJob() {
-  const executionsDir = path.resolve('docs/executions');
+  const executionsDir = path.resolve('docs/data/executions');
   const cutoff = new Date();
   cutoff.setDate(cutoff.getDate() - 21);
 

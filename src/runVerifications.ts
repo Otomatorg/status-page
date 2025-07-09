@@ -27,8 +27,8 @@ function loadJson(filePath: string) {
 export function runVerifications() {
   try {
     const currentDate = new Date().toISOString().split('T')[0];
-    const comparisonPath = path.join(__dirname, `../docs/executions/${currentDate}/comparisonData.json`);
-    const executionsPath = path.join(__dirname, `../docs/executions/${currentDate}/executions.json`);
+    const comparisonPath = path.join(__dirname, `../docs/data/executions/${currentDate}/comparisonData.json`);
+    const executionsPath = path.join(__dirname, `../docs/data/executions/${currentDate}/executions.json`);
 
     let comparisonData: any, executionsData: any;
     try {
