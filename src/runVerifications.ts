@@ -2,8 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { fileURLToPath } from 'url';
 import { INTERVALS } from './constants/constants.js';
-import { Execution, VerificationError } from './types/types.js';
-import { dataService } from './services/dataService.js';
+import { VerificationError } from './types/types.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -93,7 +92,7 @@ export function runVerifications() {
     }
 
     // 2. For STAKESTONE, PRICE, BALANCE: for each new column in comparisonData, between the time of 2 items, there should be an execution on server
-    function verifyColumnBased(type: 'STAKESTONE' | 'PRICE' | 'BALANCE') {
+    function verifyColumnBased(type: 'STAKESTONE' | 'PRICE' | 'BALANCE' | 'STRESS_LOOP') {
         const compArr = comparisonData[type] || [];
         if (compArr.length < 2) {
             console.log(`${type}: Not enough comparison data to check.`);
@@ -103,13 +102,16 @@ export function runVerifications() {
         // Get the interval for this workflow type from INTERVALS
         const intervalMs = INTERVALS[type] * 60 * 1000; // Convert minutes to milliseconds
 
+        const nowPlusOffset = new Date().getTime() + 10000; // add 10 seconds to avoid race condition
+        const tenMinutesAgoPlusOffset = nowPlusOffset - intervalMs - 10000; // minus 10 seconds to avoid race condition
+
         const now = new Date().getTime();
         const tenMinutesAgo = now - intervalMs;
 
         // Find all executions between tenMinutesAgo and now
         const execsInTimeRange = executionsData[type]?.filter((exec: any) => {
             const execTime = new Date(exec.dateCreated).getTime();
-            return execTime >= tenMinutesAgo && execTime <= now;
+            return execTime >= tenMinutesAgoPlusOffset && execTime <= nowPlusOffset ;
         }) || [];
 
         // Find all comparison data entries between tenMinutesAgo and now
@@ -216,6 +218,7 @@ export function runVerifications() {
     verifyColumnBased('STAKESTONE');
     verifyColumnBased('PRICE');
     verifyColumnBased('BALANCE');
+    verifyColumnBased('STRESS_LOOP');
     verifyTransfer();
 
     // Save the error log

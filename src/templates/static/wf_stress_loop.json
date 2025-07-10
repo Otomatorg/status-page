@@ -1,0 +1,59 @@
+{
+  "id": null,
+  "name": "Workflow - Stress Loop",
+  "state": "inactive",
+  "dateCreated": null,
+  "dateModified": null,
+  "executionId": null,
+  "agentId": null,
+  "nodes": [
+      {
+          "id": null,
+          "ref": "1",
+          "blockId": 63,
+          "type": "trigger",
+          "state": "inactive",
+          "parameters": {
+              "chainId": 1,
+              "contractAddress": "0xA62F9C5af106FeEE069F38dE51098D9d81B90572",
+              "condition": "neq",
+              "comparisonValue": "{{history.0.value}}"
+          },
+          "frontendHelpers": {},
+          "position": {
+              "x": 400,
+              "y": 120
+          }
+      },
+      {
+          "id": null,
+          "ref": "2",
+          "blockId": 100019,
+          "type": "action",
+          "state": "inactive",
+          "parameters": {
+              "number1": 1,
+              "operator": "+",
+              "number2": 1
+          },
+          "frontendHelpers": {},
+          "position": {
+              "x": 400,
+              "y": 240
+          }
+      }
+  ],
+  "edges": [
+      {
+          "id": null,
+          "source": "1",
+          "target": "2"
+      }
+  ],
+  "notes": [],
+  "settings": {
+      "loopingType": "polling",
+      "limit": 100000,
+      "period": 600000
+  }
+}

@@ -9,6 +9,21 @@
   --color-warning: #ed8936;
   --color-error: #f56565;
   --color-info: #4299e1;
+  --color-purple: #9f7aea;
+  /* available */
+  --color-pink: #ed64a6;
+  --color-cyan: #38b2ac;
+  --color-teal: #4fd1c5;
+  --color-yellow: #ecc94b;
+  --color-green: #68d391;
+  --color-red: #fc8181;
+  --color-orange: #f6ad55;
+  --color-blue: #63b3ed;
+  --color-indigo: #667eea;
+  --color-gray: #a0aec0;
+  --color-light-bg: #f7fafc;
+  --color-dark-bg: #171923;
+  /* available */
   --border-radius: 12px;
   --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
   --transition: all 0.2s ease-in-out;

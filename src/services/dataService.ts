@@ -34,7 +34,36 @@ class DataService {
     try {
       await this.ensureDataDirectory();
       const data = await fs.readFile(this.workflowsStateFile, 'utf-8');
-      return JSON.parse(data);
+      const loadedState: Record<string, WorkflowState> = JSON.parse(data);
+
+      // Ensure all workflow types are present (initialize missing ones)
+      let updated = false;
+      Object.values(WORKFLOW_TYPES).forEach(type => {
+        if (!loadedState[type]) {
+          loadedState[type] = {
+            id: null,
+            started: false,
+            name: `Workflow - ${type}`,
+            type,
+            state: 'not_created',
+            executionId: null,
+            lastCheck: null,
+            lastExecution: null,
+            isHealthy: false,
+            createdAt: null,
+            errorCount: 0,
+            lastError: null
+          };
+          updated = true;
+        }
+      });
+
+      // Optionally persist the update if new workflow types were added
+      if (updated) {
+        await fs.writeFile(this.workflowsStateFile, JSON.stringify(loadedState, null, 2));
+      }
+
+      return loadedState;
     } catch {
       // Initialize with default state for all workflow types
       const defaultState: Record<string, WorkflowState> = {};

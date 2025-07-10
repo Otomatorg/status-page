@@ -18,7 +18,22 @@ class AdminDashboard {
       comparisonData: new Set(),
       executions: new Set()
     };
+
+    // Configure base path based on environment
+    // If running behind a proxy at /status-page/, use that path
+    // Otherwise, use empty string for direct access
+    this.basePath = this.getBasePath();
+
     this.init();
+  }
+
+  getBasePath() {
+    // Check if we're running behind a proxy by looking at the current URL
+    const currentPath = window.location.pathname;
+    if (currentPath.startsWith('/status-page/')) {
+      return '/status-page';
+    }
+    return '';
   }
 
   async init() {
@@ -760,6 +775,7 @@ class AdminDashboard {
       'STAKESTONE': 'var(--color-info)',
       'EVERY_PERIOD': 'var(--color-warning)',
       'SERVER': 'var(--color-error)',
+      'STRESS_LOOP': 'var(--color-purple)',
       
       // Workflow types (handle various naming conventions)
       'balance': 'var(--color-info)',
@@ -769,6 +785,7 @@ class AdminDashboard {
       'every_period': 'var(--color-warning)',
       'everyPeriod': 'var(--color-warning)',
       'server': 'var(--color-error)',
+      'stress_loop': 'var(--color-purple)',
       
       // Template workflow types
       'wf_balance': 'var(--color-info)',
@@ -776,14 +793,16 @@ class AdminDashboard {
       'wf_price': 'var(--color-warning)',
       'wf_stakestone': 'var(--color-info)',
       'wf_every_period': 'var(--color-warning)',
-      
+      'wf_stress_loop': 'var(--color-purple)',
+
       // Additional workflow variations
       'Balance': 'var(--color-info)',
       'Transfer': 'var(--color-success)',
       'Price': 'var(--color-warning)',
       'StakeStone': 'var(--color-info)',
       'EveryPeriod': 'var(--color-warning)',
-      'Server': 'var(--color-error)'
+      'Server': 'var(--color-error)',
+      'StressLoop': 'var(--color-purple)',
     };
     
     // If exact match found, return it
@@ -950,7 +969,7 @@ class AdminDashboard {
     if (date) params.append('date', date);
     if (type) params.append('type', type);
     
-    const url = `/api/download${params.toString() ? '?' + params.toString() : ''}`;
+    const url = `${this.basePath}/api/download${params.toString() ? '?' + params.toString() : ''}`;
     
     try {
       // First check if the endpoint is reachable

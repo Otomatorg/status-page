@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { WorkflowState } from './types/types.js';
-import { WORKFLOW_TYPES } from './constants/constants.js';
+import { INTERVALS, WORKFLOW_TYPES } from './constants/constants.js';
 import { WORKFLOW_TEMPLATES } from './templates/workflowTemplates.js';
 import { apiService } from './services/apiService.js';
 import { dataService } from './services/dataService.js';
@@ -11,7 +11,7 @@ export class WorkflowMonitor {
   private async ensureWorkflowExists(workflowType: string, workflowState: WorkflowState): Promise<boolean> {
 
     // If workflow already exists, verify and update status in one call
-    if (workflowState.id && workflowState.createdAt && new Date(workflowState.createdAt).toDateString() === new Date().toDateString()) {
+    if (workflowState.id && workflowState.createdAt && (new Date(workflowState.createdAt).toDateString() === new Date().toDateString() || INTERVALS[workflowType as keyof typeof INTERVALS] === -1)) {
       console.log(`✅ ${workflowType}: Workflow exists (ID: ${workflowState.id})`);
 
       // Fetch current workflow data to ensure it still exists on server AND update status
@@ -151,7 +151,7 @@ export class WorkflowMonitor {
       for (const workflowType of Object.values(WORKFLOW_TYPES)) {
         console.log(`\n🔍 Processing ${workflowType}...`);
         
-        const workflowState = workflowsState[workflowType];
+        const workflowState = workflowsState[workflowType] || {};
 
         try {
           // todo: there is an edge case where the event happen so close to the end of the interval, and the wf may not capture the event
@@ -163,9 +163,13 @@ export class WorkflowMonitor {
           await this.ensureWorkflowExists(workflowType, workflowState);
           await this.ensureWorkflowRunning(workflowType, workflowState);
 
-          // Fetch data (executions go first)
-          const executions = await this.fetchWorkflowExecutions(workflowType, workflowState)
+          // Fetch data
           const comparisonData = await this.fetchComparisonData(workflowType)
+
+          // Wait for 10 seconds to ensure the wf has captured the event, avoiding race condition
+          await new Promise(resolve => setTimeout(resolve, 10000));
+
+          const executions = await this.fetchWorkflowExecutions(workflowType, workflowState);
 
           await dataService.saveComparisonData(currentDate, workflowType, comparisonData);
           await dataService.saveExecutionResult(currentDate, workflowType, executions);

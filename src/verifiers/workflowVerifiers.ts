@@ -151,6 +151,7 @@ export async function dataFetcher(
       return priceDataFetcher(parameters);
     
     case WORKFLOW_TYPES.STAKESTONE:
+    case WORKFLOW_TYPES.STRESS_LOOP:
       return stakestoneDataFetcher(parameters);
 
     default:
