@@ -93,7 +93,7 @@ export interface ExecutionAnalysis {
   failedExecutions: Execution[];
   completedExecutions: Execution[];
   runningExecutions: Execution[];
-}
+} 
 
 export interface WorkflowState {
   id: string | null;
@@ -108,6 +108,10 @@ export interface WorkflowState {
   createdAt: string | null;
   errorCount: number;
   lastError: string | null;
+  outputs?: {
+    current?: any; // current output for long-running workflows
+    previous?: any; // previous output for comparison
+  };
 }
 
 export interface MonitoringResult {

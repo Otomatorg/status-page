@@ -93,8 +93,97 @@ class DataService {
     await this.ensureDataDirectory();
     await fs.writeFile(
       this.workflowsStateFile,
-      JSON.stringify(workflowsState, null, 2)
+      JSON.stringify(convertBigIntToString(workflowsState), null, 2)
     );
+  }
+
+  async updateWorkflowState(workflowType: string, partialState: Partial<WorkflowState>): Promise<void> {
+    await this.ensureDataDirectory();
+    const workflowsState: Record<string, WorkflowState> = await this.loadWorkflowsState();
+
+    if (!workflowsState[workflowType]) {
+      console.log(`[updateWorkflowState] Workflow type "${workflowType}" does not exist. Initializing with defaults.`);
+      // If the workflow type doesn't exist, initialize with defaults
+      workflowsState[workflowType] = {
+        id: null,
+        started: false,
+        name: `Workflow - ${workflowType}`,
+        type: workflowType,
+        state: 'not_created',
+        executionId: null,
+        lastCheck: null,
+        lastExecution: null,
+        isHealthy: false,
+        createdAt: null,
+        errorCount: 0,
+        lastError: null,
+        // outputs is optional, but we initialize it for long-running workflows
+        outputs: {
+          current: undefined,
+          previous: undefined
+        }
+      };
+    } else {
+      // If the workflow exists but outputs is missing, add it
+      if (!('outputs' in workflowsState[workflowType])) {
+        console.log(`[updateWorkflowState] Workflow type "${workflowType}" exists but outputs is missing. Initializing outputs.`);
+        workflowsState[workflowType].outputs = {
+          current: undefined,
+          previous: undefined
+        };
+      }
+    }
+
+    const prevState = { ...workflowsState[workflowType] };
+    workflowsState[workflowType] = {
+      ...workflowsState[workflowType],
+      ...partialState
+    };
+
+    // console.log(`[updateWorkflowState] Updating workflow state for "${workflowType}".`);
+    // console.log(`[updateWorkflowState] Previous state:`, prevState);
+    // console.log(`[updateWorkflowState] New state:`, workflowsState);
+
+    await this.saveWorkflowsState(workflowsState);
+    // console.log(`[updateWorkflowState] Workflow state for "${workflowType}" saved to file.`);
+  }
+
+  async saveWorkflowOutput(workflowType: string, result: any): Promise<void> {
+    // Load current workflow state
+    await this.ensureDataDirectory();
+    const workflowsState: Record<string, WorkflowState> = await this.loadWorkflowsState();
+
+    const outputs = workflowsState[workflowType].outputs || {};
+    const now = new Date().toISOString();
+
+    // If no current output, save to current
+    if (outputs.current === undefined) {
+      // console.log(`[saveWorkflowOutput] No current output for ${workflowType}. Saving new output as current.`);
+      await this.updateWorkflowState(workflowType, {
+        outputs: {
+          current: { ...result[0], dateCreated: now },
+          previous: undefined
+        }
+      });
+      // console.log(`[saveWorkflowOutput] Output saved for ${workflowType}:`, { ...result[0], dateCreated: now });
+      return;
+    }
+
+    // If result is the same as current, skip
+    if (this.getComparisonDataValue(workflowType, outputs.current) == this.getComparisonDataValue(workflowType, result[0])) {
+      // console.log(`[saveWorkflowOutput] Output for ${workflowType} is unchanged. Skipping save.`);
+      return;
+    }
+
+    // If result is different, move current to previous, save new current
+    // console.log(`[saveWorkflowOutput] Output for ${workflowType} has changed. Updating outputs.`);
+    await this.updateWorkflowState(workflowType, {
+      outputs: {
+        current: { ...result[0], dateCreated: now },
+        previous: outputs.current
+      }
+    });
+    // console.log(`[saveWorkflowOutput] Output updated for ${workflowType}. New current:`, { ...result[0], dateCreated: now }, "Previous:", outputs.current);
   }
 
   async saveExecutionResult(date: string, workflowType: string, result: any): Promise<void> {
@@ -156,9 +245,29 @@ class DataService {
     }
     
     await fs.writeFile(executionsFile, JSON.stringify(executions, null, 2));
+  } 
+
+  getComparisonDataValue(workflowType: string, result: any): string {
+    if (workflowType === 'BALANCE') {
+      return `${result.balance}`;
+    } else if (workflowType === 'STAKESTONE' || workflowType === 'STRESS_LOOP') {
+      return `${result.latestRoundID}`;
+    } else if (workflowType === 'PRICE') {
+      return `${result.price}`;
+    }
+    return '';
   }
 
   async saveComparisonData(date: string, workflowType: string, result: any): Promise<void> {
+    // Special case for STRESS_LOOP: use updateWorkflowState to store value directly into workflow state file, not in comparisonData
+    if (workflowType === 'STRESS_LOOP') {
+      // Use the updateWorkflowState helper to update the output field
+      // console.log("workflowType", workflowType);
+      // console.log("result", result);
+      await this.saveWorkflowOutput(workflowType, result);
+      return;
+    }
+
     await this.ensureExecutionsDirectory(date);
 
     const comparisonDataFile = path.join(this.dataDir, 'executions', date, 'comparisonData.json');
@@ -180,19 +289,11 @@ class DataService {
 
     // Special case for TRANSFER: deduplicate by txHash in output
     if (workflowType === 'TRANSFER') {
-
       newResults = result;
     } else if (workflowType !== 'EVERY_PERIOD') {
       const existingSignatures = new Set<string>(
         comparisonData[workflowType].map((item: any) => {
-          if (workflowType === 'BALANCE') {
-            return `${item.balance}`;
-          } else if (workflowType === 'STAKESTONE') {
-            return `${item.latestRoundID}`;
-          } else if (workflowType === 'PRICE') {
-            return `${item.price}`;
-          }
-          return '';
+          return this.getComparisonDataValue(workflowType, item);
         })
       );
 
@@ -220,7 +321,6 @@ class DataService {
     } else {
       comparisonData[workflowType].push(...newResults);
     }
-
 
     await fs.writeFile(comparisonDataFile, JSON.stringify(convertBigIntToString(comparisonData), null, 2));
   }

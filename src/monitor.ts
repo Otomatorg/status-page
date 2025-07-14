@@ -6,12 +6,13 @@ import { WORKFLOW_TEMPLATES } from './templates/workflowTemplates.js';
 import { apiService } from './services/apiService.js';
 import { dataService } from './services/dataService.js';
 import { dataFetcher } from './verifiers/workflowVerifiers.js';
+import { convertBigIntToString } from './utils/utils.js';
 
 export class WorkflowMonitor {
   private async ensureWorkflowExists(workflowType: string, workflowState: WorkflowState): Promise<boolean> {
 
     // If workflow already exists, verify and update status in one call
-    if (workflowState.id && workflowState.createdAt && (new Date(workflowState.createdAt).toDateString() === new Date().toDateString() || INTERVALS[workflowType as keyof typeof INTERVALS] === -1)) {
+    if (workflowState.id && workflowState.createdAt && (new Date(workflowState.createdAt).toDateString() === new Date().toDateString() || INTERVALS[workflowType as keyof typeof INTERVALS] < 0)) {
       console.log(`✅ ${workflowType}: Workflow exists (ID: ${workflowState.id})`);
 
       // Fetch current workflow data to ensure it still exists on server AND update status
@@ -171,6 +172,7 @@ export class WorkflowMonitor {
 
           const executions = await this.fetchWorkflowExecutions(workflowType, workflowState);
 
+          await dataService.saveWorkflowsState(workflowsState);
           await dataService.saveComparisonData(currentDate, workflowType, comparisonData);
           await dataService.saveExecutionResult(currentDate, workflowType, executions);
 
@@ -180,7 +182,7 @@ export class WorkflowMonitor {
       }
 
       // Save updated states
-      await dataService.saveWorkflowsState(workflowsState);
+      // await dataService.saveWorkflowsState(workflowsState);
       console.log('\n💾 Workflow states saved');
 
     } catch (error) {

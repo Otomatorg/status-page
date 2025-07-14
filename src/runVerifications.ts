@@ -3,6 +3,7 @@ import * as path from 'path';
 import { fileURLToPath } from 'url';
 import { INTERVALS } from './constants/constants.js';
 import { VerificationError } from './types/types.js';
+import { dataService } from './services/dataService.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -23,7 +24,7 @@ function loadJson(filePath: string) {
 }
 
 // Main
-export function runVerifications() {
+export async function runVerifications() {
   try {
     const currentDate = new Date().toISOString().split('T')[0];
     const comparisonPath = path.join(__dirname, `../docs/data/executions/${currentDate}/comparisonData.json`);
@@ -92,20 +93,48 @@ export function runVerifications() {
     }
 
     // 2. For STAKESTONE, PRICE, BALANCE: for each new column in comparisonData, between the time of 2 items, there should be an execution on server
-    function verifyColumnBased(type: 'STAKESTONE' | 'PRICE' | 'BALANCE' | 'STRESS_LOOP') {
-        const compArr = comparisonData[type] || [];
-        if (compArr.length < 2) {
+    // Special case for STRESS_LOOP: data is stored in workflowState instead of comparisonData
+    async function verifyColumnBased(type: 'STAKESTONE' | 'PRICE' | 'BALANCE' | 'STRESS_LOOP') {
+
+        // console.log("type", type);
+
+        let compArr: any[] = [];
+        if (type === 'STRESS_LOOP') {
+            // For STRESS_LOOP, load from workflowState instead of comparisonData
+            try {
+                const workflowStates = await dataService.loadWorkflowsState();
+                // Find the workflow state for STRESS_LOOP
+                const state = workflowStates && workflowStates['STRESS_LOOP'];
+                if (state && state.outputs) {
+                    compArr = [
+                      state.outputs.current,
+                      state.outputs.previous
+                    ].filter((item: any) => item !== undefined && item !== null);
+                } else {
+                    compArr = [];
+                }
+            } catch (e) {
+                console.log('STRESS_LOOP: Could not load workflowState or stressLoopData');
+                compArr = [];
+            }
+        } else {
+            compArr = comparisonData[type] || [];
+        }
+
+        if (!Array.isArray(compArr) || compArr.length < 2) {
             console.log(`${type}: Not enough comparison data to check.`);
             return;
         }
+
+        // console.log("compArr", compArr);
         
         // Get the interval for this workflow type from INTERVALS
-        const intervalMs = INTERVALS[type] * 60 * 1000; // Convert minutes to milliseconds
-
-        const nowPlusOffset = new Date().getTime() + 10000; // add 10 seconds to avoid race condition
-        const tenMinutesAgoPlusOffset = nowPlusOffset - intervalMs - 10000; // minus 10 seconds to avoid race condition
-
+        const intervalMs = Math.abs(INTERVALS[type]) * 60 * 1000; // Convert minutes to milliseconds
         const now = new Date().getTime();
+
+        const nowPlusOffset = now + 10000; // add 10 seconds to avoid race condition
+        const tenMinutesAgoPlusOffset = now - intervalMs - 10000; // minus 10 seconds to avoid race condition
+
         const tenMinutesAgo = now - intervalMs;
 
         // Find all executions between tenMinutesAgo and now
@@ -126,10 +155,11 @@ export function runVerifications() {
             return compTime >= tenMinutesAgo;
         });
         
-        const nearestBeforeTimeRange = earliestInRangeIndex > 0 ? compArr[earliestInRangeIndex - 1] : undefined;
+        const nearestBeforeTimeRange = type === 'STRESS_LOOP' ? compArr[1] : earliestInRangeIndex > 0 ? compArr[earliestInRangeIndex - 1] : undefined;
 
         const getComparisonDataValue = (data: any) => {
-            if (type === 'STAKESTONE') {
+            if (!data) return undefined;
+            if (type === 'STAKESTONE' || type === 'STRESS_LOOP') {
                 return data.latestRoundID;
             } else if (type === 'PRICE') {
                 return data.price;
@@ -139,6 +169,10 @@ export function runVerifications() {
         }
 
         // Only add error log entry if execution count and comparison count are different
+        if (type === 'STRESS_LOOP') {
+            console.log("compInTimeRange", compInTimeRange);
+            console.log("execsInTimeRange", execsInTimeRange);
+        }
         if (compInTimeRange.length > 0 && execsInTimeRange.length == 0) {
             const errorEntry = {
                 message: `${type}: No execution presented as data changed from ${getComparisonDataValue(nearestBeforeTimeRange)} to ${getComparisonDataValue(compInTimeRange[compInTimeRange.length - 1])}`,
@@ -215,10 +249,10 @@ export function runVerifications() {
 
     // Run all verifications
     verifyEveryPeriod();
-    verifyColumnBased('STAKESTONE');
-    verifyColumnBased('PRICE');
-    verifyColumnBased('BALANCE');
-    verifyColumnBased('STRESS_LOOP');
+    await verifyColumnBased('STAKESTONE');
+    await verifyColumnBased('PRICE');
+    await verifyColumnBased('BALANCE');
+    await verifyColumnBased('STRESS_LOOP');
     verifyTransfer();
 
     // Save the error log

@@ -161,7 +161,7 @@ function schedule(fn: () => void, intervalMs: number, runAtStart = false) {
 schedule(async () => {
   console.log(`[${new Date().toISOString()}] Running monitoring job...`);
   await monitor.runMonitoring().catch(console.error);
-  runVerifications();
+  await runVerifications();
 }, 10 * 60 * 1000, true);
 
 // Run clear logs job daily at 2 AM
